@@ -1,142 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="description" content="Student at UBC Sauder School of Business" />
-	<meta name="keywords" content="UBC, Business, Computer Science" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	<meta http-equiv="refresh" content="60">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Jessica Zhou's website" />
+		<meta name="keywords" content="UBC, Business, Computer Science, University" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="refresh" content="20">
 
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+			<title>Jessica Zhou</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
 
-	<title>Jessica Zhou</title>
+	<body>
+		<nav class="navbar navbar-expand-sm navbar-light">
+			<a href="index.html"><h1 style="font-size: 50pt">Jessica Zhou</h1></a>
 
-	<link rel="stylesheet" href="style.css">
-
-</head>
-
-
-
-<body>
-	<nav class="navbar navbar-expand-sm navbar-light">
-		<a href="index.html"><h1 style="font-size: 50pt"> Jessica Zhou</h1></a>
-
-		<div class="nav-links" id="navbarNav">
-			<ul>
-				<li class="nav-item"><a href="about.html">About Me<a>
-				<li class="nav-item"><a href="projects.html">Projects<a>
-				<li class="nav-item"><a href="experiences.html">Experiences<a>
-				<li class="nav-item"><a href="contact.html">Contact<a>
-			</ul>
-		</div>
-
-		<div class="dropdown">
-			<button class="dropbtn">Blog</button>
-					
-			<div class="dropdown-content">
-				<a href="hobbies.html">Life at UBC</a>
-				<a href="campus_life.html">Lifeguard & Swim Instructor</a>
-				<a href="#">Dance</a>
-				<a href="#">Exchange</a>
-				<a href="#">ref 3</a>
+			<div class="nav-links" id="navbarNav">
+				<ul>
+                    <li class="nav-item"><a href="about.html">About Me</a></li>
+                    <li class="nav-item"><a href="projects.html">Projects</a></li>
+					<li class="nav-item"><a href="experiences.html">Experiences</a></li>
+					<li class="nav-item"><a href="blog.html">Blog</a></li>
+                    <!-- Life guarding/teaching, dancing, restaurant reviews,
+                    exchange guides, experiences, UBC life, Clubs etc, -->
+				</ul>
 			</div>
-		</div>
-	</nav>
+		</nav>
 
+	<div class="middle" style="margin-left: 7cm; margin-right: 7cm;">
 
+        <!-- splash page begins -->
+        <div class="slideshow">
+            <!--image slider start-->
+            <div class="slider">
+                <div class="slides">
 
+                    <!--radio buttons start-->
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+                    <input type="radio" name="radio-btn" id="radio5">
+                    <!--radio buttons end-->
 
+                    <!--slide images start-->
+                    <div class="slide first">
+                        <img src="images/nscc.PNG" alt="">
+                        <div class="slide-text">National Strategy Case Competition (NSCC)</div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/hyperpersonalization.PNG" alt="">
+                        <div class="slide-text">Aritzia Challenge</div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/coding.PNG" alt="">
+                        <div class="slide-text">Day in a Life</div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/autonomousplanter.PNG" alt="">
+                        <div class="slide-text">Semi-Autonomous Farm</div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/bizchinaforum2023.PNG" alt="">
+                        <div class="slide-text">UBC BizChina Forum 2023</div>
+                    </div>
+                    <!--slide images end-->
 
-	<div class="middle">
+                    <!--automatic navigation start-->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                        <div class="auto-btn5"></div>
+                    </div>
+                    <!--automatic navigation end-->
 
-		<small class="about-text"> 
-			<h2>Welcome to my portfolio website!</h2>
+                </div>
+                <!--manual navigation start-->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                    <label for="radio5" class="manual-btn"></label>
+                </div>
+                <!--manual navigation end-->
+            </div>
+            <!--image slider end-->
+        </div>
 
-			<div>Hello, My name is Jessica. I am a second year Business and Computer Science student in the BUCS program in the Sauder School of Business 
-				at the University of British Columbia
-				....
-			</div>
-
-			<p>I have an unwavering passion for business and technology. I hope to be able to work on projects that faucet new AI implementations. 
-				Additionally, I hope to incorporate my work to increase the safety of infomation.
-			</p>
-
-		</small>
-
-		<div class="slideshow">
-			<!--image slider start-->
-			<div class="slider">
-				<div class="slides">
-					<!--radio buttons start-->
-					<input type="radio" name="radio-btn" id="radio1">
-					<input type="radio" name="radio-btn" id="radio2">
-					<input type="radio" name="radio-btn" id="radio3">
-					<input type="radio" name="radio-btn" id="radio4">
-					<!--radio buttons end-->
-					<!--slide images start-->
-					<div class="slide first">
-						<img src="IMG_2840 2.png" alt="">
-						<div class="slide-text">National Strategy Case Competition (NSCC)</div>
-					</div>
-					<div class="slide">
-						<img src="2.jpg" alt="">
-						<div class="slide-text">National Investment Banking Competition (NIBC)</div>
-					</div>
-					<div class="slide">
-						<img src="Resume_copy.png" alt="">
-						<div class="slide-text">Slide 1</div>
-					</div>
-					<div class="slide">
-						<img src="4.jpg" alt="">
-						<div class="slide-text">Slide 1</div>
-					</div>
-					<!--slide images end-->
-					<!--automatic navigation start-->
-					<div class="navigation-auto">
-						<div class="auto-btn1"></div>
-						<div class="auto-btn2"></div>
-						<div class="auto-btn3"></div>
-						<div class="auto-btn4"></div>
-					</div>
-					<!--automatic navigation end-->
-				</div>
-				<!--manual navigation start-->
-				<div class="navigation-manual">
-					<label for="radio1" class="manual-btn"></label>
-					<label for="radio2" class="manual-btn"></label>
-					<label for="radio3" class="manual-btn"></label>
-					<label for="radio4" class="manual-btn"></label>
-				</div>
-				<!--manual navigation end-->
-			</div>
-			<!--image slider end-->
-		</div>
-
-		<script type="text/javascript">
+        <script type="text/javascript">
 			var counter = 1;
 			setInterval(function(){
 				document.getElementById('radio' + counter).checked = true;
 				counter++;
-				if(counter > 4){
+				if(counter > 5){
 					counter = 1;
 				}
 			}, 5000);
 		</script>
 
-		<a href="Resume_copy.png" target="_blank">Resume [updated as of November.9,2022]</a> 
 
-		<form class="form" action="send-email.php" method="post" enctype="multipart/form-data">
-			<label for="name"></label>
-			<input type="text" id="name" name="name" placeholder="Your name">
-			<label for="email"></label>
-			<input type="email" id="email" name="email" placeholder="Your email">
-			<label for="subject"></label>
-			<input type="text" id="subject" name="subject" placeholder="Subject">
-			<label for="message"></label>
-			<textarea id="message" name="message" rows="5" placeholder="Message"></textarea>
-			<input type="submit" value="Send">
-		</form>
+		<small class="about-text" style="padding: 10px;">
+			<h2>Welcome to my website!</h2>
+
+			<div> Hello, My name is Jessica. I am a third year business and computer science student at UBC. As a part
+                of that, I am student in the <a href="https://you.ubc.ca/ubc_programs/business-computer-science/">BUCS
+                    program</a> at the <a href="https://www.sauder.ubc.ca/programs/bachelors-degrees/bachelor-commerce">
+                    Sauder School of Business</a>.
+			</div>
+
+			<p>I have an unwavering passion for the intersection where business and technology meet. In particular, I'm
+                interested in how to leverage AI as one of the most powerful tools in increase efficiency and spark
+                innovation.
+			</p>
+
+            <p>In the upcoming year, I will be continuing my studies on both dimensions. Additionally, I will be going
+                on exchange studies in Beijing. I hope to document my journey through filming, blogging, and taking a copious
+                amount of photos to share my experiences.
+            </p>
+
+
+		</small>
+
+        <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
+            <form class="form" action="send-email.php" method="post" enctype="multipart/form-data"
+                  style="margin: 1cm; padding: 20px; border: 2px solid white;">
+                <label for="name"></label>
+                <input type="text" id="name" name="name" placeholder="Your name">
+                <label for="email"></label>
+                <input type="email" id="email" name="email" placeholder="Your email">
+                <label for="subject"></label>
+                <input type="text" id="subject" name="subject" placeholder="Subject">
+                <label for="message"></label>
+                <textarea id="message" name="message" rows="5" placeholder="Message"></textarea>
+                <input type="submit" value="Send">
+            </form>
+        </div>
 
 		<script>
 			function showThankYou() {
@@ -148,18 +151,15 @@
 			}
 		</script>
 
-		
-
-		
-
 
 	</div>
-		
+    </body>
+
 
 
 	<footer class="footer">
 
-		<p class="copyright-text">Copyright &copy; 2022 Jessica Zhou. All rights reserved.</p>
+		<p class="copyright-text">Copyright &copy; 2023 Jessica Zhou. All rights reserved.</p>
 
 		<div class="nav-links" id="social-links">
 			<ul>
@@ -168,18 +168,14 @@
 					<!-- Add font awesome icons -->
 					<li class="social-items"><a href="https://www.linkedin.com/in/jessicaz-/" target="_blank" class="fa fa-linkedin"></a>
 					<li class="social-item"><a href="https://www.instagram.com/_jessicazhou/" target="_blank" class="fa fa-instagram"></a>
-					<li class="social-item"><a href="https://www.facebook.com/jessica.zhou.35728/" target="_blank"class="fa fa-facebook"></a>
-					<li class="social-item"><a href="https://github.com/jjczy" target="_blank"class="fa fa-github"></a>
-					</a>
-			<ul>
-		<div> 
-
-	</footer>
+                    <li class="social-item"><a href="https://www.facebook.com/jessica.zhou.35728/" target="_blank" class="fa fa-facebook"></a>
+					<li class="social-item"><a href="https://github.com/jjczy" target="_blank" class="fa fa-github"></a>
+                    <li class="social-item"><a href="https://github.com/jjczy" target="_blank" class="fa fa-youtube"></a>
+                </li>
+			</ul>
+		</div>
 
 
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-		
-</body>
-
-</html>
+    </html>

@@ -11,6 +11,7 @@ head{
 
 .about-text{
   font-size: 12pt;
+  line-height: 1.5;
 }
 
 a {
@@ -19,26 +20,29 @@ a {
 }
 
 body{
-  background-color: rgb(247, 238, 238);
-  font-size: 20px; 
+  background-color: rgb(251, 251, 251);
+  font-size: 20px;
   word-spacing: normal;
   line-height: 1cm;
+
 }
 
 .middle{
-  margin: 3cm;
+
 }
 
 footer {
   color: #000000;
   background-color: #000000;
   height: 5cm;
+  padding-top: 10px;
+
 }
 
 .slideshow{
   margin: 0 auto;
   padding: 0;
-  height: 75vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,6 +54,8 @@ footer {
   width: 1000px;
   height: 600px;
   overflow: hidden;
+  justify-content: center;
+  position: relative;
 }
 
 .slides{
@@ -57,8 +63,8 @@ footer {
   height: 500px;
   display: flex;
   background-size: cover;
+  justify-content: center;
 }
-
 
 .slides input{
   display: none;
@@ -68,11 +74,12 @@ footer {
   width: 20%;
   transition: 2s;
   background-size: cover;
+  justify-content: center;
 }
 
 .slide img{
-  width: 1000px;
-  height: 600px;
+  width: 120%;
+  height: 130%;
   object-fit: cover;
 }
 
@@ -88,13 +95,13 @@ footer {
   justify-content: center;
   color: white;
   font-size: 36px;
-  text-align: center;  
+  text-align: center;
+
 }
 
 /*css for manual slide navigation*/
-
 .navigation-manual{
-  position: absolute;
+  position: relative;
   z-index: 2;
   width: 1000px;
   margin-top: 60px;
@@ -108,6 +115,7 @@ footer {
   border-radius: 10px;
   cursor: pointer;
   transition: 1s;
+  justify-content: center;
 
 }
 
@@ -120,29 +128,30 @@ footer {
 }
 
 #radio1:checked ~ .first{
-  margin-left: 0;
-}
-
-#radio2:checked ~ .first{
   margin-left: -20%;
 }
 
+#radio2:checked ~ .first{
+  margin-left: 0%;
+}
+
 #radio3:checked ~ .first{
-  margin-left: -40%;
+  margin-left: -20%;
 }
 
 #radio4:checked ~ .first{
+  margin-left: -40%;
+}
+
+#radio5:checked ~ .first{
   margin-left: -60%;
 }
 
 /*css for automatic navigation*/
-
 .navigation-auto{
-  position: absolute;
   display: flex;
-  width: 1000px;
   justify-content: center;
-  margin-top: 560px;
+  width: 1000px;
 }
 
 .navigation-auto div{
@@ -150,28 +159,28 @@ footer {
   padding: 5px;
   border-radius: 10px;
   transition: 1s;
-}
-
-.navigation-auto div:not(:last-child){
-  margin-right: 40px;
+  width: 5cm;
 }
 
 #radio1:checked ~ .navigation-auto .auto-btn1{
-  background: lightgrey;
+  background: white;
 }
-
 #radio2:checked ~ .navigation-auto .auto-btn2{
-  background: lightgrey;
+  background: white;
 }
-
 #radio3:checked ~ .navigation-auto .auto-btn3{
-  background: lightgrey;
+  background: white;
 }
-
 #radio4:checked ~ .navigation-auto .auto-btn4{
-  background: lightgrey;
+  background: white;
+}
+#radio5:checked ~ .navigation-auto .auto-btn5{
+  background: white;
 }
 
+.navigation-auto div:not(:last-child){
+    margin-right: 7cm;
+}
 /*end of slideshow*/
 
 
@@ -186,7 +195,7 @@ nav image {
 }
 .nav-links {
 	flex: 1;
-	text-align:right;
+	text-align: right;
 }
 .nav-links ul {
 	list-style: none;
@@ -202,19 +211,18 @@ nav image {
 	content: rgb(5, 5, 5);
 	text-decoration: none;
 	font-size: 20px;
- 
+
 }
 .nav-links ul li::after{
 	content: '';
 	width: 0%;
 	height: 2px;
 	margin: auto;
- 
+
 }
 .nav-links ul li:hover::after{
 	width: 100%;
 }
-
 
 /* Dropdown Button */
 .dropbtn {
@@ -248,7 +256,7 @@ nav image {
   background-color: rgb(255, 255, 255);
   padding: 10px 16px;
   text-decoration: none;
-  display: block; 
+  display: block;
 }
 
 /* Change color of dropdown links on hover */
@@ -330,6 +338,12 @@ nav image {
   color: white;
 }
 
+/* Youtube */
+.fa-youtube {
+  background: #060606;
+  color: white;
+}
+
 /* GitHub */
 .fa-github {
   background: #060606;
@@ -343,7 +357,7 @@ nav image {
 .copyright-text {
   text-align: center;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 
