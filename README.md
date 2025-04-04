@@ -1,3 +1,22 @@
-# This is my personal website. 
+# Jessica Zhou - Personal Portfolio
 
-It is every programmers first little project. Here is a my take on a slick and clean looking one. 
+![GitHub Pages deployment](https://github.com/jjczy/personal_profile_web/actions/workflows/static.yml/badge.svg)
+
+## Overview
+This is my personal portfolio website showcasing my projects, skills, and experience. Built with modern HTML, CSS, and JavaScript, it features a responsive design with a purple NFT/artwork-inspired theme.
+
+## Features
+- Responsive design that works on all devices
+- Modern UI with smooth animations
+- Project showcase with detailed descriptions
+- Professional experience timeline
+- Direct contact links
+
+## Technologies Used
+- HTML5
+- CSS3 (with custom animations and dark mode)
+- JavaScript
+- GitHub Pages for hosting
+
+## Visit
+The site is live at: https://jjczy.github.io/personal_profile_web/
