@@ -568,15 +568,12 @@ section {
   margin-bottom: 0.5rem;
 }
 
-/* Contact Section */
-.contact-section {
-  background: var(--darker-bg);
-}
-
+/* Contact Section Updated */
 .contact-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .contact-info {
@@ -585,71 +582,61 @@ section {
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   border: 1px solid var(--glass-effect);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
 }
 
 .contact-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .contact-item i {
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-right: 1rem;
+  min-width: 30px;
+  text-align: center;
 }
 
 .contact-item p {
   color: var(--gray-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .contact-item a {
   color: var(--gray-text);
+  transition: var(--transition);
 }
 
 .contact-item a:hover {
   color: var(--accent-color);
+  text-decoration: underline;
 }
 
-.contact-form {
-  background: var(--card-bg);
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
-  border: 1px solid var(--glass-effect);
+.contact-cta {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--glass-effect);
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  border: 1px solid rgba(138, 43, 226, 0.3);
-  background: rgba(0, 0, 0, 0.2);
+.contact-cta p {
   color: var(--light-text);
-  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.contact-form button {
-  width: 100%;
-  padding: 1rem;
-  font-weight: 600;
+.contact-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  padding: 0.8rem 2.5rem;
 }
 
 /* Footer */
@@ -789,37 +776,15 @@ footer {
   section {
     padding: 4rem 5%;
   }
-}
 
-/* Success Message */
-.success-message {
-  background: rgba(0, 255, 100, 0.1);
-  border: 1px solid rgba(0, 255, 100, 0.3);
-  color: #00ff64;
-  padding: 1rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 2rem;
-  text-align: center;
-  animation: fadeIn 0.5s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.success-message i {
-  font-size: 1.5rem;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+  .contact-info {
+    grid-template-columns: 1fr;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+}
+
+/* Add back the missing contact section background */
+.contact-section {
+  background: var(--darker-bg);
 }
 
 

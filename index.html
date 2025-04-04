@@ -277,7 +277,7 @@
 						</div>
 						<div class="contact-item">
 							<i class="fas fa-envelope"></i>
-							<p>jess.c.zhou@gmail.com</p>
+							<p><a href="mailto:jess.c.zhou@gmail.com">jess.c.zhou@gmail.com</a></p>
 						</div>
 						<div class="contact-item">
 							<i class="fab fa-linkedin"></i>
@@ -287,23 +287,21 @@
 							<i class="fab fa-github"></i>
 							<p><a href="https://github.com/jjczy" target="_blank">github.com/jjczy</a></p>
 						</div>
+						<div class="contact-item">
+							<i class="fab fa-instagram"></i>
+							<p><a href="https://www.instagram.com/_jessicazhou/" target="_blank">instagram.com/_jessicazhou</a></p>
+						</div>
+						<div class="contact-item">
+							<i class="fab fa-facebook"></i>
+							<p><a href="https://www.facebook.com/jessica.zhou.35728/" target="_blank">facebook.com/jessica.zhou.35728</a></p>
+						</div>
+						<div class="contact-cta">
+							<p>Feel free to reach out to me through any of these channels!</p>
+							<a href="mailto:jess.c.zhou@gmail.com" class="btn btn-primary">
+								<i class="fas fa-envelope"></i> Send Email
+							</a>
+						</div>
 					</div>
-
-					<form class="contact-form" action="send-email.php" method="post">
-						<div class="form-group">
-							<input type="text" id="name" name="name" placeholder="Your Name" required>
-						</div>
-						<div class="form-group">
-							<input type="email" id="email" name="email" placeholder="Your Email" required>
-						</div>
-						<div class="form-group">
-							<input type="text" id="subject" name="subject" placeholder="Subject" required>
-						</div>
-						<div class="form-group">
-							<textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
-						</div>
-						<button type="submit" name="submit" class="btn btn-primary">Send Message</button>
-					</form>
 				</div>
 			</section>
 		</main>
@@ -354,38 +352,6 @@
 					}
 				});
 			});
-
-			// Check for success message in URL
-			window.onload = function() {
-				const urlParams = new URLSearchParams(window.location.search);
-				const message = urlParams.get('message');
-
-				if (message === 'success') {
-					const contactSection = document.querySelector('#contact');
-
-					// Create success message
-					const successMessage = document.createElement('div');
-					successMessage.className = 'success-message';
-					successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Your message has been sent successfully!';
-
-					// Add to page before the form
-					const formContainer = document.querySelector('.contact-container');
-					contactSection.insertBefore(successMessage, formContainer);
-
-					// Scroll to contact section
-					window.scrollTo({
-						top: contactSection.offsetTop - 70,
-						behavior: 'smooth'
-					});
-
-					// Remove message after 5 seconds
-					setTimeout(() => {
-						successMessage.remove();
-						// Remove the query parameter from URL
-						window.history.replaceState({}, document.title, window.location.pathname);
-					}, 5000);
-				}
-			};
 		</script>
 	</body>
 </html>
