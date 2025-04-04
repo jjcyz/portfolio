@@ -2,180 +2,390 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="description" content="Jessica Zhou's website" />
-		<meta name="keywords" content="UBC, Business, Computer Science, University" />
+		<meta name="description" content="Jessica Zhou's personal portfolio website" />
+		<meta name="keywords" content="UBC, Business, Computer Science, ML, AI, Portfolio" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="refresh" content="20">
 
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-			<title>Jessica Zhou</title>
+		<title>Jessica Zhou | Portfolio</title>
 		<link rel="stylesheet" href="style.css">
+
+		<!-- Font Awesome for icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	</head>
 
 	<body>
-		<nav class="navbar navbar-expand-sm navbar-light">
-			<a href="index.html"><h1 style="font-size: 50pt">Jessica Zhou</h1></a>
+		<header>
+			<nav class="navbar">
+				<div class="logo">
+					<a href="index.html">JZ</a>
+				</div>
+				<div class="nav-links">
+					<ul>
+						<li class="nav-item"><a href="#about">About</a></li>
+						<li class="nav-item"><a href="#skills">Skills</a></li>
+						<li class="nav-item"><a href="#projects">Projects</a></li>
+						<li class="nav-item"><a href="#experience">Experience</a></li>
+						<li class="nav-item"><a href="#contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="hamburger">
+					<span class="bar"></span>
+					<span class="bar"></span>
+					<span class="bar"></span>
+				</div>
+			</nav>
+		</header>
 
-			<div class="nav-links" id="navbarNav">
-				<ul>
-                    <li class="nav-item"><a href="about.html">About Me</a></li>
-                    <li class="nav-item"><a href="projects.html">Projects</a></li>
-					<li class="nav-item"><a href="experiences.html">Experiences</a></li>
-					<li class="nav-item"><a href="blog.html">Blog</a></li>
-                    <!-- Life guarding/teaching, dancing, restaurant reviews,
-                    exchange guides, experiences, UBC life, Clubs etc, -->
-				</ul>
+		<main>
+			<!-- Hero Section -->
+			<section id="hero" class="hero-section">
+				<div class="hero-content">
+					<h1>Jessica Zhou</h1>
+					<h2>Computer Science & Business Student</h2>
+					<p>Building innovative solutions at the intersection of technology and business</p>
+					<div class="hero-buttons">
+						<a href="#projects" class="btn btn-primary">View Projects</a>
+						<a href="#contact" class="btn btn-secondary">Contact Me</a>
+					</div>
+				</div>
+				<div class="hero-image">
+					<!-- Abstract 3D art placeholder - can be replaced with custom artwork -->
+					<div class="abstract-art"></div>
+				</div>
+			</section>
+
+			<!-- About Section -->
+			<section id="about" class="about-section">
+				<div class="section-header">
+					<h2>About Me</h2>
+					<div class="underline"></div>
+				</div>
+				<div class="about-content">
+					<div class="about-text">
+						<p>Hello! I'm Jessica, a Computer Science and Business student at the University of British Columbia (BUCS program), graduating in April 2026. My passion lies at the intersection of technology and business, particularly in leveraging AI for efficiency and innovation.</p>
+
+						<p>Currently, I'm enhancing my global perspective through exchange studies at Tsinghua University in Beijing (Feb 2024 - Jan 2025), focusing on ML/AI, Operating Systems, and Financial Technologies.</p>
+
+						<p>My technical skills span Python, C/C++, Java, JavaScript, TypeScript, and SQL. I'm experienced with frameworks like PyTorch, TensorFlow, React.js, and Node.js, and proficient in tools like Git, GitHub, and Visual Studio.</p>
+					</div>
+					<div class="education">
+						<h3>Education</h3>
+						<div class="education-item">
+							<h4>University of British Columbia</h4>
+							<p>Combined Major in Computer Science and Business (BUCS)</p>
+							<p class="date">Expected: Apr 2026</p>
+						</div>
+						<div class="education-item">
+							<h4>Tsinghua University</h4>
+							<p>Exchange Studies at SEM and Department of Computer Science and Technology</p>
+							<p class="date">Feb 2024 - Jan 2025</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Skills Section -->
+			<section id="skills" class="skills-section">
+				<div class="section-header">
+					<h2>Technical Skills</h2>
+					<div class="underline"></div>
+				</div>
+				<div class="skills-grid">
+					<div class="skill-category">
+						<h3>Programming Languages</h3>
+						<ul>
+							<li>Python</li>
+							<li>C/C++</li>
+							<li>Java</li>
+							<li>JavaScript</li>
+							<li>TypeScript</li>
+							<li>MySQL</li>
+							<li>R</li>
+							<li>HTML5/CSS</li>
+						</ul>
+					</div>
+					<div class="skill-category">
+						<h3>Frameworks & Libraries</h3>
+						<ul>
+							<li>PyTorch</li>
+							<li>TensorFlow</li>
+							<li>React.js</li>
+							<li>Node.js</li>
+						</ul>
+					</div>
+					<div class="skill-category">
+						<h3>Tools & Technologies</h3>
+						<ul>
+							<li>Git</li>
+							<li>GitHub</li>
+							<li>Visual Studio</li>
+							<li>IntelliJ</li>
+							<li>Unit Testing</li>
+						</ul>
+					</div>
+					<div class="skill-category">
+						<h3>Certifications</h3>
+						<ul>
+							<li>Google Cloud Essentials</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<!-- Projects Section -->
+			<section id="projects" class="projects-section">
+				<div class="section-header">
+					<h2>Featured Projects</h2>
+					<div class="underline"></div>
+				</div>
+				<div class="projects-grid">
+					<div class="project-card">
+						<div class="project-image">
+							<img src="images/coding.PNG" alt="Client-Server Chatroom Application">
+						</div>
+						<div class="project-content">
+							<h3>Client-Server Chatroom Application</h3>
+							<p>Developed a multi-threaded chat server in C++ using socket programming, supporting concurrent user connections with real-time message broadcasting.</p>
+							<p>Implemented efficient message handling with sub-100ms delivery latency and robust error handling mechanisms.</p>
+							<div class="project-tags">
+								<span>C++</span>
+								<span>Socket Programming</span>
+								<span>Multi-threading</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<img src="images/autonomousplanter.PNG" alt="Blood Vessel Segmentation">
+						</div>
+						<div class="project-content">
+							<h3>Blood Vessel Segmentation using ML</h3>
+							<p>Developed a 3D U-Net architecture for precise pixel-wise classification of vasculature structures, automating kidney segmentation and reducing manual processing time by 85%.</p>
+							<p>Implemented an innovative two-step training pipeline with supervised pretraining and denoising techniques.</p>
+							<div class="project-tags">
+								<span>Python</span>
+								<span>PyTorch</span>
+								<span>Machine Learning</span>
+								<span>Computer Vision</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="project-card">
+						<div class="project-image">
+							<img src="images/hyperpersonalization.PNG" alt="VAE Comparison Project">
+						</div>
+						<div class="project-content">
+							<h3>Variational Autoencoder (VAE) Comparison</h3>
+							<p>Implemented and compared Bernoulli and Gaussian VAEs using PyTorch, achieving 90% reconstruction accuracy on the MNIST dataset with a compact 40-dimensional latent space.</p>
+							<p>Built comprehensive visualization pipeline for different analysis outputs including loss comparisons and reconstruction quality.</p>
+							<div class="project-tags">
+								<span>Python</span>
+								<span>PyTorch</span>
+								<span>Deep Learning</span>
+								<span>Data Visualization</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Experience Section -->
+			<section id="experience" class="experience-section">
+				<div class="section-header">
+					<h2>Experience</h2>
+					<div class="underline"></div>
+				</div>
+				<div class="timeline">
+					<div class="experience-item">
+						<div class="experience-content">
+							<h3>Software Developer</h3>
+							<h4>Client-Server Chatroom Application</h4>
+							<p class="location">Vancouver, CA</p>
+							<p class="date">Mar 2024 - Jun 2024</p>
+							<ul>
+								<li>Developed a multi-threaded chat server in C++ using socket programming, supporting concurrent user connections</li>
+								<li>Achieved efficient message handling that can process an average of 500 messages per minute with sub-100ms latency</li>
+								<li>Engineered efficient message handling system with command parsing and robust error handling</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="experience-item">
+						<div class="experience-content">
+							<h3>Researcher</h3>
+							<h4>Blood Vessel Segmentation using Machine Learning</h4>
+							<p class="location">Beijing, CN</p>
+							<p class="date">Sep 2024 - Jan 2025</p>
+							<ul>
+								<li>Developed a 3D U-Net architecture for precise pixel-wise classification of vasculature structures</li>
+								<li>Implemented an innovative two-step training pipeline with supervised pretraining and denoising techniques</li>
+								<li>Built an end-to-end pipeline processing TIFF scans and generating 3D segmentation masks</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="experience-item">
+						<div class="experience-content">
+							<h3>Software Developer</h3>
+							<h4>Variational Autoencoder (VAE) Comparison Project</h4>
+							<p class="location">Beijing, CN</p>
+							<p class="date">Oct 2024 - Nov 2024</p>
+							<ul>
+								<li>Implemented and compared Bernoulli and Gaussian VAEs using PyTorch on MNIST dataset</li>
+								<li>Built comprehensive visualization pipeline generating 6 different analysis outputs</li>
+								<li>Optimized model training through systematic hyperparameter tuning</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="experience-item">
+						<div class="experience-content">
+							<h3>Student Mentor</h3>
+							<h4>University of British Columbia</h4>
+							<p class="location">Vancouver, CA</p>
+							<p class="date">Nov 2023 - Dec 2023</p>
+							<ul>
+								<li>Mentored 20+ CS and Business students through technical career guidance and academics</li>
+								<li>Spearheaded the organization of the largest China Forum in Canada, reaching 62M+ viewers</li>
+								<li>Established partnerships with 30+ top global universities for event collaborations</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Contact Section -->
+			<section id="contact" class="contact-section">
+				<div class="section-header">
+					<h2>Contact Me</h2>
+					<div class="underline"></div>
+				</div>
+				<div class="contact-container">
+					<div class="contact-info">
+						<div class="contact-item">
+							<i class="fas fa-phone"></i>
+							<p>778-513-3313</p>
+						</div>
+						<div class="contact-item">
+							<i class="fas fa-envelope"></i>
+							<p>jess.c.zhou@gmail.com</p>
+						</div>
+						<div class="contact-item">
+							<i class="fab fa-linkedin"></i>
+							<p><a href="https://linkedin.com/in/jessicaz-" target="_blank">linkedin.com/in/jessicaz-</a></p>
+						</div>
+						<div class="contact-item">
+							<i class="fab fa-github"></i>
+							<p><a href="https://github.com/jjczy" target="_blank">github.com/jjczy</a></p>
+						</div>
+					</div>
+
+					<form class="contact-form" action="send-email.php" method="post">
+						<div class="form-group">
+							<input type="text" id="name" name="name" placeholder="Your Name" required>
+						</div>
+						<div class="form-group">
+							<input type="email" id="email" name="email" placeholder="Your Email" required>
+						</div>
+						<div class="form-group">
+							<input type="text" id="subject" name="subject" placeholder="Subject" required>
+						</div>
+						<div class="form-group">
+							<textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+						</div>
+						<button type="submit" name="submit" class="btn btn-primary">Send Message</button>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			<div class="footer-content">
+				<div class="footer-links">
+					<ul class="social-links">
+						<li><a href="https://www.linkedin.com/in/jessicaz-/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+						<li><a href="https://github.com/jjczy" target="_blank"><i class="fab fa-github"></i></a></li>
+						<li><a href="https://www.instagram.com/_jessicazhou/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+						<li><a href="https://www.facebook.com/jessica.zhou.35728/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+					</ul>
+				</div>
+				<p class="copyright-text">© 2024 Jessica Zhou. All rights reserved.</p>
 			</div>
-		</nav>
-
-	<div class="middle" style="margin-left: 7cm; margin-right: 7cm;">
-
-        <!-- splash page begins -->
-        <div class="slideshow">
-            <!--image slider start-->
-            <div class="slider">
-                <div class="slides">
-
-                    <!--radio buttons start-->
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
-                    <input type="radio" name="radio-btn" id="radio5">
-                    <!--radio buttons end-->
-
-                    <!--slide images start-->
-                    <div class="slide first">
-                        <img src="images/nscc.PNG" alt="">
-                        <div class="slide-text">National Strategy Case Competition (NSCC)</div>
-                    </div>
-                    <div class="slide">
-                        <img src="images/hyperpersonalization.PNG" alt="">
-                        <div class="slide-text">Aritzia Challenge</div>
-                    </div>
-                    <div class="slide">
-                        <img src="images/coding.PNG" alt="">
-                        <div class="slide-text">Day in a Life</div>
-                    </div>
-                    <div class="slide">
-                        <img src="images/autonomousplanter.PNG" alt="">
-                        <div class="slide-text">Semi-Autonomous Farm</div>
-                    </div>
-                    <div class="slide">
-                        <img src="images/bizchinaforum2023.PNG" alt="">
-                        <div class="slide-text">UBC BizChina Forum 2023</div>
-                    </div>
-                    <!--slide images end-->
-
-                    <!--automatic navigation start-->
-                    <div class="navigation-auto">
-                        <div class="auto-btn1"></div>
-                        <div class="auto-btn2"></div>
-                        <div class="auto-btn3"></div>
-                        <div class="auto-btn4"></div>
-                        <div class="auto-btn5"></div>
-                    </div>
-                    <!--automatic navigation end-->
-
-                </div>
-                <!--manual navigation start-->
-                <div class="navigation-manual">
-                    <label for="radio1" class="manual-btn"></label>
-                    <label for="radio2" class="manual-btn"></label>
-                    <label for="radio3" class="manual-btn"></label>
-                    <label for="radio4" class="manual-btn"></label>
-                    <label for="radio5" class="manual-btn"></label>
-                </div>
-                <!--manual navigation end-->
-            </div>
-            <!--image slider end-->
-        </div>
-
-        <script type="text/javascript">
-			var counter = 1;
-			setInterval(function(){
-				document.getElementById('radio' + counter).checked = true;
-				counter++;
-				if(counter > 5){
-					counter = 1;
-				}
-			}, 5000);
-		</script>
-
-
-		<small class="about-text" style="padding: 10px;">
-			<h2>Welcome to my website!</h2>
-
-			<div> Hello, My name is Jessica. I am a third year business and computer science student at UBC. As a part
-                of that, I am student in the <a href="https://you.ubc.ca/ubc_programs/business-computer-science/">BUCS
-                    program</a> at the <a href="https://www.sauder.ubc.ca/programs/bachelors-degrees/bachelor-commerce">
-                    Sauder School of Business</a>.
-			</div>
-
-			<p>I have an unwavering passion for the intersection where business and technology meet. In particular, I'm
-                interested in how to leverage AI as one of the most powerful tools in increase efficiency and spark
-                innovation.
-			</p>
-
-            <p>In the upcoming year, I will be continuing my studies on both dimensions. Additionally, I will be going
-                on exchange studies in Beijing. I hope to document my journey through filming, blogging, and taking a copious
-                amount of photos to share my experiences.
-            </p>
-
-
-		</small>
-
-        <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
-            <form class="form" action="send-email.php" method="post" enctype="multipart/form-data"
-                  style="margin: 1cm; padding: 20px; border: 2px solid white;">
-                <label for="name"></label>
-                <input type="text" id="name" name="name" placeholder="Your name">
-                <label for="email"></label>
-                <input type="email" id="email" name="email" placeholder="Your email">
-                <label for="subject"></label>
-                <input type="text" id="subject" name="subject" placeholder="Subject">
-                <label for="message"></label>
-                <textarea id="message" name="message" rows="5" placeholder="Message"></textarea>
-                <input type="submit" value="Send">
-            </form>
-        </div>
+		</footer>
 
 		<script>
-			function showThankYou() {
-				// Open a new window
-				window.open("", "Thank You", "width=400,height=200");
-				// Write the thank you message to the new window
-				document.write("<h1>Thank you for your message!</h1>");
-				document.write("<p>We will get back to you as soon as possible.</p>");
-			}
+			// Mobile navigation toggle
+			const hamburger = document.querySelector('.hamburger');
+			const navLinks = document.querySelector('.nav-links');
+
+			hamburger.addEventListener('click', () => {
+				hamburger.classList.toggle('active');
+				navLinks.classList.toggle('active');
+			});
+
+			// Close mobile menu when clicking on a nav link
+			document.querySelectorAll('.nav-item a').forEach(n => n.addEventListener('click', () => {
+				hamburger.classList.remove('active');
+				navLinks.classList.remove('active');
+			}));
+
+			// Smooth scrolling for anchor links
+			document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+				anchor.addEventListener('click', function(e) {
+					e.preventDefault();
+
+					const targetId = this.getAttribute('href');
+					const targetSection = document.querySelector(targetId);
+
+					if (targetSection) {
+						window.scrollTo({
+							top: targetSection.offsetTop - 70,
+							behavior: 'smooth'
+						});
+					}
+				});
+			});
+
+			// Check for success message in URL
+			window.onload = function() {
+				const urlParams = new URLSearchParams(window.location.search);
+				const message = urlParams.get('message');
+
+				if (message === 'success') {
+					const contactSection = document.querySelector('#contact');
+
+					// Create success message
+					const successMessage = document.createElement('div');
+					successMessage.className = 'success-message';
+					successMessage.innerHTML = '<i class="fas fa-check-circle"></i> Your message has been sent successfully!';
+
+					// Add to page before the form
+					const formContainer = document.querySelector('.contact-container');
+					contactSection.insertBefore(successMessage, formContainer);
+
+					// Scroll to contact section
+					window.scrollTo({
+						top: contactSection.offsetTop - 70,
+						behavior: 'smooth'
+					});
+
+					// Remove message after 5 seconds
+					setTimeout(() => {
+						successMessage.remove();
+						// Remove the query parameter from URL
+						window.history.replaceState({}, document.title, window.location.pathname);
+					}, 5000);
+				}
+			};
 		</script>
-
-
-	</div>
-    </body>
-
-
-
-	<footer class="footer">
-
-		<p class="copyright-text">Copyright &copy; 2023 Jessica Zhou. All rights reserved.</p>
-
-		<div class="nav-links" id="social-links">
-			<ul>
-				<!-- Add icon library -->
-				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-					<!-- Add font awesome icons -->
-					<li class="social-items"><a href="https://www.linkedin.com/in/jessicaz-/" target="_blank" class="fa fa-linkedin"></a>
-					<li class="social-item"><a href="https://www.instagram.com/_jessicazhou/" target="_blank" class="fa fa-instagram"></a>
-                    <li class="social-item"><a href="https://www.facebook.com/jessica.zhou.35728/" target="_blank" class="fa fa-facebook"></a>
-					<li class="social-item"><a href="https://github.com/jjczy" target="_blank" class="fa fa-github"></a>
-                    <li class="social-item"><a href="https://github.com/jjczy" target="_blank" class="fa fa-youtube"></a>
-                </li>
-			</ul>
-		</div>
-
-
-	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-    </html>
+	</body>
+</html>

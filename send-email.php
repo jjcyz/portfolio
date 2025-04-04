@@ -1,4 +1,3 @@
-
 <?php
   // Check if the form has been submitted
   if (isset($_POST['submit'])) {
@@ -26,7 +25,8 @@
     // Send the email
     mail($to, $subject, $email_content, $email_headers);
 
-    // Call the JavaScript function to show the thank you message
-    echo "<script>showThankYou();</script>";
+    // Redirect back to index with success message
+    header("Location: index.html?message=success");
+    exit;
   }
 ?>
