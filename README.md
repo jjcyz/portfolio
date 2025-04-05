@@ -1,7 +1,5 @@
 # Jessica Zhou - Personal Portfolio
 
-![GitHub Pages deployment](https://github.com/jjczy/personal_profile_web/actions/workflows/static.yml/badge.svg)
-
 ## Overview
 This is my personal portfolio website showcasing my projects, skills, and experience. Built with modern HTML, CSS, and JavaScript, it features a responsive design with a purple NFT/artwork-inspired theme.
 
