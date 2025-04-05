@@ -497,6 +497,17 @@ section {
   border: 1px solid rgba(138, 43, 226, 0.3);
 }
 
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.project-card:hover .project-link {
+  color: inherit;
+}
+
 /* Experience Section */
 .experience-section {
   background: var(--dark-bg);
@@ -785,6 +796,28 @@ footer {
 /* Add back the missing contact section background */
 .contact-section {
   background: var(--darker-bg);
+}
+
+/* Typing Animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  border-right: 3px solid var(--accent-color);
+  white-space: nowrap;
+  margin: 0;
+  animation:
+    typing 3.5s steps(40, end),
+    blink .75s step-end infinite;
+  animation-iteration-count: infinite;
 }
 
 
