@@ -1,18 +1,18 @@
 /* Modern NFT/Artwork-inspired Portfolio Theme */
 :root {
-  --primary-color: #8a2be2; /* Vibrant purple */
-  --secondary-color: #5d17a3; /* Darker purple */
-  --accent-color: #ff00ff; /* Magenta */
-  --dark-bg: #1a0033; /* Very dark purple background */
-  --darker-bg: #0e001a; /* Even darker purple for sections */
+  --primary-color: #7B2BF9; /* More purple, less pink */
+  --secondary-color: #4A1B9D; /* Darker purple */
+  --accent-color: #9D4EDD; /* Softer purple accent */
+  --dark-bg: #1a0033; /* Keep the dark purple background */
+  --darker-bg: #0e001a; /* Keep the darker purple */
   --light-text: #ffffff;
-  --lighter-purple: #b676ff;
+  --lighter-purple: #B8A2F4; /* Softer purple */
   --gray-text: #c8c8c8;
   --card-bg: rgba(255, 255, 255, 0.05);
   --glass-effect: rgba(255, 255, 255, 0.1);
   --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  --gradient-1: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  --gradient-2: linear-gradient(135deg, #2c0263, #6a00ff);
+  --gradient-1: linear-gradient(45deg, #7B2BF9, #9D4EDD);
+  --gradient-2: linear-gradient(135deg, #2c0263, #7B2BF9);
   --border-radius: 12px;
   --transition: all 0.3s ease;
 }
@@ -208,11 +208,11 @@ header {
   content: '';
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23FF00FF' d='M46.5,-54.1C62.2,-45.8,78,-31.7,82,-14.6C86.1,2.6,78.4,22.9,66.5,37.5C54.7,52.1,38.8,61.1,21.8,66.4C4.8,71.8,-13.4,73.6,-28.8,67.5C-44.1,61.4,-56.5,47.3,-64,30.5C-71.5,13.7,-74,-5.9,-69.3,-23.7C-64.6,-41.6,-52.7,-57.7,-37.9,-66C-23.1,-74.2,-5.3,-74.7,10.7,-70.8C26.7,-66.9,40.9,-58.5,46.5,-54.1Z' transform='translate(100 100)' /%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%239D4EDD' stroke-width='2'%3E%3Ccircle cx='100' cy='100' r='40'/%3E%3Cpath d='M60,100 h80 M100,60 v80'/%3E%3Cpath d='M70,70 l60,60 M70,130 l60,-60'/%3E%3C/g%3E%3Cg fill='%237B2BF9' opacity='0.6'%3E%3Ccircle cx='60' cy='60' r='5'/%3E%3Ccircle cx='140' cy='60' r='5'/%3E%3Ccircle cx='60' cy='140' r='5'/%3E%3Ccircle cx='140' cy='140' r='5'/%3E%3C/g%3E%3Ctext x='85' y='105' fill='%23B8A2F4' font-family='monospace' font-size='12'%3E&lt;/&gt;%3C/text%3E%3C/svg%3E");
   background-size: 120%;
   background-position: center;
   mix-blend-mode: screen;
-  opacity: 0.6;
+  opacity: 0.8;
   animation: morphing 15s infinite alternate;
 }
 
@@ -221,7 +221,7 @@ header {
   position: absolute;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,0,255,0.4) 0%, rgba(26,0,51,0) 70%);
+  background: radial-gradient(circle, rgba(123, 43, 249, 0.4) 0%, rgba(26,0,51,0) 70%);
   top: -50%;
   left: -50%;
   animation: rotate 20s linear infinite;
@@ -231,14 +231,17 @@ header {
   0% {
     background-size: 120%;
     background-position: 0% 0%;
+    opacity: 0.6;
   }
   50% {
     background-size: 140%;
     background-position: 50% 50%;
+    opacity: 0.8;
   }
   100% {
     background-size: 130%;
     background-position: 100% 100%;
+    opacity: 0.7;
   }
 }
 
@@ -801,7 +804,7 @@ footer {
 /* Typing Animation */
 .typing-text {
   display: inline-block;
-  overflow: hidden;
+  overflow: visible;
   white-space: nowrap;
   margin: 0;
   position: relative;
@@ -812,15 +815,16 @@ footer {
   background-clip: text;
   color: transparent;
   line-height: 1.1;
-  width: 0;
 }
 
 .typing-text::after {
   content: '|';
   position: absolute;
-  right: -8px;
-  animation: blink 0.7s infinite;
+  left: 100%;
   color: var(--accent-color);
+  animation: blink 0.7s infinite;
+  -webkit-background-clip: initial;
+  background-clip: initial;
 }
 
 @keyframes blink {
