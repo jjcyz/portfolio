@@ -49,7 +49,7 @@
 			<section id="hero" class="hero-section">
 				<div class="hero-content">
 					<h1 class="typing-text">Jessica Zhou</h1>
-					<h2>Software Engineer based in Vancouver, BC</h2>
+					<h2>Software Engineer based in Vancouver, BC, Canada.</h2>
 					<p>Building innovative solutions at the intersection of technology and business</p>
 					<div class="hero-buttons">
 						<a href="https://www.overleaf.com/project/67906ede77a7e1318e6e1877/detached" target="_blank" class="btn btn-primary">Resume</a>
@@ -359,6 +359,36 @@
 					}
 				});
 			});
+
+            // Typing Animation
+            function typeText() {
+                const text = "Jessica Zhou";
+                const typingText = document.querySelector('.typing-text');
+                typingText.textContent = "";
+                typingText.style.width = "auto";
+
+                let charIndex = 0;
+                function type() {
+                    if (charIndex < text.length) {
+                        typingText.textContent += text.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(type, 150); // Adjust typing speed here (150ms per character)
+                    } else {
+                        setTimeout(resetAndType, 3000); // Wait 3 seconds before restarting
+                    }
+                }
+
+                function resetAndType() {
+                    typingText.textContent = "";
+                    charIndex = 0;
+                    type();
+                }
+
+                type();
+            }
+
+            // Start the typing animation when the page loads
+            document.addEventListener('DOMContentLoaded', typeText);
 		</script>
 	</body>
 </html>
