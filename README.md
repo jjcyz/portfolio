@@ -1,10 +1,10 @@
 # Jessica Zhou - Personal Portfolio
 
 ## Overview
-This is my personal portfolio website showcasing my projects, skills, and experience. Built with modern HTML, CSS, and JavaScript, it features a responsive design with a purple NFT/artwork-inspired theme.
+This is my personal portfolio website showcasing my projects, skills, and experience. Built with modern HTML, CSS, and JavaScript, featuring a responsive design
 
 ## Features
-- Responsive design that works on all devices
+- Responsive design that works on both web and mobile
 - Modern UI with smooth animations
 - Project showcase with detailed descriptions
 - Professional experience timeline
@@ -12,7 +12,7 @@ This is my personal portfolio website showcasing my projects, skills, and experi
 
 ## Technologies Used
 - HTML5
-- CSS3 (with custom animations and dark mode)
+- CSS3
 - JavaScript
 - GitHub Pages for hosting
 
