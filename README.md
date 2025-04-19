@@ -17,4 +17,4 @@ This is my personal portfolio website showcasing my projects, skills, and experi
 - GitHub Pages for hosting
 
 ## Visit
-The site is live at: [https://jjczy.github.io/portfolio/](https://jjczy.github.io/portfolio/)
+The site is live at: [https://jjcyz.github.io/portfolio/](https://jjcyz.github.io/portfolio/)
