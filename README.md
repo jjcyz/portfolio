@@ -1,5 +1,3 @@
-# Jessica Zhou - Personal Portfolio
-
 ## Overview
 This is my personal portfolio website showcasing my projects, skills, and experience. Built with modern HTML, CSS, and JavaScript, featuring a responsive design
 
