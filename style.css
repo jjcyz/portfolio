@@ -866,16 +866,4 @@ h1, h2, h3, .gradient-text, .section-header h2 {
   animation: gradientMove 8s ease-in-out infinite;
 }
 
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 
