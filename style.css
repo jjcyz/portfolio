@@ -842,7 +842,7 @@ footer {
   50% { opacity: 0; }
 }
 
-h1, h2, h3, h4, h5, h6, p, li, a, span {
+h1, h2, h3, .gradient-text, .section-header h2 {
   background: linear-gradient(90deg, #1769ff, #7f53ff, #ff6ec4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
