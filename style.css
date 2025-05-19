@@ -49,10 +49,12 @@ a:hover {
   color: var(--accent-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
+h1, h2, h3, h4, h5, h6, p, li, a, span {
+  background: linear-gradient(90deg, #1769ff, #7f53ff, #ff6ec4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 img {
@@ -840,5 +842,12 @@ footer {
   50% { opacity: 0; }
 }
 
+h1, h2, h3, h4, h5, h6, p, li, a, span {
+  background: linear-gradient(90deg, #1769ff, #7f53ff, #ff6ec4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
 
 
