@@ -35,8 +35,7 @@ export interface Education {
 
 export interface Skill {
   name: string;
-  category: 'languages' | 'frameworks' | 'tools' | 'certifications';
-  proficiency: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+  category: 'languages' | 'frameworks' | 'cloud' | 'databases' | 'ai' | 'tools' | 'certifications';
 }
 
 export interface ContactInfo {

@@ -47,15 +47,18 @@ export default function About() {
             >
               <div className="prose prose-lg prose-invert max-w-none">
                 <p className="text-gray-300 leading-relaxed">
-                  Hello! I&apos;m Jessica, a Computer Science and Business student at the University of British Columbia (BUCS program), graduating in April 2026. My passion lies at the intersection of technology and business.
+                  Hello! I&apos;m Jessica, a Computer Science and Business student at the University of British Columbia
+                   (BUCS program), graduating in April 2026. My passion lies at the intersection of technology and business.
                 </p>
 
                 <p className="text-gray-300 leading-relaxed">
-                  I also had the opportunity to enhance my global perspective of technology and business during my exchange studies at Tsinghua University, which focused on ML/AI and Financial Technologies.
+                  I also had the opportunity to enhance my global perspective of technology and business during my
+                  exchange studies at Tsinghua University, which focused on ML/AI and Financial Technologies.
                 </p>
 
                 <p className="text-gray-300 leading-relaxed">
-                  When I&apos;m not coding, I enjoy exploring new coffee shops and trying out new (Japanese) restaurants in the city. Occasionally, I also like to go hiking, skiing, and snowboarding.
+                  When I&apos;m not coding, I enjoy exploring new coffee shops and trying out new (Japanese) restaurants
+                   in the city. Occasionally, I also like to go hiking, skiing, and snowboarding.
                 </p>
               </div>
 

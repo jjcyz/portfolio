@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Jessica Zhou | Software Engineer & AI Researcher',
+  title: 'Jessica Zhou | Software Engineer',
   description: 'Computer Science and Business student at UBC, specializing in AI/ML, software development, and the intersection of technology and business. Based in Vancouver, BC.',
   keywords: [
     'Jessica Zhou',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Jessica Zhou | Software Engineer & AI Researcher',
+    title: 'Jessica Zhou | Software Engineer',
     description: 'Computer Science and Business student at UBC, specializing in AI/ML, software development, and the intersection of technology and business.',
     url: 'https://jjcyz.github.io/portfolio/',
     siteName: 'Jessica Zhou Portfolio',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jessica Zhou | Software Engineer & AI Researcher',
+    title: 'Jessica Zhou | Software Engineer',
     description: 'Computer Science and Business student at UBC, specializing in AI/ML, software development, and the intersection of technology and business.',
     images: ['/images/og-image.jpg'],
   },

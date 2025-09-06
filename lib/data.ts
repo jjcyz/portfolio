@@ -122,31 +122,48 @@ export const education: Education[] = [
 
 export const skills: Skill[] = [
   // Programming Languages
-  { name: 'Python', category: 'languages', proficiency: 'expert' },
-  { name: 'Java', category: 'languages', proficiency: 'advanced' },
-  { name: 'C/C++', category: 'languages', proficiency: 'advanced' },
-  { name: 'JavaScript', category: 'languages', proficiency: 'advanced' },
-  { name: 'TypeScript', category: 'languages', proficiency: 'intermediate' },
-  { name: 'MySQL', category: 'languages', proficiency: 'intermediate' },
-  { name: 'R Programming', category: 'languages', proficiency: 'intermediate' },
-  { name: 'HTML5/CSS3', category: 'languages', proficiency: 'advanced' },
+  { name: 'Python', category: 'languages' },
+  { name: 'Java', category: 'languages' },
+  { name: 'C/C++', category: 'languages' },
+  { name: 'JavaScript', category: 'languages' },
+  { name: 'TypeScript', category: 'languages' },
+  { name: 'SQL', category: 'languages' },
+  { name: 'R Programming', category: 'languages' },
+  { name: 'HTML5/CSS3', category: 'languages' },
 
   // Frameworks & Libraries
-  { name: 'ReactJS', category: 'frameworks', proficiency: 'advanced' },
-  { name: 'NodeJS', category: 'frameworks', proficiency: 'intermediate' },
-  { name: 'PyTorch', category: 'frameworks', proficiency: 'advanced' },
-  { name: 'TensorFlow', category: 'frameworks', proficiency: 'intermediate' },
+  { name: 'ReactJS', category: 'frameworks' },
+  { name: 'NodeJS', category: 'frameworks' },
+  { name: 'PyTorch', category: 'frameworks' },
+  { name: 'TensorFlow', category: 'frameworks' },
+  { name: 'Next.js', category: 'frameworks' },
+
+  // Cloud & Infrastructure
+  { name: 'AWS', category: 'cloud' },
+  { name: 'Google Cloud Platform', category: 'cloud' },
+  { name: 'Docker', category: 'cloud' },
+  { name: 'Firebase', category: 'cloud' },
+
+  // Databases
+  { name: 'MongoDB', category: 'databases' },
+  { name: 'MySQL', category: 'databases' },
+
+  // AI & Machine Learning
+  { name: 'AI Agents', category: 'ai' },
+  { name: 'Prompt Engineering', category: 'ai' },
+  { name: 'Context Engineering', category: 'ai' },
+  { name: 'Automations', category: 'ai' },
+  { name: 'Machine Learning', category: 'ai' },
 
   // Tools & Technologies
-  { name: 'Google Cloud Platform', category: 'tools', proficiency: 'intermediate' },
-  { name: 'Pytest', category: 'tools', proficiency: 'intermediate' },
-  { name: 'Git', category: 'tools', proficiency: 'advanced' },
-  { name: 'GitHub', category: 'tools', proficiency: 'advanced' },
-  { name: 'Visual Studio Code', category: 'tools', proficiency: 'advanced' },
-  { name: 'IntelliJ', category: 'tools', proficiency: 'intermediate' },
+  { name: 'Git', category: 'tools' },
+  { name: 'GitHub', category: 'tools' },
+  { name: 'Visual Studio Code', category: 'tools' },
+  { name: 'IntelliJ', category: 'tools' },
+  { name: 'Pytest', category: 'tools' },
 
   // Certifications
-  { name: 'Google Cloud Essentials', category: 'certifications', proficiency: 'expert' },
-  { name: 'SAP Cloud Application Programming Model', category: 'certifications', proficiency: 'expert' },
-  { name: 'SAP Commerce Cloud and SAP S/4 HANA Cloud Integrations', category: 'certifications', proficiency: 'expert' },
+  { name: 'Google Cloud Essentials', category: 'certifications' },
+  { name: 'SAP Cloud Application Programming Model', category: 'certifications' },
+  { name: 'SAP Commerce Cloud and SAP S/4 HANA Cloud Integrations', category: 'certifications' },
 ];
