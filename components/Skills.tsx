@@ -149,7 +149,7 @@ export default function Skills() {
                 Continuous Learning & Growth
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                I'm passionate about staying current with emerging technologies and continuously expanding my skill set.
+                I&apos;m passionate about staying current with emerging technologies and continuously expanding my skill set.
                 Currently exploring advanced AI/ML techniques, cloud architecture, and modern web development practices.
               </p>
             </div>

@@ -148,8 +148,8 @@ export default function Experience() {
                 Looking for Opportunities
               </h3>
               <p className="text-gray-400 leading-relaxed mb-6">
-                I'm actively seeking internship and full-time opportunities in software engineering,
-                AI/ML research, and technology consulting. Let's connect and discuss how I can contribute to your team.
+                I&apos;m actively seeking internship and full-time opportunities in software engineering,
+                AI/ML research, and technology consulting. Let&apos;s connect and discuss how I can contribute to your team.
               </p>
               <a
                 href="#contact"
