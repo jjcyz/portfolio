@@ -47,18 +47,25 @@ export default function About() {
             >
               <div className="prose prose-lg prose-invert max-w-none">
                 <p className="text-gray-300 leading-relaxed">
-                  Hello! I&apos;m Jessica, a Computer Science and Business student at the University of British Columbia
-                   (BUCS program), graduating in April 2026. My passion lies at the intersection of technology and business.
+                  Hey, my name is Jessica. I&apos;m a Computer Science and Business student at the University of British Columbia
+                   (BUCS program), graduating in April 2026. My interests lies at the future of tech and software.
+                </p>
+
+                <p className="text-gray-300 leading-relaxed">
+                  I&apos;ve worked on projects that range from full stack web development to building new applications with the latest
+                   AI technologies. I&apos;m excited for what is possible with these technologies and how they can be applied in innovative scenarios.
                 </p>
 
                 <p className="text-gray-300 leading-relaxed">
                   I also had the opportunity to enhance my global perspective of technology and business during my
-                  exchange studies at Tsinghua University, which focused on ML/AI and Financial Technologies.
+                  exchange studies at Tsinghua University in Beijing, China, which focused on machine learning. I got
+                  to see how talented developers are pioneering new innovations and how new technologies are being scaled in shocking ways.
                 </p>
 
                 <p className="text-gray-300 leading-relaxed">
-                  When I&apos;m not coding, I enjoy exploring new coffee shops and trying out new (Japanese) restaurants
-                   in the city. Occasionally, I also like to go hiking, skiing, and snowboarding.
+                  Asides from all the tech stuff, I enjoy exploring a mash of the great outdoors and city life that Vancouver
+                  blesses us with. From going on hikes in Squamish to beaches for the summer to skiing and snowboarding in Whistler for the winter.
+                  I also love to visit the variety of cafes and restaurants in the city.
                 </p>
               </div>
 
@@ -69,7 +76,7 @@ export default function About() {
                 transition={{ delay: 0.8, duration: 0.6 }}
                 className="flex flex-wrap gap-3"
               >
-                {['Coffee ☕', 'Japanese Cuisine 🍣', 'Hiking 🥾', 'Skiing ⛷️', 'Snowboarding 🏂'].map((interest, index) => (
+                {['Coffee ☕', 'Omakase 🍣', 'Hiking 🥾', 'Skiing ⛷️', 'Snowboarding 🏂'].map((interest, index) => (
                   <motion.span
                     key={interest}
                     initial={{ opacity: 0, scale: 0.8 }}

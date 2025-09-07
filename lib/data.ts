@@ -107,7 +107,7 @@ export const education: Education[] = [
     location: 'Vancouver, CA',
     startDate: '2022-09',
     endDate: '2026-04',
-    description: 'Focus on the intersection of technology and business, with coursework in software engineering, machine learning, and business strategy.',
+    description: 'Data Structure \& Algorithms, Relational Databases, Data Analytics, Computer Architecture, Business Strategy.',
   },
   {
     id: 'tsinghua-exchange',
@@ -116,7 +116,7 @@ export const education: Education[] = [
     location: 'Beijing, CN',
     startDate: '2024-02',
     endDate: '2025-01',
-    description: 'Enhanced global perspective of technology and business with focus on ML/AI and Financial Technologies.',
+    description: 'Machine Learning/AI, Computer Systems, Distributed Database Systems, Financial Technologies.',
   },
 ];
 
@@ -128,8 +128,8 @@ export const skills: Skill[] = [
   { name: 'JavaScript', category: 'languages' },
   { name: 'TypeScript', category: 'languages' },
   { name: 'SQL', category: 'languages' },
-  { name: 'R Programming', category: 'languages' },
-  { name: 'HTML5/CSS3', category: 'languages' },
+  { name: 'R', category: 'languages' },
+  { name: 'HTML/CSS', category: 'languages' },
 
   // Frameworks & Libraries
   { name: 'ReactJS', category: 'frameworks' },
@@ -148,21 +148,17 @@ export const skills: Skill[] = [
   { name: 'MongoDB', category: 'databases' },
   { name: 'MySQL', category: 'databases' },
 
-  // AI & Machine Learning
+  // AI
   { name: 'AI Agents', category: 'ai' },
-  { name: 'Prompt Engineering', category: 'ai' },
   { name: 'Context Engineering', category: 'ai' },
   { name: 'Automations', category: 'ai' },
-  { name: 'Machine Learning', category: 'ai' },
 
   // Tools & Technologies
   { name: 'Git', category: 'tools' },
-  { name: 'GitHub', category: 'tools' },
-  { name: 'Visual Studio Code', category: 'tools' },
-  { name: 'IntelliJ', category: 'tools' },
   { name: 'Pytest', category: 'tools' },
 
   // Certifications
+  { name: 'AWS Cloud Solutions Architect', category: 'certifications' },
   { name: 'Google Cloud Essentials', category: 'certifications' },
   { name: 'SAP Cloud Application Programming Model', category: 'certifications' },
   { name: 'SAP Commerce Cloud and SAP S/4 HANA Cloud Integrations', category: 'certifications' },

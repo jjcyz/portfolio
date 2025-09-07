@@ -168,9 +168,9 @@ export default function Skills() {
                 Continuous Learning & Innovation
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                I&apos;m passionate about staying at the forefront of technology, continuously exploring new frameworks,
-                cloud platforms, and AI capabilities. My approach combines deep technical knowledge with practical
-                problem-solving to deliver impactful solutions.
+                I&apos;m continuously trying the new technologies. In the tech industry today, there is a lot of
+                innovation and new technologies are being developed every day. Every developer should be seeking new
+                ways to improve their skills. 
               </p>
             </div>
           </motion.div>

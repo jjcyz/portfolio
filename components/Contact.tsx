@@ -106,7 +106,7 @@ export default function Contact() {
               </h3>
               <p className="text-gray-400 mb-8 leading-relaxed">
                 I&apos;m always interested in hearing about new opportunities, collaborations,
-                or just having a chat about technology and innovation. Feel free to reach out!
+                or just having a chat about technology and/or business. Feel free to reach out!
               </p>
 
               {/* Social Links */}
@@ -146,8 +146,7 @@ export default function Contact() {
                   Quick Response
                 </h4>
                 <p className="text-gray-400 text-sm leading-relaxed">
-                  I typically respond to emails within 24 hours. For urgent matters,
-                  feel free to reach out via LinkedIn for a faster response.
+                  I typically respond to emails within 24 hours.
                 </p>
               </motion.div>
             </motion.div>
@@ -174,7 +173,7 @@ export default function Contact() {
                       Message Sent!
                     </h4>
                     <p className="text-gray-400">
-                      Thank you for reaching out. I&apos;ll get back to you soon.
+                      Thank you for reaching out. I&apos;ll try to get back to you asap.
                     </p>
                   </motion.div>
                 ) : (
