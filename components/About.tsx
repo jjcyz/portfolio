@@ -45,28 +45,47 @@ export default function About() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="space-y-6"
             >
-              <div className="prose prose-lg prose-invert max-w-none">
-                <p className="text-gray-300 leading-relaxed">
-                  Hey, my name is Jessica. I&apos;m a Computer Science and Business student at the University of British Columbia
-                   (BUCS program), graduating in April 2026. My interests lies at the future of tech and software.
-                </p>
+              <div className="prose prose-lg prose-invert max-w-none space-y-6">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: 0.6, duration: 0.6 }}
+                  className="text-gray-300 leading-relaxed"
+                >
+                  I&apos;m a <span className="text-primary-400 font-semibold">Computer Science and Business</span> student at the <span className="text-primary-400 font-semibold">University of British Columbia</span>
+                  (BUCS Program), graduating in <span className="text-primary-400 font-semibold">April 2026</span>. My interests are in processes and automations that optimize systems using AI technologies.
+                </motion.p>
 
-                <p className="text-gray-300 leading-relaxed">
-                  I&apos;ve worked on projects that range from full stack web development to building new applications with the latest
-                   AI technologies. I&apos;m excited for what is possible with these technologies and how they can be applied in innovative scenarios.
-                </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: 0.8, duration: 0.6 }}
+                  className="text-gray-300 leading-relaxed"
+                >
+                  I&apos;ve worked on projects that range from <span className="text-primary-400 font-semibold">full stack web development</span> to building new applications from ground 0
+                </motion.p>
 
-                <p className="text-gray-300 leading-relaxed">
-                  I also had the opportunity to enhance my global perspective of technology and business during my
-                  exchange studies at Tsinghua University in Beijing, China, which focused on machine learning. I got
-                  to see how talented developers are pioneering new innovations and how new technologies are being scaled in shocking ways.
-                </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: 1.0, duration: 0.6 }}
+                  className="text-gray-300 leading-relaxed"
+                >
+                  I also had the opportunity to enhance my <span className="text-primary-400 font-semibold">global perspective</span> of technology and business during my
+                  exchange studies at <span className="text-primary-400 font-semibold">Tsinghua University</span> in Beijing, China, which focused on <span className="text-primary-400 font-semibold">machine learning</span>. I got
+                  to witness how some of the <span className="text-primary-400 font-semibold">brightest innovators</span> pioneering new technologies at unseen before scales.
+                </motion.p>
 
-                <p className="text-gray-300 leading-relaxed">
-                  Asides from all the tech stuff, I enjoy exploring a mash of the great outdoors and city life that Vancouver
-                  blesses us with. From going on hikes in Squamish to beaches for the summer to skiing and snowboarding in Whistler for the winter.
-                  I also love to visit the variety of cafes and restaurants in the city.
-                </p>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: 1.2, duration: 0.6 }}
+                  className="text-gray-300 leading-relaxed"
+                >
+                  Aside from all the tech stuff, I enjoy exploring a mash of the <span className="text-primary-400 font-semibold">great outdoors and city life</span> that Vancouver
+                  blesses us with. From going on <span className="text-primary-400 font-semibold">hikes in Squamish</span> to beaches in 30 mins to <span className="text-primary-400 font-semibold">skiing and snowboarding in Whistler</span> for the winter.
+                  I also love to try the diverse profile of <span className="text-primary-400 font-semibold">cafes and restaurants</span> in the city. (need new recommendations)
+                </motion.p>
               </div>
 
               {/* Personal Interests */}

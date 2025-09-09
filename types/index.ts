@@ -10,6 +10,7 @@ export interface Project {
   paperUrl?: string;
   featured: boolean;
   category: 'ai' | 'web' | 'research' | 'systems';
+  iframeUrl?: string;
 }
 
 export interface Experience {

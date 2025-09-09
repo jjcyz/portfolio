@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   keywords: [
     'Jessica Zhou',
     'Software Engineer',
-    'AI Researcher',
     'Machine Learning',
     'Computer Science',
     'UBC',

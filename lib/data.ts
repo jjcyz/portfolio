@@ -9,13 +9,26 @@ export const contactInfo: ContactInfo = {
 
 export const projects: Project[] = [
   {
+    id: 'destination-ai',
+    title: 'Destination AI: AI-Powered Route Planning',
+    description: 'An intelligent route planning application that uses AI to optimize travel routes, suggest efficient paths, and provide real-time navigation recommendations for seamless journey planning.',
+    longDescription: 'Developed a sophisticated route planning platform leveraging AI algorithms to analyze multiple factors including traffic patterns, distance optimization, and user preferences. Features intelligent pathfinding, real-time route adjustments, and personalized recommendations for optimal travel experiences.',
+    image: '/images/destination-ai-preview.jpg',
+    technologies: ['Javascript', 'React', 'Next.js', 'AI', 'Google Maps', 'OpenWeatherMap'],
+    liveUrl: 'https://destination-ai.vercel.app/',
+    iframeUrl: 'https://destination-ai.vercel.app/',
+    featured: true,
+    category: 'ai',
+  },
+  {
     id: 'arcsphere',
     title: 'ArcSphere: AI Agents Powered By Groq',
     description: 'Developed a modern web application using Groq\'s LLaMA 3 70B model, featuring a chat interface for users to interact with AI agents.',
     longDescription: 'Built a sophisticated AI chat application leveraging Groq\'s lightning-fast inference API. Implemented custom system prompts to define specific AI agent capabilities, created a responsive React interface with real-time messaging, and integrated advanced error handling for robust user experience.',
     image: '/images/arcsphere-preview.jpg',
-    technologies: ['JavaScript', 'ReactJS', 'Vite', 'HTML5/CSS', 'NodeJS', 'Groq API'],
-    githubUrl: 'https://github.com/jjcyz/arcsphere',
+    technologies: ['JavaScript', 'ReactJS', 'Vite', 'NodeJS', 'Groq'],
+    liveUrl: 'https://arcsphere.vercel.app/',
+    iframeUrl: 'https://arcsphere.vercel.app/',
     featured: true,
     category: 'ai',
   },
@@ -32,11 +45,11 @@ export const projects: Project[] = [
   },
   {
     id: 'blood-vessel-segmentation',
-    title: 'Blood Vessel Segmentation using ML',
+    title: 'Blood Vessel Segmentation',
     description: 'Developed a 3D U-Net architecture for precise pixel-wise classification of vasculature structures, automating kidney segmentation and reducing manual processing time by 85%.',
     longDescription: 'Created an innovative two-step training pipeline combining supervised pretraining with denoising techniques. Built an end-to-end pipeline processing TIFF scans and generating 3D segmentation masks, achieving state-of-the-art results in medical image analysis.',
     image: '/images/ml_paper_pipeline.PNG',
-    technologies: ['Python', 'PyTorch', 'Machine Learning'],
+    technologies: ['Python', 'Tensorflow', 'PyTorch', 'Machine Learning'],
     paperUrl: 'https://openreview.net/forum?id=kl3kxvM4Nn#discussion',
     featured: true,
     category: 'research',
@@ -47,7 +60,7 @@ export const projects: Project[] = [
     description: 'Implemented and compared Bernoulli and Gaussian VAEs using PyTorch, achieving 90% reconstruction accuracy on the MNIST dataset with a compact 40-dimensional latent space.',
     longDescription: 'Built comprehensive visualization pipeline generating 6 different analysis outputs including loss comparisons and reconstruction quality metrics. Optimized model training through systematic hyperparameter tuning and implemented advanced data preprocessing techniques.',
     image: '/images/autonomousplanter.PNG',
-    technologies: ['Python', 'PyTorch', 'Deep Learning', 'Data Visualization'],
+    technologies: ['Python', 'PyTorch', 'Data Visualization'],
     githubUrl: 'https://github.com/jjcyz/bernoulli_gaussian_vae',
     featured: true,
     category: 'research',
@@ -56,9 +69,21 @@ export const projects: Project[] = [
 
 export const experiences: Experience[] = [
   {
+    id: 'software-engineer-intern',
+    title: 'Software Engineer Intern',
+    company: 'Polymuse',
+    location: 'Vancouver, CA',
+    startDate: '2025-05',
+    endDate: '2025-09',
+    description: [
+      'Early startup',
+    ],
+    technologies: ['JavaScript', 'React', 'Google Cloud Platform', 'Firebase'],
+  },
+  {
     id: 'researcher-blood-vessel',
-    title: 'Researcher',
-    company: 'Blood Vessel Segmentation using Machine Learning',
+    title: 'Research',
+    company: 'Tsinghua University',
     location: 'Beijing, CN',
     startDate: '2024-09',
     endDate: '2025-01',
@@ -67,21 +92,7 @@ export const experiences: Experience[] = [
       'Implemented an innovative two-step training pipeline with supervised pretraining and denoising techniques',
       'Built an end-to-end pipeline processing TIFF scans and generating 3D segmentation masks',
     ],
-    technologies: ['Python', 'PyTorch', '3D U-Net', 'Medical Imaging'],
-  },
-  {
-    id: 'software-developer-vae',
-    title: 'Software Developer',
-    company: 'Variational Autoencoder (VAE) Comparison Project',
-    location: 'Beijing, CN',
-    startDate: '2024-10',
-    endDate: '2024-11',
-    description: [
-      'Implemented and compared Bernoulli and Gaussian VAEs using PyTorch on MNIST dataset',
-      'Built comprehensive visualization pipeline generating 6 different analysis outputs',
-      'Optimized model training through systematic hyperparameter tuning',
-    ],
-    technologies: ['Python', 'PyTorch', 'VAE', 'Data Visualization'],
+    technologies: ['Python', 'Tensorflow', 'PyTorch', 'Machine Learning'],
   },
   {
     id: 'student-mentor',
@@ -91,11 +102,9 @@ export const experiences: Experience[] = [
     startDate: '2023-11',
     endDate: '2023-12',
     description: [
-      'Mentored 20+ CS and Business students through technical career guidance and academics',
-      'Spearheaded the organization of the largest China Forum in Canada, reaching 62M+ viewers',
-      'Established partnerships with 30+ top global universities for event collaborations',
+      'Career guidance and academics',
     ],
-    technologies: ['Leadership', 'Event Management', 'Mentoring'],
+    technologies: ['Leadership', 'Communication', 'Mentoring'],
   },
 ];
 
@@ -107,7 +116,7 @@ export const education: Education[] = [
     location: 'Vancouver, CA',
     startDate: '2022-09',
     endDate: '2026-04',
-    description: 'Data Structure \& Algorithms, Relational Databases, Data Analytics, Computer Architecture, Business Strategy.',
+    description: 'Data Structure \& Algorithms, Relational Databases, Data Analytics, Computer Architecture, Business Strategy',
   },
   {
     id: 'tsinghua-exchange',
@@ -116,7 +125,7 @@ export const education: Education[] = [
     location: 'Beijing, CN',
     startDate: '2024-02',
     endDate: '2025-01',
-    description: 'Machine Learning/AI, Computer Systems, Distributed Database Systems, Financial Technologies.',
+    description: 'ML/AI, Computer Systems, Distributed Database Systems, Financial Technologies',
   },
 ];
 

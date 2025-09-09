@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, Mail } from 'lucide-react';
+import { ArrowDown, Mail } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
@@ -54,7 +54,7 @@ export default function Hero() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-6 font-light"
           >
-            Software Engineer & AI Researcher
+            Full-stack developer
           </motion.h2>
 
           {/* Description */}
@@ -64,8 +64,6 @@ export default function Hero() {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="text-lg sm:text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
           >
-            Building software solutions at the intersection of technology and business.
-            <br />
             <span className="text-primary-400">Based in Vancouver, BC, Canada.</span>
           </motion.p>
 
@@ -76,16 +74,6 @@ export default function Hero() {
             transition={{ delay: 1, duration: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            <Link
-              href="https://www.overleaf.com/read/zbtckssxwsmr#9bfeb4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center gap-2 group"
-              aria-label="View resume in new tab"
-            >
-              <Download size={20} className="group-hover:animate-bounce" />
-              Resume
-            </Link>
             <button
               onClick={scrollToContact}
               className="btn-secondary inline-flex items-center gap-2 group"

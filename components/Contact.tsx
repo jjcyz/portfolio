@@ -3,8 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Mail, Linkedin, Github, Instagram, Send, CheckCircle } from 'lucide-react';
-import { contactInfo } from '@/lib/data';
+import { Send, CheckCircle } from 'lucide-react';
 
 export default function Contact() {
   const ref = useRef(null);
@@ -40,32 +39,6 @@ export default function Contact() {
     }, 3000);
   };
 
-  const socialLinks = [
-    {
-      name: 'Email',
-      href: `mailto:${contactInfo.email}`,
-      icon: Mail,
-      color: 'hover:text-red-400',
-    },
-    {
-      name: 'LinkedIn',
-      href: contactInfo.linkedin,
-      icon: Linkedin,
-      color: 'hover:text-blue-400',
-    },
-    {
-      name: 'GitHub',
-      href: contactInfo.github,
-      icon: Github,
-      color: 'hover:text-gray-300',
-    },
-    {
-      name: 'Instagram',
-      href: contactInfo.instagram!,
-      icon: Instagram,
-      color: 'hover:text-pink-400',
-    },
-  ];
 
   return (
     <section id="contact" className="section-padding bg-gray-900/50">
@@ -109,31 +82,6 @@ export default function Contact() {
                 or just having a chat about technology and/or business. Feel free to reach out!
               </p>
 
-              {/* Social Links */}
-              <div className="space-y-4 mb-8">
-                {socialLinks.map((link, index) => {
-                  const IconComponent = link.icon;
-                  return (
-                    <motion.a
-                      key={link.name}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ delay: 0.8 + index * 0.1, duration: 0.4 }}
-                      className={`flex items-center gap-4 p-4 glass-effect rounded-lg hover:bg-white/10 transition-all duration-200 group ${link.color}`}
-                    >
-                      <div className="p-2 bg-white/10 rounded-lg group-hover:scale-110 transition-transform duration-200">
-                        <IconComponent size={20} />
-                      </div>
-                      <span className="text-gray-300 group-hover:text-white transition-colors duration-200">
-                        {link.name}
-                      </span>
-                    </motion.a>
-                  );
-                })}
-              </div>
 
               {/* Additional Info */}
               <motion.div
@@ -239,7 +187,7 @@ export default function Contact() {
                         required
                         rows={6}
                         className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
-                        placeholder="Tell me about your project, opportunity, or just say hello!"
+                        placeholder="Tell me about your project, request for my resume, discuss an opportunity, or just say hello!"
                       />
                     </div>
 

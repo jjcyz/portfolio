@@ -135,37 +135,6 @@ export default function Experience() {
             </div>
           </div>
 
-          {/* Call to Action */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-            className="text-center mt-16"
-          >
-            <div className="glass-effect p-8 rounded-xl max-w-2xl mx-auto">
-              <h3 className="text-xl font-semibold text-gray-100 mb-4 flex items-center justify-center gap-2">
-                <Briefcase size={24} className="text-primary-400" />
-                Looking for Opportunities
-              </h3>
-              <p className="text-gray-400 leading-relaxed mb-6">
-                I&apos;m actively seeking internship and full-time opportunities in software engineering,
-                AI/ML research, and technology consulting. Let&apos;s connect and discuss how I can contribute to your team.
-              </p>
-              <a
-                href="#contact"
-                className="btn-primary inline-flex items-center gap-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                Get In Touch
-              </a>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
     </section>

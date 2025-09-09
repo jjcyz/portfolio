@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { Code, Database, Cloud, Brain, Wrench, Award, Sparkles } from 'lucide-react';
+import { Code, Database, Cloud, Brain, Wrench, Sparkles } from 'lucide-react';
 import { skills } from '@/lib/data';
 
 const skillCategories = {
@@ -48,13 +48,6 @@ const skillCategories = {
     color: 'from-gray-500 to-slate-500',
     bgColor: 'bg-gray-500/10',
     borderColor: 'border-gray-500/20'
-  },
-  certifications: {
-    icon: Award,
-    label: 'Certifications',
-    color: 'from-yellow-500 to-amber-500',
-    bgColor: 'bg-yellow-500/10',
-    borderColor: 'border-yellow-500/20'
   },
 };
 
@@ -101,12 +94,11 @@ export default function Skills() {
               transition={{ delay: 0.6, duration: 0.6 }}
               className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto"
             >
-              Technologies and tools I work with to build innovative solutions
             </motion.p>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(skillCategories).map(([categoryKey, categoryInfo], categoryIndex) => {
               const categorySkills = skillsByCategory[categoryKey] || [];
               const IconComponent = categoryInfo.icon;
@@ -164,13 +156,9 @@ export default function Skills() {
             className="mt-16 text-center"
           >
             <div className="glass-effect p-8 rounded-2xl max-w-3xl mx-auto">
-              <h3 className="text-xl font-semibold text-gray-100 mb-4">
-                Continuous Learning & Innovation
-              </h3>
               <p className="text-gray-400 leading-relaxed">
-                I&apos;m continuously trying the new technologies. In the tech industry today, there is a lot of
-                innovation and new technologies are being developed every day. Every developer should be seeking new
-                ways to improve their skills. 
+                New technologies are being developed every day. I'm always finding new
+                ways to improve my skills using them.
               </p>
             </div>
           </motion.div>
