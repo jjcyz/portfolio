@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Jessica Zhou | Software Engineer',
-  description: 'Computer Science and Business student at UBC, specializing in AI/ML, software development, and the intersection of technology and business. Based in Vancouver, BC.',
+  description: 'Computer Science and Business student at UBC, specializing in AI, automations, software development, and the intersection of technology and business. Based in Vancouver, BC.',
   keywords: [
     'Jessica Zhou',
     'Software Engineer',

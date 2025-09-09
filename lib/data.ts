@@ -76,7 +76,7 @@ export const experiences: Experience[] = [
     startDate: '2025-05',
     endDate: '2025-09',
     description: [
-      'Early startup',
+      'Early startup work in AR and AI - coming soon ',
     ],
     technologies: ['JavaScript', 'React', 'Google Cloud Platform', 'Firebase'],
   },
@@ -143,6 +143,7 @@ export const skills: Skill[] = [
   // Frameworks & Libraries
   { name: 'ReactJS', category: 'frameworks' },
   { name: 'NodeJS', category: 'frameworks' },
+  { name: 'TailwindCSS', category: 'frameworks' },
   { name: 'PyTorch', category: 'frameworks' },
   { name: 'TensorFlow', category: 'frameworks' },
   { name: 'Next.js', category: 'frameworks' },
@@ -166,7 +167,7 @@ export const skills: Skill[] = [
   { name: 'Git', category: 'tools' },
   { name: 'Pytest', category: 'tools' },
 
-  // Certifications
+  // Certifications (not inlcuded)
   { name: 'AWS Cloud Solutions Architect', category: 'certifications' },
   { name: 'Google Cloud Essentials', category: 'certifications' },
   { name: 'SAP Cloud Application Programming Model', category: 'certifications' },

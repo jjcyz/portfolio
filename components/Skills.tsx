@@ -157,7 +157,7 @@ export default function Skills() {
           >
             <div className="glass-effect p-8 rounded-2xl max-w-3xl mx-auto">
               <p className="text-gray-400 leading-relaxed">
-                New technologies are being developed every day. I'm always finding new
+                New technologies are being developed every day. I&apos;m always finding new
                 ways to improve my skills using them.
               </p>
             </div>

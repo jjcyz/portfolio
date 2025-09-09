@@ -52,8 +52,11 @@ export default function About() {
                   transition={{ delay: 0.6, duration: 0.6 }}
                   className="text-gray-300 leading-relaxed"
                 >
-                  I&apos;m a <span className="text-primary-400 font-semibold">Computer Science and Business</span> student at the <span className="text-primary-400 font-semibold">University of British Columbia</span>
-                  (BUCS Program), graduating in <span className="text-primary-400 font-semibold">April 2026</span>. My interests are in processes and automations that optimize systems using AI technologies.
+                  I&apos;m a <span className="text-primary-400 font-semibold">Computer Science and Business</span> student
+                  at the University of British Columbia (BUCS Program),
+                  graduating in April 2026. My
+                  interests lie at the <span className="text-primary-400 font-semibold">future of tech and software</span>, especially
+                  how systems can be optimized to be more efficient and scalable using <span className="text-primary-400 font-semibold">AI</span>.
                 </motion.p>
 
                 <motion.p
@@ -62,7 +65,8 @@ export default function About() {
                   transition={{ delay: 0.8, duration: 0.6 }}
                   className="text-gray-300 leading-relaxed"
                 >
-                  I&apos;ve worked on projects that range from <span className="text-primary-400 font-semibold">full stack web development</span> to building new applications from ground 0
+                  I&apos;ve worked on projects that range from <span className="text-primary-400 font-semibold">full stack web development</span> to building new applications with the latest
+                  AI technologies. I&apos;m excited for what is possible with these technologies and how they can be applied in <span className="text-primary-400 font-semibold">innovative scenarios</span>.
                 </motion.p>
 
                 <motion.p
@@ -71,9 +75,9 @@ export default function About() {
                   transition={{ delay: 1.0, duration: 0.6 }}
                   className="text-gray-300 leading-relaxed"
                 >
-                  I also had the opportunity to enhance my <span className="text-primary-400 font-semibold">global perspective</span> of technology and business during my
+                  I also had the opportunity to enhance my global perspective of technology and business during my
                   exchange studies at <span className="text-primary-400 font-semibold">Tsinghua University</span> in Beijing, China, which focused on <span className="text-primary-400 font-semibold">machine learning</span>. I got
-                  to witness how some of the <span className="text-primary-400 font-semibold">brightest innovators</span> pioneering new technologies at unseen before scales.
+                  to see how some of the brightest innovators are pioneering the new era of technology at scales unheard of before.
                 </motion.p>
 
                 <motion.p
@@ -82,9 +86,9 @@ export default function About() {
                   transition={{ delay: 1.2, duration: 0.6 }}
                   className="text-gray-300 leading-relaxed"
                 >
-                  Aside from all the tech stuff, I enjoy exploring a mash of the <span className="text-primary-400 font-semibold">great outdoors and city life</span> that Vancouver
-                  blesses us with. From going on <span className="text-primary-400 font-semibold">hikes in Squamish</span> to beaches in 30 mins to <span className="text-primary-400 font-semibold">skiing and snowboarding in Whistler</span> for the winter.
-                  I also love to try the diverse profile of <span className="text-primary-400 font-semibold">cafes and restaurants</span> in the city. (need new recommendations)
+                  Asides from all the tech stuff, I enjoy exploring a mash of the great outdoors and city life that Vancouver
+                  blesses me with. From going on hikes in Squamish to beaches in 30 mins to skiing and snowboarding in Whistler.
+                  I also love to visit the variety of cafes and restaurants in the city. (need new recommendations)
                 </motion.p>
               </div>
 
