@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'Jessica Zhou Portfolio',
     images: [
       {
-        url: '/images/og-image.jpg',
+        url: '/images/coding.PNG',
         width: 1200,
         height: 630,
         alt: 'Jessica Zhou Portfolio',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Jessica Zhou | Software Engineer',
     description: 'Computer Science and Business student at UBC, specializing in AI/ML, software development, and the intersection of technology and business.',
-    images: ['/images/og-image.jpg'],
+    images: ['/images/coding.PNG'],
   },
   robots: {
     index: true,
