@@ -29,7 +29,7 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="section-padding bg-gray-900/50">
+    <section id="projects" className="section-padding">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -43,7 +43,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4"
             >
               <span className="gradient-text">Featured Projects</span>
             </motion.h2>
@@ -51,12 +51,12 @@ export default function Projects() {
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"
+              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
             />
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => {
               const structuredData = generateProjectStructuredData(project);
 
@@ -78,9 +78,9 @@ export default function Projects() {
                     }}
                   />
 
-                  <div className="glass-effect rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300 h-full flex flex-col">
+                  <div className="liquid-glass-card overflow-hidden hover:liquid-glass-card-hover transition-all duration-300 h-full flex flex-col">
                     {/* Project Image or Iframe */}
-                    <div className="relative h-96 overflow-hidden">
+                    <div className="relative h-48 overflow-hidden">
                       {project.iframeUrl ? (
                         <>
                           <iframe
@@ -179,16 +179,16 @@ export default function Projects() {
 
                     {/* Project Content */}
                     <div className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-bold text-gray-100 mb-3 group-hover:text-primary-400 transition-colors duration-200">
+                      <h3 className="text-base font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors duration-200">
                         {project.title}
                       </h3>
 
-                      <p className="text-gray-400 mb-4 flex-1 leading-relaxed">
+                      <p className="text-slate-800 mb-3 flex-1 leading-relaxed text-sm">
                         {project.description}
                       </p>
 
                       {/* Technologies */}
-                      <div className="flex flex-wrap gap-2 mb-4">
+                      <div className="flex flex-wrap gap-1 mb-3">
                         {project.technologies.map((tech, techIndex) => (
                           <motion.span
                             key={tech}
@@ -198,7 +198,7 @@ export default function Projects() {
                               delay: 0.8 + index * 0.2 + techIndex * 0.1,
                               duration: 0.4
                             }}
-                            className="tag text-xs"
+                            className="px-2 py-1 liquid-glass-subtle text-purple-800 rounded-full text-xs font-medium"
                           >
                             {tech}
                           </motion.span>
@@ -216,10 +216,10 @@ export default function Projects() {
                           href={project.githubUrl || project.liveUrl || project.paperUrl || '#'}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 font-medium transition-colors duration-200 group/link"
+                          className="inline-flex items-center gap-2 text-purple-700 hover:text-purple-800 font-medium transition-colors duration-200 group/link text-sm"
                         >
-                          <span>View on Github</span>
-                          <ExternalLink size={16} className="group-hover/link:translate-x-1 transition-transform duration-200" />
+                          <span>View Project</span>
+                          <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform duration-200" />
                         </Link>
                       </motion.div>
                     </div>

@@ -78,7 +78,7 @@ export default function Skills() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4"
             >
               <span className="gradient-text">Technical Skills</span>
             </motion.h2>
@@ -86,19 +86,12 @@ export default function Skills() {
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"
+              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
             />
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto"
-            >
-            </motion.p>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {Object.entries(skillCategories).map(([categoryKey, categoryInfo], categoryIndex) => {
               const categorySkills = skillsByCategory[categoryKey] || [];
               const IconComponent = categoryInfo.icon;
@@ -114,13 +107,13 @@ export default function Skills() {
                   className="group"
                 >
                   {/* Category Card */}
-                  <div className={`${categoryInfo.bgColor} ${categoryInfo.borderColor} border rounded-2xl p-6 hover:scale-105 transition-all duration-300 backdrop-blur-sm`}>
+                  <div className="liquid-glass-card p-6 hover:liquid-glass-card-hover hover:scale-105 transition-all duration-300">
                     {/* Category Header */}
                     <div className="flex items-center gap-3 mb-6">
                       <div className={`p-3 rounded-xl bg-gradient-to-r ${categoryInfo.color} group-hover:scale-110 transition-transform duration-200`}>
                         <IconComponent size={20} className="text-white" />
                       </div>
-                      <h3 className="text-lg font-semibold text-gray-100">
+                      <h3 className="text-base font-semibold text-slate-800">
                         {categoryInfo.label}
                       </h3>
                     </div>
@@ -136,7 +129,7 @@ export default function Skills() {
                             delay: 1 + categoryIndex * 0.1 + skillIndex * 0.05,
                             duration: 0.4
                           }}
-                          className="px-3 py-1.5 bg-white/10 hover:bg-white/20 text-gray-200 text-sm font-medium rounded-full border border-white/10 hover:border-white/20 transition-all duration-200 cursor-default"
+                          className="px-3 py-1.5 liquid-glass-subtle hover:liquid-glass text-slate-800 text-sm font-medium rounded-full transition-all duration-200 cursor-default"
                         >
                           {skill.name}
                         </motion.span>
@@ -155,8 +148,8 @@ export default function Skills() {
             transition={{ delay: 1.4, duration: 0.6 }}
             className="mt-16 text-center"
           >
-            <div className="glass-effect p-8 rounded-2xl max-w-3xl mx-auto">
-              <p className="text-gray-400 leading-relaxed">
+            <div className="liquid-glass-card p-10 max-w-3xl mx-auto">
+              <p className="text-slate-800 leading-relaxed">
                 New technologies are being developed every day. I&apos;m always finding new
                 ways to improve my skills using them.
               </p>

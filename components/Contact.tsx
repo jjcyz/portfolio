@@ -41,7 +41,7 @@ export default function Contact() {
 
 
   return (
-    <section id="contact" className="section-padding bg-gray-900/50">
+    <section id="contact" className="section-padding">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -55,7 +55,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4"
             >
               <span className="gradient-text">Contact Me</span>
             </motion.h2>
@@ -63,21 +63,22 @@ export default function Contact() {
               initial={{ scaleX: 0 }}
               animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"
+              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
             />
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
             {/* Contact Information */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ delay: 0.6, duration: 0.8 }}
+              className="liquid-glass-card p-10"
             >
-              <h3 className="text-2xl font-bold text-gray-100 mb-6">
+              <h3 className="text-xl font-bold text-slate-800 mb-6">
                 Let&apos;s Connect
               </h3>
-              <p className="text-gray-400 mb-8 leading-relaxed">
+              <p className="text-slate-800 mb-8 leading-relaxed">
                 I&apos;m always interested in hearing about new opportunities, collaborations,
                 or just having a chat about technology and/or business. Feel free to reach out!
               </p>
@@ -88,12 +89,12 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 1.2, duration: 0.6 }}
-                className="glass-effect p-6 rounded-xl"
+                className="liquid-glass-strong p-6 rounded-xl"
               >
-                <h4 className="text-lg font-semibold text-gray-100 mb-3">
+                <h4 className="text-base font-semibold text-slate-800 mb-3">
                   Quick Response
                 </h4>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-slate-800 text-sm leading-relaxed">
                   I typically respond to emails within 24 hours.
                 </p>
               </motion.div>
@@ -105,8 +106,8 @@ export default function Contact() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <div className="glass-effect p-8 rounded-xl">
-                <h3 className="text-2xl font-bold text-gray-100 mb-6">
+              <div className="glass-card p-8">
+                <h3 className="text-xl font-bold text-slate-800 mb-6">
                   Send a Message
                 </h3>
 
@@ -117,10 +118,10 @@ export default function Contact() {
                     className="text-center py-12"
                   >
                     <CheckCircle size={64} className="text-green-500 mx-auto mb-4" />
-                    <h4 className="text-xl font-semibold text-gray-100 mb-2">
+                    <h4 className="text-lg font-semibold text-slate-800 mb-2">
                       Message Sent!
                     </h4>
-                    <p className="text-gray-400">
+                    <p className="text-slate-800">
                       Thank you for reaching out. I&apos;ll try to get back to you asap.
                     </p>
                   </motion.div>
@@ -128,7 +129,7 @@ export default function Contact() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-2">
+                        <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
                           Name *
                         </label>
                         <input
@@ -138,12 +139,12 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 liquid-glass-subtle border border-white/20 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                           placeholder="Your name"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
                           Email *
                         </label>
                         <input
@@ -153,14 +154,14 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 liquid-glass-subtle border border-white/20 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                           placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-2">
                         Subject *
                       </label>
                       <input
@@ -176,7 +177,7 @@ export default function Contact() {
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                      <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
                         Message *
                       </label>
                       <textarea
@@ -186,7 +187,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         required
                         rows={6}
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
+                        className="w-full px-4 py-3 liquid-glass-subtle border border-white/20 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
                         placeholder="Tell me about your project, request for my resume, discuss an opportunity, or just say hello!"
                       />
                     </div>

@@ -1,23 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Mail } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Hero() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-purple-300/10 to-pink-300/10 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -25,14 +20,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto liquid-glass-card p-16"
         >
           {/* Greeting */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-primary-400 text-lg sm:text-xl mb-4 font-medium"
+            className="text-purple-700 text-lg sm:text-xl mb-6 font-medium"
           >
             Hello, I&apos;m
           </motion.p>
@@ -42,7 +37,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
           >
             <span className="gradient-text">Jessica Zhou</span>
           </motion.h1>
@@ -52,7 +47,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.6 }}
-            className="text-xl sm:text-2xl lg:text-3xl text-gray-300 mb-6 font-light"
+            className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light"
           >
             Full-stack developer
           </motion.h2>
@@ -62,27 +57,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="text-lg sm:text-xl text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-slate-700 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
-            <span className="text-primary-400">Based in Vancouver, BC, Canada.</span>
+            <span className="text-purple-700">Based in Vancouver, BC, Canada.</span>
           </motion.p>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
-          >
-            <button
-              onClick={scrollToContact}
-              className="btn-secondary inline-flex items-center gap-2 group"
-              aria-label="Contact Jessica"
-            >
-              <Mail size={20} className="group-hover:scale-110 transition-transform" />
-              Contact Me
-            </button>
-          </motion.div>
 
           {/* Scroll Indicator */}
           <motion.div
@@ -91,7 +70,6 @@ export default function Hero() {
             transition={{ delay: 1.5, duration: 0.6 }}
             className="flex flex-col items-center"
           >
-            <p className="text-sm text-gray-500 mb-4">Scroll to explore</p>
             <motion.button
               onClick={() => {
                 const aboutSection = document.getElementById('about');
@@ -99,14 +77,14 @@ export default function Hero() {
                   aboutSection.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="p-2 rounded-full border border-gray-600 hover:border-primary-500 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-950"
+              className="focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-md"
               aria-label="Scroll to about section"
             >
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <ArrowDown size={20} className="text-gray-400" />
+                <ArrowDown size={24} className="text-purple-700" />
               </motion.div>
             </motion.button>
           </motion.div>

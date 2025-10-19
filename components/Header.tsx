@@ -47,25 +47,17 @@ export default function Header() {
   };
 
   return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-effect border-b border-white/10"
-    >
-      <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            href="/"
-            className="text-2xl font-bold gradient-text hover:scale-105 transition-transform duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-950 rounded-md px-2 py-1"
-            aria-label="Jessica Zhou - Home"
-          >
-            JZ
-          </Link>
-
+    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="liquid-glass-strong rounded-2xl border border-white/30"
+      >
+      <nav className="px-6 py-1 relative">
+        <div className="flex items-center justify-center h-12">
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => (
               <button
                 key={item.href}
@@ -73,6 +65,7 @@ export default function Header() {
                 className={`nav-link ${
                   activeSection === item.href.substring(1) ? 'active' : ''
                 }`}
+                data-section={item.href.substring(1)}
                 aria-label={`Navigate to ${item.label} section`}
               >
                 {item.label}
@@ -83,7 +76,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-gray-950"
+            className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-lg liquid-glass-subtle hover:liquid-glass transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -131,11 +124,12 @@ export default function Header() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => handleNavClick(item.href)}
-                    className={`block w-full text-left px-4 py-2 rounded-lg transition-colors duration-200 ${
+                    className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 ${
                       activeSection === item.href.substring(1)
-                        ? 'bg-primary-500/20 text-primary-400'
-                        : 'text-gray-300 hover:bg-white/10 hover:text-primary-400'
+                        ? 'liquid-glass text-purple-700'
+                        : 'text-slate-700 hover:liquid-glass-subtle hover:text-purple-700'
                     }`}
+                    data-section={item.href.substring(1)}
                     aria-label={`Navigate to ${item.label} section`}
                   >
                     {item.label}
@@ -147,5 +141,6 @@ export default function Header() {
         </AnimatePresence>
       </nav>
     </motion.header>
+    </div>
   );
 }
