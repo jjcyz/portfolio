@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Send, CheckCircle } from 'lucide-react';
 
@@ -41,8 +40,8 @@ export default function Contact() {
 
 
   return (
-    <section id="contact" className="section-padding">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-20 sm:py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -73,7 +72,7 @@ export default function Contact() {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="liquid-glass-card p-10"
+              className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10"
             >
               <h3 className="text-xl font-bold text-slate-800 mb-6">
                 Let&apos;s Connect
@@ -89,7 +88,7 @@ export default function Contact() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ delay: 1.2, duration: 0.6 }}
-                className="liquid-glass-strong p-6 rounded-xl"
+                className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 p-6 rounded-xl"
               >
                 <h4 className="text-base font-semibold text-slate-800 mb-3">
                   Quick Response
@@ -139,7 +138,7 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 liquid-glass-subtle border border-white/20 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                           placeholder="Your name"
                         />
                       </div>
@@ -154,7 +153,7 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 liquid-glass-subtle border border-white/20 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                           placeholder="your.email@example.com"
                         />
                       </div>
@@ -187,7 +186,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         required
                         rows={6}
-                        className="w-full px-4 py-3 liquid-glass-subtle border border-white/20 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
+                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
                         placeholder="Tell me about your project, request for my resume, discuss an opportunity, or just say hello!"
                       />
                     </div>
@@ -197,7 +196,7 @@ export default function Contact() {
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full bg-gradient-to-r from-purple-500 to-pink-400 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>

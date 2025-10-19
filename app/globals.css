@@ -1,184 +1,46 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    @apply text-slate-800 font-sans antialiased;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
-    background-attachment: fixed;
-  }
-
-  * {
-    @apply border-slate-200;
-  }
-
-  /* Focus styles for accessibility */
-  *:focus-visible {
-    @apply outline-none ring-2 ring-purple-500 ring-offset-2 ring-offset-slate-50;
-  }
-
-  /* Skip link for accessibility */
-  .skip-link {
-    @apply absolute -top-10 left-4 bg-purple-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200;
-  }
-
-  .skip-link:focus {
-    @apply top-4;
-  }
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
-@layer components {
-  .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  .section-padding {
-    @apply py-20 sm:py-24 lg:py-32;
-  }
-
-  /* Liquid Glass Effects */
-  .liquid-glass {
-    @apply bg-white/15 backdrop-blur-xl border border-white/25 shadow-2xl shadow-black/20;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-
-  .liquid-glass-strong {
-    @apply bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
-    backdrop-filter: blur(25px) saturate(200%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%);
-  }
-
-  .liquid-glass-subtle {
-    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
-    backdrop-filter: blur(15px) saturate(150%);
-    -webkit-backdrop-filter: blur(15px) saturate(150%);
-  }
-
-  .liquid-glass-card {
-    @apply bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.08));
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-  }
-
-  .liquid-glass-card-hover {
-    @apply bg-white/30 backdrop-blur-3xl border border-white/40 shadow-2xl shadow-black/20 rounded-3xl;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
-    backdrop-filter: blur(30px) saturate(200%);
-    -webkit-backdrop-filter: blur(30px) saturate(200%);
-  }
-
-  /* Legacy glass effects for backward compatibility */
-  .glass-effect {
-    @apply liquid-glass;
-  }
-
-  .glass-effect-strong {
-    @apply liquid-glass-strong;
-  }
-
-  .glass-effect-subtle {
-    @apply liquid-glass-subtle;
-  }
-
-  .glass-card {
-    @apply liquid-glass-card;
-  }
-
-  .glass-card-hover {
-    @apply liquid-glass-card-hover;
-  }
-
-  .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20;
-  }
-
-  .btn-primary {
-    background: linear-gradient(133deg, #8B9BD6 18.99%, #E6B8E6 83.27%);
-    @apply text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50;
-  }
-
-  .btn-secondary {
-    @apply bg-transparent border-2 border-purple-400 text-purple-600 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50;
-  }
-
-  .btn-secondary:hover {
-    background: linear-gradient(133deg, #8B9BD6 18.99%, #E6B8E6 83.27%);
-  }
-
-  .tag {
-    @apply bg-purple-100 text-purple-700 border border-purple-200 px-3 py-1 rounded-full text-sm font-medium;
-  }
-
-  .nav-link {
-    @apply text-slate-700 hover:text-slate-800 transition-all duration-300 relative px-4 py-2 rounded-lg;
-  }
-
-  .nav-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(139, 155, 214, 0.1);
-    border-radius: 0.5rem;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: -1;
-  }
-
-  .nav-link:hover::before,
-  .nav-link.active::before {
-    opacity: 1;
-  }
-
-  /* Section-specific background colors */
-  .nav-link[data-section="about"]::before {
-    background: rgba(139, 155, 214, 0.15);
-  }
-
-  .nav-link[data-section="skills"]::before {
-    background: rgba(230, 184, 230, 0.15);
-  }
-
-  .nav-link[data-section="projects"]::before {
-    background: rgba(139, 155, 214, 0.2);
-  }
-
-  .nav-link[data-section="experience"]::before {
-    background: rgba(230, 184, 230, 0.2);
-  }
-
-  .nav-link[data-section="contact"]::before {
-    background: rgba(139, 155, 214, 0.25);
-  }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: rgb(30 41 59);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  background-attachment: fixed;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+* {
+  border-color: rgb(226 232 240);
+}
 
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(168 85 247), 0 0 0 4px rgb(248 250 252);
+}
 
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -2.5rem;
+  left: 1rem;
+  background-color: rgb(147 51 234);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  z-index: 50;
+  transition: all 0.2s;
+}
+
+.skip-link:focus {
+  top: 1rem;
 }
 
 /* Custom scrollbar */
@@ -187,13 +49,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-100;
+  background-color: rgb(241 245 249);
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full;
+  background-color: rgb(203 213 225);
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate-400;
+  background-color: rgb(148 163 184);
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(133deg, #8B9BD6 18.99%, #E6B8E6 83.27%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }

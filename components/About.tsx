@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin, Calendar, GraduationCap } from 'lucide-react';
 import { education } from '@/lib/data';
@@ -11,8 +10,8 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="section-padding">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-20 sm:py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -43,7 +42,7 @@ export default function About() {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="space-y-8 liquid-glass-card p-10"
+              className="space-y-8 bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10"
             >
               <div className="prose prose-lg prose-invert max-w-none space-y-6">
                 <motion.p
@@ -105,7 +104,7 @@ export default function About() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ delay: 0.9 + index * 0.1, duration: 0.4 }}
-                    className="tag"
+                    className="bg-purple-100 text-purple-700 border border-purple-200 px-3 py-1 rounded-full text-sm font-medium"
                   >
                     {interest}
                   </motion.span>
@@ -118,7 +117,7 @@ export default function About() {
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="space-y-8 liquid-glass-card p-10"
+              className="space-y-8 bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10"
             >
               <h3 className="text-xl font-bold text-purple-600 mb-6 flex items-center gap-2">
                 <GraduationCap size={24} />
@@ -131,7 +130,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
-                  className="liquid-glass p-6 rounded-xl hover:liquid-glass-strong transition-all duration-300"
+                  className="bg-white/15 backdrop-blur-xl border border-white/25 shadow-2xl shadow-black/20 p-6 rounded-xl hover:bg-white/25 hover:backdrop-blur-2xl hover:border-white/35 hover:shadow-2xl hover:shadow-black/25 transition-all duration-300"
                 >
                   <h4 className="text-lg font-semibold text-slate-800 mb-2">
                     {edu.institution}

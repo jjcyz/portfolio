@@ -1,15 +1,14 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Calendar, MapPin, Briefcase } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef, useState } from 'react';
+import { Calendar, MapPin } from 'lucide-react';
 import { experiences } from '@/lib/data';
-import { generateExperienceStructuredData } from '@/lib/structured-data';
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
 
   // Group experiences by year
   const experiencesByYear = experiences.reduce((acc, experience) => {
@@ -26,11 +25,24 @@ export default function Experience() {
     return dateString.split('-')[0]; // Return just the year from YYYY-MM format
   };
 
+  // Function to toggle card expansion (for mobile)
+  const toggleCard = (cardId: string) => {
+    setExpandedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(cardId)) {
+        newSet.delete(cardId);
+      } else {
+        newSet.add(cardId);
+      }
+      return newSet;
+    });
+  };
+
   const sortedYears = Object.keys(experiencesByYear).sort((a, b) => b.localeCompare(a));
 
   return (
-    <section id="experience" className="section-padding">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="experience" className="py-20 sm:py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -63,12 +75,15 @@ export default function Experience() {
             <div className="space-y-16">
               {sortedYears.map((year, yearIndex) => (
                 <div key={year} className="relative">
-                  {/* Year Label - Positioned beside the node */}
+                  {/* Year Label - Alternating left and right */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ delay: 0.6 + yearIndex * 0.3, duration: 0.6 }}
-                    className="absolute left-1/2 transform translate-x-4 -translate-y-1/2 z-20"
+                    className="absolute -translate-y-1/2 z-20"
+                    style={{
+                      left: yearIndex % 2 === 0 ? 'calc(50% - 80px)' : 'calc(50% + 20px)'
+                    }}
                   >
                     <div className="text-purple-600 font-bold text-xl whitespace-nowrap">
                       {year}
@@ -81,12 +96,12 @@ export default function Experience() {
                   {/* Experience Cards for this Year */}
                   <div className="pt-8 space-y-8">
                     {experiencesByYear[year].map((experience, expIndex) => {
-                      const isLeft = expIndex % 2 === 0;
-                      const structuredData = generateExperienceStructuredData(experience);
+                      // Alternate based on year index and experience index
+                      const isLeft = (yearIndex + expIndex) % 2 === 0;
 
-                      return (
-                        <motion.div
-                          key={experience.id}
+                return (
+                  <motion.div
+                    key={experience.id}
                           initial={{ opacity: 0, x: isLeft ? -100 : 100 }}
                           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: isLeft ? -100 : 100 }}
                           transition={{
@@ -94,91 +109,78 @@ export default function Experience() {
                             duration: 0.6
                           }}
                           className={`relative ${isLeft ? 'pr-1/2 pl-4' : 'pl-1/2 pr-4'}`}
-                        >
-                          {/* Structured Data */}
-                          <script
-                            type="application/ld+json"
-                            dangerouslySetInnerHTML={{
-                              __html: JSON.stringify(structuredData),
-                            }}
-                          />
+                  >
 
-                          {/* Experience Card */}
+                    {/* Experience Card */}
                           <motion.div
                             whileHover={{
                               scale: 1.02,
                               y: -5,
                               boxShadow: "0 20px 40px rgba(139, 155, 214, 0.3)"
                             }}
-                            className={`liquid-glass-card p-6 transition-all duration-300 hover:liquid-glass-card-hover group max-w-sm text-left ${
-                              isLeft ? 'ml-auto' : 'mr-auto'
+                            whileTap={{ scale: 0.98 }}
+                            onClick={() => toggleCard(experience.id)}
+                            className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl transition-all duration-300 hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 group text-left cursor-pointer max-w-sm ${
+                              isLeft ? 'mr-auto' : 'ml-auto'
+                            } ${
+                              expandedCards.has(experience.id) ? 'p-6' : 'p-4'
                             }`}
                           >
-                            {/* Header */}
-                            <div className="flex flex-col items-start mb-4">
+                            {/* Always Visible Content */}
+                            <div className="flex flex-col items-start">
                               <h3 className="text-lg font-bold text-purple-600 mb-1">
-                                {experience.title}
-                              </h3>
+                            {experience.title}
+                          </h3>
                               <h4 className="text-base font-semibold text-slate-800 mb-2">
-                                {experience.company}
-                              </h4>
-                              <div className="flex items-center gap-4 text-sm text-slate-700">
-                                <div className="flex items-center gap-1">
-                                  <MapPin size={16} />
-                                  {experience.location}
-                                </div>
-                              </div>
-                            </div>
+                            {experience.company}
+                          </h4>
+                              <div className="flex items-center gap-1 text-sm text-slate-700">
+                            <MapPin size={16} />
+                            {experience.location}
+                        </div>
+                      </div>
 
-                            {/* Date */}
-                            <div className="flex items-center gap-1 text-sm text-slate-700 mb-4 justify-start">
-                              <Calendar size={16} />
-                              {formatDateWithoutMonth(experience.startDate)} - {formatDateWithoutMonth(experience.endDate)}
-                            </div>
+                            {/* Expandable Content */}
+                            <div className={`overflow-hidden transition-all duration-300 ${
+                              expandedCards.has(experience.id)
+                                ? 'max-h-96 opacity-100 mt-4'
+                                : 'max-h-0 opacity-0'
+                            } md:max-h-none md:opacity-0 md:group-hover:opacity-100 md:group-hover:max-h-96 md:mt-4`}>
+                      {/* Date */}
+                              <div className="flex items-center gap-1 text-sm text-slate-700 mb-4">
+                        <Calendar size={16} />
+                                {formatDateWithoutMonth(experience.startDate)} - {formatDateWithoutMonth(experience.endDate)}
+                      </div>
 
-                            {/* Hover Content */}
-                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                              {/* Description */}
-                              <ul className="space-y-2 mb-4 text-left">
-                                {experience.description.map((item, itemIndex) => (
-                                  <motion.li
-                                    key={itemIndex}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{
-                                      delay: itemIndex * 0.1,
-                                      duration: 0.4
-                                    }}
+                      {/* Description */}
+                      <ul className="space-y-2 mb-4">
+                        {experience.description.map((item, itemIndex) => (
+                                  <li
+                            key={itemIndex}
                                     className="text-slate-700 leading-relaxed flex items-start gap-2"
                                   >
                                     <span className="text-purple-500 mt-2 flex-shrink-0">•</span>
-                                    <span>{item}</span>
-                                  </motion.li>
-                                ))}
-                              </ul>
+                            <span>{item}</span>
+                                  </li>
+                        ))}
+                      </ul>
 
-                              {/* Technologies */}
-                              <div className="flex flex-wrap gap-2 justify-start">
-                                {experience.technologies.map((tech, techIndex) => (
-                                  <motion.span
-                                    key={tech}
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{
-                                      delay: techIndex * 0.1,
-                                      duration: 0.4
-                                    }}
-                                    className="tag text-xs"
-                                  >
-                                    {tech}
-                                  </motion.span>
-                                ))}
-                              </div>
-                            </div>
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-2">
+                                {experience.technologies.map((tech) => (
+                                  <span
+                            key={tech}
+                                    className="bg-purple-100 text-purple-700 border border-purple-200 px-3 py-1 rounded-full text-xs font-medium"
+                          >
+                            {tech}
+                                  </span>
+                        ))}
+                      </div>
+                    </div>
                           </motion.div>
-                        </motion.div>
-                      );
-                    })}
+                  </motion.div>
+                );
+              })}
                   </div>
                 </div>
               ))}

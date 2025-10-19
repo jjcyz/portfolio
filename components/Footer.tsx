@@ -26,8 +26,8 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="liquid-glass-strong border-t border-white/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 border-t border-white/30">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-center">
           {/* Logo and Description */}
           <motion.div
@@ -65,7 +65,7 @@ export default function Footer() {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="p-3 liquid-glass rounded-lg hover:liquid-glass-strong transition-all duration-200 group"
+                  className="p-3 bg-white/15 backdrop-blur-xl border border-white/25 shadow-2xl shadow-black/20 rounded-lg hover:bg-white/25 hover:backdrop-blur-2xl hover:border-white/35 hover:shadow-2xl hover:shadow-black/25 transition-all duration-200 group"
                   aria-label={`Visit ${link.name} profile`}
                 >
                   <IconComponent size={20} className="text-slate-700 group-hover:text-purple-700 transition-colors duration-200" />

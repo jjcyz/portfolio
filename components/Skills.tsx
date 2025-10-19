@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Code, Database, Cloud, Brain, Wrench, Sparkles } from 'lucide-react';
 import { skills } from '@/lib/data';
@@ -64,8 +63,8 @@ export default function Skills() {
   }, {} as Record<string, typeof skills>);
 
   return (
-    <section id="skills" className="section-padding">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 sm:py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -107,7 +106,7 @@ export default function Skills() {
                   className="group"
                 >
                   {/* Category Card */}
-                  <div className="liquid-glass-card p-6 hover:liquid-glass-card-hover hover:scale-105 transition-all duration-300">
+                  <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-6 hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 hover:scale-105 transition-all duration-300">
                     {/* Category Header */}
                     <div className="flex items-center gap-3 mb-6">
                       <div className={`p-3 rounded-xl bg-gradient-to-r ${categoryInfo.color} group-hover:scale-110 transition-transform duration-200`}>
@@ -129,7 +128,7 @@ export default function Skills() {
                             delay: 1 + categoryIndex * 0.1 + skillIndex * 0.05,
                             duration: 0.4
                           }}
-                          className="px-3 py-1.5 liquid-glass-subtle hover:liquid-glass text-slate-800 text-sm font-medium rounded-full transition-all duration-200 cursor-default"
+                          className="px-3 py-1.5 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:border-white/25 hover:shadow-2xl hover:shadow-black/20 text-slate-800 text-sm font-medium rounded-full transition-all duration-200 cursor-default"
                         >
                           {skill.name}
                         </motion.span>
@@ -148,7 +147,7 @@ export default function Skills() {
             transition={{ delay: 1.4, duration: 0.6 }}
             className="mt-16 text-center"
           >
-            <div className="liquid-glass-card p-10 max-w-3xl mx-auto">
+            <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10 max-w-3xl mx-auto">
               <p className="text-slate-800 leading-relaxed">
                 New technologies are being developed every day. I&apos;m always finding new
                 ways to improve my skills using them.

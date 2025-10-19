@@ -1,11 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLink, Github, FileText, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, Github, FileText } from 'lucide-react';
 import { projects } from '@/lib/data';
 import { generateProjectStructuredData } from '@/lib/structured-data';
 
@@ -13,6 +12,12 @@ export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+
+  // Pre-generate structured data for all projects
+  const projectsWithStructuredData = projects.map(project => ({
+    ...project,
+    structuredData: generateProjectStructuredData(project)
+  }));
 
   const categoryColors = {
     ai: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
@@ -29,8 +34,8 @@ export default function Projects() {
   };
 
   return (
-    <section id="projects" className="section-padding">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 sm:py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -57,8 +62,7 @@ export default function Projects() {
 
           {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => {
-              const structuredData = generateProjectStructuredData(project);
+            {projectsWithStructuredData.map((project, index) => {
 
               return (
                 <motion.div
@@ -74,11 +78,11 @@ export default function Projects() {
                   <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
-                      __html: JSON.stringify(structuredData),
+                      __html: JSON.stringify(project.structuredData),
                     }}
                   />
 
-                  <div className="liquid-glass-card overflow-hidden hover:liquid-glass-card-hover transition-all duration-300 h-full flex flex-col">
+                  <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl overflow-hidden hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 h-full flex flex-col">
                     {/* Project Image or Iframe */}
                     <div className="relative h-48 overflow-hidden">
                       {project.iframeUrl ? (
@@ -198,7 +202,7 @@ export default function Projects() {
                               delay: 0.8 + index * 0.2 + techIndex * 0.1,
                               duration: 0.4
                             }}
-                            className="px-2 py-1 liquid-glass-subtle text-purple-800 rounded-full text-xs font-medium"
+                            className="px-2 py-1 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 text-purple-800 rounded-full text-xs font-medium"
                           >
                             {tech}
                           </motion.span>

@@ -52,7 +52,7 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="liquid-glass-strong rounded-2xl border border-white/30"
+             className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-2xl"
       >
       <nav className="px-6 py-1 relative">
         <div className="flex items-center justify-center h-12">
@@ -62,8 +62,8 @@ export default function Header() {
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`nav-link ${
-                  activeSection === item.href.substring(1) ? 'active' : ''
+                className={`text-slate-700 hover:text-slate-800 transition-all duration-300 relative px-4 py-2 rounded-lg ${
+                  activeSection === item.href.substring(1) ? 'bg-white/15' : ''
                 }`}
                 data-section={item.href.substring(1)}
                 aria-label={`Navigate to ${item.label} section`}
@@ -76,7 +76,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-lg liquid-glass-subtle hover:liquid-glass transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50"
+             className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-lg bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:border-white/25 hover:shadow-2xl hover:shadow-black/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -126,8 +126,8 @@ export default function Header() {
                     onClick={() => handleNavClick(item.href)}
                     className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 ${
                       activeSection === item.href.substring(1)
-                        ? 'liquid-glass text-purple-700'
-                        : 'text-slate-700 hover:liquid-glass-subtle hover:text-purple-700'
+                        ? 'bg-white/15 text-purple-700'
+                        : 'text-slate-700 hover:bg-white/10 hover:text-purple-700'
                     }`}
                     data-section={item.href.substring(1)}
                     aria-label={`Navigate to ${item.label} section`}
