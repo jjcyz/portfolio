@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode, useState } from 'react';
+import { useRef, ReactNode, useState, useEffect } from 'react';
 import { MapPin, Calendar, GraduationCap, Heart } from 'lucide-react';
 import { education } from '@/lib/data';
 
@@ -37,6 +37,22 @@ export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [isPersonalLifeExpanded, setIsPersonalLifeExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Listen for resize events
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    mediaQuery.addEventListener('change', checkIsMobile);
+
+    return () => mediaQuery.removeEventListener('change', checkIsMobile);
+  }, []);
 
   return (
     <section id="about" className="py-20 sm:py-24 lg:py-32">
@@ -150,13 +166,13 @@ export default function About() {
                 transition={{ delay: 1.0, duration: 0.8 }}
                 className={`group p-3 sm:p-4 ${
                   // Mobile: click to expand, Desktop: hover to expand
-                  window.matchMedia('(max-width: 767px)').matches
+                  isMobile
                     ? 'cursor-pointer'
                     : 'cursor-default'
                 }`}
                 onClick={() => {
                   // Only allow click on mobile devices
-                  if (window.matchMedia('(max-width: 767px)').matches) {
+                  if (isMobile) {
                     setIsPersonalLifeExpanded(!isPersonalLifeExpanded);
                   }
                 }}

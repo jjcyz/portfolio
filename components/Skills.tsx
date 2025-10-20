@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Code, Database, Cloud, Brain, Wrench, Sparkles } from 'lucide-react';
 import { skills } from '@/lib/data';
 
@@ -36,6 +36,22 @@ export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [expandedSkills, setExpandedSkills] = useState<Set<string>>(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Listen for resize events
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    mediaQuery.addEventListener('change', checkIsMobile);
+
+    return () => mediaQuery.removeEventListener('change', checkIsMobile);
+  }, []);
 
   const skillsByCategory = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -114,13 +130,13 @@ export default function Skills() {
                       <div
                         className={`w-full bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl transition-all duration-300 overflow-hidden relative ${
                           // Mobile: click to expand, Desktop: hover to expand
-                          window.matchMedia('(max-width: 767px)').matches
+                          isMobile
                             ? 'cursor-pointer'
                             : 'cursor-default hover:bg-white/30 hover:backdrop-blur-3xl hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/30 group-hover:scale-105 group-hover:z-10'
                         }`}
                         onClick={() => {
                           // Only allow click on mobile devices
-                          if (window.matchMedia('(max-width: 767px)').matches) {
+                          if (isMobile) {
                             toggleSkillCategory(categoryKey);
                           }
                         }}

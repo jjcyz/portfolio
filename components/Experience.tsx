@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Calendar, MapPin } from 'lucide-react';
 import { experiences } from '@/lib/data';
 
@@ -9,6 +9,22 @@ export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Listen for resize events
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    mediaQuery.addEventListener('change', checkIsMobile);
+
+    return () => mediaQuery.removeEventListener('change', checkIsMobile);
+  }, []);
 
   // Group experiences by year
   const experiencesByYear = experiences.reduce((acc, experience) => {
@@ -133,7 +149,7 @@ export default function Experience() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => {
                               // Only allow click on mobile devices
-                              if (window.matchMedia('(max-width: 767px)').matches) {
+                              if (isMobile) {
                                 toggleCard(experience.id);
                               }
                             }}
@@ -143,7 +159,7 @@ export default function Experience() {
                                 : 'p-3 w-full max-w-full md:max-w-md'
                             } ${
                               // Mobile: click to expand, Desktop: hover to expand
-                              window.matchMedia('(max-width: 767px)').matches
+                              isMobile
                                 ? 'cursor-pointer'
                                 : 'cursor-default hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 md:group-hover:w-[600px] md:group-hover:max-w-[600px] md:group-hover:p-4'
                             }`}
