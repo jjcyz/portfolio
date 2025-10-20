@@ -9,44 +9,44 @@ const skillCategories = {
   languages: {
     icon: Code,
     label: 'Programming Languages',
-    color: 'from-blue-500 to-cyan-500',
-    bgColor: 'bg-blue-500/10',
-    borderColor: 'border-blue-500/20'
+    color: 'from-purple-500 to-purple-600',
+    bgColor: 'bg-purple-500/10',
+    borderColor: 'border-purple-500/20'
   },
   frameworks: {
     icon: Sparkles,
     label: 'Frameworks & Libraries',
-    color: 'from-purple-500 to-pink-500',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/20'
+    color: 'from-purple-600 to-pink-500',
+    bgColor: 'bg-purple-600/10',
+    borderColor: 'border-purple-600/20'
   },
   cloud: {
     icon: Cloud,
     label: 'Cloud & Infrastructure',
-    color: 'from-green-500 to-emerald-500',
-    bgColor: 'bg-green-500/10',
-    borderColor: 'border-green-500/20'
+    color: 'from-pink-500 to-pink-600',
+    bgColor: 'bg-pink-500/10',
+    borderColor: 'border-pink-500/20'
   },
   databases: {
     icon: Database,
     label: 'Databases',
-    color: 'from-orange-500 to-red-500',
-    bgColor: 'bg-orange-500/10',
-    borderColor: 'border-orange-500/20'
+    color: 'from-purple-700 to-pink-600',
+    bgColor: 'bg-purple-700/10',
+    borderColor: 'border-purple-700/20'
   },
   ai: {
     icon: Brain,
     label: 'AI & Machine Learning',
-    color: 'from-indigo-500 to-purple-500',
-    bgColor: 'bg-indigo-500/10',
-    borderColor: 'border-indigo-500/20'
+    color: 'from-pink-600 to-purple-700',
+    bgColor: 'bg-pink-600/10',
+    borderColor: 'border-pink-600/20'
   },
   tools: {
     icon: Wrench,
     label: 'Tools & Technologies',
-    color: 'from-gray-500 to-slate-500',
-    bgColor: 'bg-gray-500/10',
-    borderColor: 'border-gray-500/20'
+    color: 'from-purple-800 to-pink-700',
+    bgColor: 'bg-purple-800/10',
+    borderColor: 'border-purple-800/20'
   },
 };
 
@@ -89,8 +89,24 @@ export default function Skills() {
             />
           </div>
 
-          {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Computer Component Layout */}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Main Computer Component Container - Like a motherboard */}
+            <div className="relative bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl border-2 border-purple-400/30 shadow-2xl shadow-purple-500/20 rounded-3xl p-8 overflow-hidden">
+              {/* Circuit Board Pattern Background */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-4 left-4 w-2 h-2 bg-purple-400 rounded-full"></div>
+                <div className="absolute top-4 right-4 w-2 h-2 bg-pink-400 rounded-full"></div>
+                <div className="absolute bottom-4 left-4 w-2 h-2 bg-purple-400 rounded-full"></div>
+                <div className="absolute bottom-4 right-4 w-2 h-2 bg-pink-400 rounded-full"></div>
+                <div className="absolute top-1/2 left-8 w-1 h-1 bg-purple-300 rounded-full"></div>
+                <div className="absolute top-1/2 right-8 w-1 h-1 bg-pink-300 rounded-full"></div>
+                <div className="absolute top-8 left-1/2 w-1 h-1 bg-purple-300 rounded-full"></div>
+                <div className="absolute bottom-8 left-1/2 w-1 h-1 bg-pink-300 rounded-full"></div>
+              </div>
+
+              {/* Component Grid */}
+              <div className="relative grid grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.entries(skillCategories).map(([categoryKey, categoryInfo], categoryIndex) => {
               const categorySkills = skillsByCategory[categoryKey] || [];
               const IconComponent = categoryInfo.icon;
@@ -100,44 +116,80 @@ export default function Skills() {
               return (
                 <motion.div
                   key={categoryKey}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 0.8 + categoryIndex * 0.1, duration: 0.6 }}
-                  className="group"
-                >
-                  {/* Category Card */}
-                  <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-6 hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 hover:scale-105 transition-all duration-300">
-                    {/* Category Header */}
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${categoryInfo.color} group-hover:scale-110 transition-transform duration-200`}>
-                        <IconComponent size={20} className="text-white" />
+                      className="group relative"
+                    >
+                      {/* Component Card - Compact by default, expands on hover */}
+                      <div className="w-full bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl hover:bg-white/30 hover:backdrop-blur-3xl hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 overflow-hidden group-hover:scale-105 group-hover:z-10 relative">
+
+                        {/* Default State - Compact Header Only */}
+                        <div className="p-4 group-hover:hidden">
+                          <div className="flex items-center gap-3">
+                            <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                              <IconComponent size={16} className="text-white" />
+                            </div>
+                            <h3 className="text-sm font-semibold text-slate-800">
+                              {categoryInfo.label}
+                            </h3>
+                          </div>
+                        </div>
+
+                        {/* Expanded State - Shows on hover */}
+                        <div className="hidden group-hover:block p-4">
+                          {/* Expanded Header */}
+                          <div className="flex items-center gap-3 mb-4">
+                            <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 group-hover:scale-110 transition-transform duration-200">
+                              <IconComponent size={16} className="text-white" />
                       </div>
-                      <h3 className="text-base font-semibold text-slate-800">
+                            <h3 className="text-sm font-semibold text-slate-800">
                         {categoryInfo.label}
                       </h3>
                     </div>
 
-                    {/* Skills Tags */}
-                    <div className="flex flex-wrap gap-2">
+                          {/* Skills List */}
+                          <div className="mb-4">
+                            <div className="flex flex-wrap gap-1.5">
                       {categorySkills.map((skill, skillIndex) => (
                         <motion.span
                           key={skill.name}
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                           transition={{
-                            delay: 1 + categoryIndex * 0.1 + skillIndex * 0.05,
-                            duration: 0.4
+                                    delay: 1 + categoryIndex * 0.1 + skillIndex * 0.03,
+                                    duration: 0.3
                           }}
-                          className="px-3 py-1.5 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:border-white/25 hover:shadow-2xl hover:shadow-black/20 text-slate-800 text-sm font-medium rounded-full transition-all duration-200 cursor-default"
+                                  className="px-2 py-1 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-slate-800 text-xs font-medium rounded-full transition-all duration-200"
                         >
                           {skill.name}
                         </motion.span>
                       ))}
+                            </div>
+                          </div>
+
+                          {/* Status indicators */}
+                          <div className="flex justify-end">
+                            <div className="flex gap-1">
+                              <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                              <div className="w-1.5 h-1.5 bg-pink-500 rounded-full"></div>
+                            </div>
+                          </div>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
+              </div>
+
+
+              {/* Status Indicators */}
+              <div className="absolute top-4 right-4 flex gap-2">
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
+              </div>
+            </div>
           </div>
 
           {/* Skills Summary */}
@@ -147,12 +199,6 @@ export default function Skills() {
             transition={{ delay: 1.4, duration: 0.6 }}
             className="mt-16 text-center"
           >
-            <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10 max-w-3xl mx-auto">
-              <p className="text-slate-800 leading-relaxed">
-                New technologies are being developed every day. I&apos;m always finding new
-                ways to improve my skills using them.
-              </p>
-            </div>
           </motion.div>
         </motion.div>
       </div>
