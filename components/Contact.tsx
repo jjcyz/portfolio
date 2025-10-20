@@ -58,57 +58,16 @@ export default function Contact() {
             >
               <span className="gradient-text">Contact Me</span>
             </motion.h2>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
-            />
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-            {/* Contact Information */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10"
-            >
-              <h3 className="text-xl font-bold text-slate-800 mb-6">
-                Let&apos;s Connect
-              </h3>
-              <p className="text-slate-800 mb-8 leading-relaxed">
-                I&apos;m always interested in hearing about new opportunities, collaborations,
-                or just having a chat about technology and/or business. Feel free to reach out!
-              </p>
-
-
-              {/* Additional Info */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-                className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 p-6 rounded-xl"
-              >
-                <h4 className="text-base font-semibold text-slate-800 mb-3">
-                  Quick Response
-                </h4>
-                <p className="text-slate-800 text-sm leading-relaxed">
-                  I typically respond to emails within 24 hours.
-                </p>
-              </motion.div>
-            </motion.div>
-
+          <div className="max-w-4xl mx-auto">
             {/* Contact Form */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <div className="glass-card p-8">
-                <h3 className="text-xl font-bold text-slate-800 mb-6">
-                  Send a Message
-                </h3>
+              <div className="glass-card p-6">
 
                 {isSubmitted ? (
                   <motion.div
@@ -125,10 +84,10 @@ export default function Contact() {
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid sm:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">
+                        <label htmlFor="name" className="block text-xs font-medium text-slate-700 mb-1">
                           Name *
                         </label>
                         <input
@@ -138,12 +97,12 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="Your name"
                         />
                       </div>
                       <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">
+                        <label htmlFor="email" className="block text-xs font-medium text-slate-700 mb-1">
                           Email *
                         </label>
                         <input
@@ -153,14 +112,14 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
 
                     <div>
-                      <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="subject" className="block text-xs font-medium text-slate-700 mb-1">
                         Subject *
                       </label>
                       <input
@@ -170,13 +129,13 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="What's this about?"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">
+                      <label htmlFor="message" className="block text-xs font-medium text-slate-700 mb-1">
                         Message *
                       </label>
                       <textarea
@@ -185,8 +144,8 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleInputChange}
                         required
-                        rows={6}
-                        className="w-full px-4 py-3 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
+                        rows={4}
+                        className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none text-sm"
                         placeholder="Tell me about your project, request for my resume, discuss an opportunity, or just say hello!"
                       />
                     </div>
@@ -196,17 +155,17 @@ export default function Contact() {
                       disabled={isSubmitting}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="w-full bg-gradient-to-r from-purple-500 to-pink-400 text-white px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-gradient-to-r from-purple-500 to-pink-400 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                           Sending...
                         </>
                       ) : (
                         <>
-                          <Send size={20} />
-                          Send Message
+                          <Send size={16} />
+                          Send
                         </>
                       )}
                     </motion.button>

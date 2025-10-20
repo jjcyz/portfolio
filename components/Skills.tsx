@@ -8,45 +8,27 @@ import { skills } from '@/lib/data';
 const skillCategories = {
   languages: {
     icon: Code,
-    label: 'Programming Languages',
-    color: 'from-purple-500 to-purple-600',
-    bgColor: 'bg-purple-500/10',
-    borderColor: 'border-purple-500/20'
+    label: 'Programming Languages'
   },
   frameworks: {
     icon: Sparkles,
-    label: 'Frameworks & Libraries',
-    color: 'from-purple-600 to-pink-500',
-    bgColor: 'bg-purple-600/10',
-    borderColor: 'border-purple-600/20'
+    label: 'Frameworks & Libraries'
   },
   cloud: {
     icon: Cloud,
-    label: 'Cloud & Infrastructure',
-    color: 'from-pink-500 to-pink-600',
-    bgColor: 'bg-pink-500/10',
-    borderColor: 'border-pink-500/20'
+    label: 'Cloud & Infrastructure'
   },
   databases: {
     icon: Database,
-    label: 'Databases',
-    color: 'from-purple-700 to-pink-600',
-    bgColor: 'bg-purple-700/10',
-    borderColor: 'border-purple-700/20'
+    label: 'Databases'
   },
   ai: {
     icon: Brain,
-    label: 'AI & Machine Learning',
-    color: 'from-pink-600 to-purple-700',
-    bgColor: 'bg-pink-600/10',
-    borderColor: 'border-pink-600/20'
+    label: 'AI & Machine Learning'
   },
   tools: {
     icon: Wrench,
-    label: 'Tools & Technologies',
-    color: 'from-purple-800 to-pink-700',
-    bgColor: 'bg-purple-800/10',
-    borderColor: 'border-purple-800/20'
+    label: 'Tools & Technologies'
   },
 };
 
@@ -81,12 +63,6 @@ export default function Skills() {
             >
               <span className="gradient-text">Technical Skills</span>
             </motion.h2>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
-            />
           </div>
 
           {/* Computer Component Layout */}
@@ -127,8 +103,8 @@ export default function Skills() {
                         {/* Default State - Compact Header Only */}
                         <div className="p-4 group-hover:hidden">
                           <div className="flex items-center gap-3">
-                            <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500">
-                              <IconComponent size={16} className="text-white" />
+                            <div className="p-2">
+                              <IconComponent size={16} className="text-slate-700" />
                             </div>
                             <h3 className="text-sm font-semibold text-slate-800">
                               {categoryInfo.label}
@@ -140,8 +116,8 @@ export default function Skills() {
                         <div className="hidden group-hover:block p-4">
                           {/* Expanded Header */}
                           <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 group-hover:scale-110 transition-transform duration-200">
-                              <IconComponent size={16} className="text-white" />
+                            <div className="p-2 group-hover:scale-110 transition-transform duration-200">
+                              <IconComponent size={16} className="text-slate-700" />
                       </div>
                             <h3 className="text-sm font-semibold text-slate-800">
                         {categoryInfo.label}
@@ -168,38 +144,17 @@ export default function Skills() {
                             </div>
                           </div>
 
-                          {/* Status indicators */}
-                          <div className="flex justify-end">
-                            <div className="flex gap-1">
-                              <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                              <div className="w-1.5 h-1.5 bg-pink-500 rounded-full"></div>
-                            </div>
-                          </div>
                     </div>
                   </div>
                 </motion.div>
               );
             })}
-              </div>
+          </div>
 
 
-              {/* Status Indicators */}
-              <div className="absolute top-4 right-4 flex gap-2">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
-              </div>
             </div>
           </div>
 
-          {/* Skills Summary */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ delay: 1.4, duration: 0.6 }}
-            className="mt-16 text-center"
-          >
-          </motion.div>
         </motion.div>
       </div>
     </section>

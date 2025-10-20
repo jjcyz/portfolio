@@ -61,12 +61,6 @@ export default function Experience() {
             >
               <span className="gradient-text">Experience</span>
             </motion.h2>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
-            />
           </div>
 
           {/* Timeline */}
@@ -83,28 +77,28 @@ export default function Experience() {
                 }
 
                 return (
-                  <div key={year} className="relative">
-                    {/* Year Label - Alternating left and right */}
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                      transition={{ delay: 0.6 + yearIndex * 0.3, duration: 0.6 }}
-                      className="absolute -translate-y-1/2 z-20"
-                      style={{
-                        left: yearIndex % 2 === 0 ? 'calc(50% - 80px)' : 'calc(50% + 20px)'
-                      }}
-                    >
-                      <div className="text-purple-600 font-bold text-xl whitespace-nowrap">
-                        {year}
-                      </div>
-                    </motion.div>
+                <div key={year} className="relative">
+                  {/* Year Label - Alternating left and right */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ delay: 0.6 + yearIndex * 0.3, duration: 0.6 }}
+                    className="absolute -translate-y-1/2 z-20"
+                    style={{
+                      left: yearIndex % 2 === 0 ? 'calc(50% - 80px)' : 'calc(50% + 20px)'
+                    }}
+                  >
+                    <div className="text-purple-600 font-bold text-xl whitespace-nowrap">
+                      {year}
+                    </div>
+                  </motion.div>
 
-                    {/* Year Dot */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full border-4 border-white shadow-lg z-10" />
+                  {/* Year Dot */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full border-4 border-white shadow-lg z-10" />
 
-                    {/* Experience Cards for this Year */}
-                    <div className="pt-8 space-y-8">
-                      {experiencesByYear[year].map((experience, expIndex) => {
+                  {/* Experience Cards for this Year */}
+                  <div className="pt-8 space-y-8">
+                    {experiencesByYear[year].map((experience, expIndex) => {
                         // Use global experience index for proper alternating
                         const isLeft = (globalExpIndex + expIndex) % 2 === 0;
 
@@ -164,11 +158,11 @@ export default function Experience() {
                                 ? 'max-h-[600px] opacity-100 mt-3'
                                 : 'max-h-0 opacity-0 mt-0'
                             } md:max-h-0 md:opacity-0 md:mt-0 md:group-hover:opacity-100 md:group-hover:max-h-[600px] md:group-hover:mt-3`}>
-                              {/* Date */}
+                      {/* Date */}
                               <div className="flex items-center gap-1 text-sm text-slate-700 mb-3">
                                 <Calendar size={14} />
                                 {formatDateWithMonth(experience.startDate)} - {experience.endDate === 'present' ? 'Present' : formatDateWithMonth(experience.endDate)}
-                              </div>
+                      </div>
 
                       {/* Description */}
                               <ul className="space-y-1.5 mb-3">
@@ -199,8 +193,8 @@ export default function Experience() {
                   </motion.div>
                 );
               })}
-                      </div>
-                    </div>
+                  </div>
+                </div>
                   );
                 })}
             </div>

@@ -1,23 +1,52 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink, Github, FileText } from 'lucide-react';
 import { projects } from '@/lib/data';
-import { generateProjectStructuredData } from '@/lib/structured-data';
+
+// Lazy loading iframe component
+const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key: string]: any }) => {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const isInView = useInView(iframeRef, { once: true, margin: '50px' });
+
+  useEffect(() => {
+    if (isInView && !isLoaded) {
+      setIsLoaded(true);
+    }
+  }, [isInView, isLoaded]);
+
+  return (
+    <div className="relative w-full h-full">
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-8 h-8 border-4 border-purple-300 border-t-purple-600 rounded-full animate-spin mx-auto mb-2"></div>
+            <p className="text-sm text-purple-600">Loading preview...</p>
+          </div>
+        </div>
+      )}
+      <iframe
+        ref={iframeRef}
+        src={isLoaded ? src : ''}
+        title={title}
+        className={`w-full h-full border-0 ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+        {...props}
+      />
+    </div>
+  );
+};
 
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
-  // Pre-generate structured data for all projects
-  const projectsWithStructuredData = projects.map(project => ({
-    ...project,
-    structuredData: generateProjectStructuredData(project)
-  }));
+  // Use projects directly without runtime structured data generation
+  const projectsWithStructuredData = projects;
 
   const categoryColors = {
     ai: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
@@ -26,38 +55,20 @@ export default function Projects() {
     systems: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
   };
 
-  const categoryIcons = {
-    ai: '🤖',
-    web: '🌐',
-    research: '🔬',
-    systems: '⚙️',
-  };
-
   return (
     <section id="projects" className="py-20 sm:py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.5 }}
         >
           {/* Section Header */}
           <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4"
-            >
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
               <span className="gradient-text">Featured Projects</span>
-            </motion.h2>
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-400 mx-auto rounded-full"
-            />
+            </h2>
           </div>
 
           {/* Projects Grid */}
@@ -65,29 +76,20 @@ export default function Projects() {
             {projectsWithStructuredData.map((project, index) => {
 
               return (
-                <motion.div
+                <div
                   key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                  transition={{ delay: 0.6 + index * 0.2, duration: 0.6 }}
                   className="group"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                 >
                   {/* Structured Data */}
-                  <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify(project.structuredData),
-                    }}
-                  />
 
                   <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl overflow-hidden hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 h-full flex flex-col">
                     {/* Project Image or Iframe */}
-                    <div className="relative h-48 overflow-hidden">
+                    <div className="relative h-90 overflow-hidden">
                       {project.iframeUrl ? (
                         <>
-                          <iframe
+                          <LazyIframe
                             src={project.iframeUrl}
                             title={`${project.title} live demo`}
                             className="w-full h-full border-0"
@@ -137,7 +139,7 @@ export default function Projects() {
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4">
                         <span className={`px-3 py-1 rounded-full text-sm font-medium border ${categoryColors[project.category]}`}>
-                          {categoryIcons[project.category]} {project.category.toUpperCase()}
+                          {project.category.toUpperCase()}
                         </span>
                       </div>
 
@@ -210,12 +212,7 @@ export default function Projects() {
                       </div>
 
                       {/* View Project Button */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                        transition={{ delay: 1 + index * 0.2, duration: 0.4 }}
-                        className="mt-auto"
-                      >
+                      <div className="mt-auto">
                         <Link
                           href={project.githubUrl || project.liveUrl || project.paperUrl || '#'}
                           target="_blank"
@@ -225,10 +222,10 @@ export default function Projects() {
                           <span>View Project</span>
                           <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform duration-200" />
                         </Link>
-                      </motion.div>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
