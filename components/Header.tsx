@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 const navItems = [
+  { href: '#hero', label: 'Home' },
   { href: '#about', label: 'About' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
@@ -52,9 +53,12 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-             className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-2xl"
+        className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-2xl relative overflow-hidden"
       >
-      <nav className="px-6 py-1 relative">
+        {/* Slider Background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-pulse delay-1000" />
+      <nav className="px-6 py-1 relative z-10">
         <div className="flex items-center justify-center h-12">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2">

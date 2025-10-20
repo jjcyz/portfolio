@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function Hero() {
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse" />
@@ -20,7 +20,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-16"
+          className="max-w-5xl mx-auto bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-12"
         >
           {/* Greeting */}
           <motion.p
