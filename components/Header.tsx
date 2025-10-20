@@ -48,7 +48,7 @@ export default function Header() {
   };
 
   return (
-    <div className="fixed top-4 left-0 right-0 z-50 flex justify-center">
+    <div className="fixed top-4 left-4 right-4 md:left-1/2 md:right-auto md:transform md:-translate-x-1/2 z-50">
       <motion.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -58,29 +58,14 @@ export default function Header() {
         {/* Slider Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 animate-pulse" />
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent transform -skew-x-12 animate-pulse delay-1000" />
-      <nav className="px-6 py-1 relative z-10">
-        <div className="flex items-center justify-center h-12">
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => handleNavClick(item.href)}
-                className={`text-slate-700 hover:text-slate-800 transition-all duration-300 relative px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 ${
-                  activeSection === item.href.substring(1) ? 'bg-white/15' : ''
-                }`}
-                data-section={item.href.substring(1)}
-                aria-label={`Navigate to ${item.label} section`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-400/5 via-pink-400/5 to-purple-400/5 transform translate-x-[-100%] animate-[slide_3s_ease-in-out_infinite]" />
 
+        <div className="px-6 py-1 relative z-10">
+        <div className="flex items-center justify-between h-12">
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-             className="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2 p-2 rounded-lg bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:border-white/25 hover:shadow-2xl hover:shadow-black/20 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50"
+             className="md:hidden p-2 rounded-lg bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:border-white/25 hover:shadow-2xl hover:shadow-black/20 transition-all duration-200 focus:outline-none"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -108,6 +93,23 @@ export default function Header() {
               )}
             </AnimatePresence>
           </button>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-2">
+            {navItems.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => handleNavClick(item.href)}
+                className={`text-slate-700 hover:text-slate-800 transition-all duration-300 relative px-4 py-2 rounded-lg focus:outline-none ${
+                  activeSection === item.href.substring(1) ? 'bg-white/15' : ''
+                }`}
+                data-section={item.href.substring(1)}
+                aria-label={`Navigate to ${item.label} section`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -128,7 +130,7 @@ export default function Header() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => handleNavClick(item.href)}
-                    className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 ${
+                    className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 focus:outline-none ${
                       activeSection === item.href.substring(1)
                         ? 'bg-white/15 text-purple-700'
                         : 'text-slate-700 hover:bg-white/10 hover:text-purple-700'
@@ -143,8 +145,8 @@ export default function Header() {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
-    </motion.header>
+        </div>
+      </motion.header>
     </div>
   );
 }

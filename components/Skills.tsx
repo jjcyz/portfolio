@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Code, Database, Cloud, Brain, Wrench, Sparkles } from 'lucide-react';
 import { skills } from '@/lib/data';
 
@@ -35,6 +35,7 @@ const skillCategories = {
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [expandedSkills, setExpandedSkills] = useState<Set<string>>(new Set());
 
   const skillsByCategory = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) {
@@ -43,6 +44,18 @@ export default function Skills() {
     acc[skill.category].push(skill);
     return acc;
   }, {} as Record<string, typeof skills>);
+
+  const toggleSkillCategory = (categoryKey: string) => {
+    setExpandedSkills(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(categoryKey)) {
+        newSet.delete(categoryKey);
+      } else {
+        newSet.add(categoryKey);
+      }
+      return newSet;
+    });
+  };
 
   return (
     <section id="skills" className="py-20 sm:py-24 lg:py-32">
@@ -66,7 +79,7 @@ export default function Skills() {
           </div>
 
           {/* Computer Component Layout */}
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-full mx-auto">
             {/* Main Computer Component Container - Like a motherboard */}
             <div className="relative bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl border-2 border-purple-400/30 shadow-2xl shadow-purple-500/20 rounded-3xl p-4 sm:p-6 lg:p-8 overflow-hidden">
               {/* Circuit Board Pattern Background */}
@@ -97,11 +110,24 @@ export default function Skills() {
                   transition={{ delay: 0.8 + categoryIndex * 0.1, duration: 0.6 }}
                       className="group relative"
                     >
-                      {/* Component Card - Compact by default, expands on hover */}
-                      <div className="w-full bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl hover:bg-white/30 hover:backdrop-blur-3xl hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 overflow-hidden group-hover:scale-105 group-hover:z-10 relative">
+                      {/* Component Card - Compact by default, expands on hover (desktop) or click (mobile) */}
+                      <div
+                        className={`w-full bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl transition-all duration-300 overflow-hidden relative ${
+                          // Mobile: click to expand, Desktop: hover to expand
+                          window.matchMedia('(max-width: 767px)').matches
+                            ? 'cursor-pointer'
+                            : 'cursor-default hover:bg-white/30 hover:backdrop-blur-3xl hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/30 group-hover:scale-105 group-hover:z-10'
+                        }`}
+                        onClick={() => {
+                          // Only allow click on mobile devices
+                          if (window.matchMedia('(max-width: 767px)').matches) {
+                            toggleSkillCategory(categoryKey);
+                          }
+                        }}
+                      >
 
                         {/* Default State - Compact Header Only */}
-                        <div className="p-4 group-hover:hidden">
+                        <div className={`p-4 ${expandedSkills.has(categoryKey) ? 'hidden' : 'block md:group-hover:hidden'}`}>
                           <div className="flex items-center gap-3">
                             <div className="p-2">
                               <IconComponent size={16} className="text-slate-700" />
@@ -112,8 +138,8 @@ export default function Skills() {
                           </div>
                         </div>
 
-                        {/* Expanded State - Shows on hover */}
-                        <div className="hidden group-hover:block p-4">
+                        {/* Expanded State - Shows on hover (desktop) or click (mobile) */}
+                        <div className={`${expandedSkills.has(categoryKey) ? 'block' : 'hidden md:group-hover:block'} p-4`}>
                           {/* Expanded Header */}
                           <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 group-hover:scale-110 transition-transform duration-200">

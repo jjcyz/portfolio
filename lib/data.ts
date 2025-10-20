@@ -71,7 +71,7 @@ export const projects: Project[] = [
     title: 'Variational Autoencoder (VAE) Comparison',
     description: 'Implemented and compared Bernoulli and Gaussian VAEs using PyTorch, achieving 90% reconstruction accuracy on the MNIST dataset with a compact 40-dimensional latent space.',
     longDescription: 'Built comprehensive visualization pipeline generating 6 different analysis outputs including loss comparisons and reconstruction quality metrics. Optimized model training through systematic hyperparameter tuning and implemented advanced data preprocessing techniques.',
-    image: '/images/ml_paper_pipeline.PNG',
+    image: '/images/placeholder.svg',
     technologies: ['Python', 'PyTorch', 'Data Visualization'],
     githubUrl: 'https://github.com/jjcyz/bernoulli_gaussian_vae',
     featured: true,

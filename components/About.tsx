@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode } from 'react';
+import { useRef, ReactNode, useState } from 'react';
 import { MapPin, Calendar, GraduationCap, Heart } from 'lucide-react';
 import { education } from '@/lib/data';
 
@@ -36,6 +36,7 @@ const ModuleContainer = ({ children, className = "", ...props }: ModuleContainer
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isPersonalLifeExpanded, setIsPersonalLifeExpanded] = useState(false);
 
   return (
     <section id="about" className="py-20 sm:py-24 lg:py-32">
@@ -114,7 +115,7 @@ export default function About() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                   transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
-                      className="bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl p-4 hover:bg-white/30 hover:backdrop-blur-3xl hover:border-purple-400/50 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300"
+                      className="p-4 hover:bg-white/10 transition-all duration-300 rounded-lg"
                 >
                       <h4 className="text-base font-semibold text-slate-800 mb-2">
                     {edu.institution}
@@ -147,7 +148,18 @@ export default function About() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
-                className="group p-3 sm:p-4"
+                className={`group p-3 sm:p-4 ${
+                  // Mobile: click to expand, Desktop: hover to expand
+                  window.matchMedia('(max-width: 767px)').matches
+                    ? 'cursor-pointer'
+                    : 'cursor-default'
+                }`}
+                onClick={() => {
+                  // Only allow click on mobile devices
+                  if (window.matchMedia('(max-width: 767px)').matches) {
+                    setIsPersonalLifeExpanded(!isPersonalLifeExpanded);
+                  }
+                }}
               >
 
                 {/* Personal Life Header - Always Visible */}
@@ -158,8 +170,12 @@ export default function About() {
                   </h3>
                 </div>
 
-                {/* Personal Life Content - Hidden by default, shown on hover */}
-                <div className="relative z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 max-h-0 group-hover:max-h-96 overflow-hidden">
+                {/* Personal Life Content - Hidden by default, shown on hover (desktop) or click (mobile) */}
+                <div className={`relative z-10 transition-all duration-300 overflow-hidden ${
+                  isPersonalLifeExpanded
+                    ? 'opacity-100 max-h-96'
+                    : 'opacity-0 max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-96'
+                }`}>
                   <p className="text-slate-800 leading-relaxed mb-4 text-sm">
                     Asides from all the tech stuff, I enjoy exploring a mash of the great outdoors and city life that Vancouver
                     blesses me with. From going on hikes in Squamish to beaches in 30 mins to skiing and snowboarding in Whistler.

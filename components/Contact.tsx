@@ -60,14 +60,14 @@ export default function Contact() {
             </motion.h2>
           </div>
 
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-2xl mx-auto">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <div className="glass-card p-4 sm:p-6">
+              <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-4 sm:p-6">
 
                 {isSubmitted ? (
                   <motion.div
@@ -84,8 +84,8 @@ export default function Contact() {
                     </p>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
+                  <form onSubmit={handleSubmit} className="space-y-3">
+                    <div className="grid sm:grid-cols-2 gap-3">
                       <div>
                         <label htmlFor="name" className="block text-xs font-medium text-slate-700 mb-1">
                           Name *
@@ -97,7 +97,7 @@ export default function Contact() {
                           value={formData.name}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
+                          className="w-full px-3 py-2.5 bg-white/20 backdrop-blur-lg border border-white/30 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="Your name"
                         />
                       </div>
@@ -112,7 +112,7 @@ export default function Contact() {
                           value={formData.email}
                           onChange={handleInputChange}
                           required
-                          className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
+                          className="w-full px-3 py-2.5 bg-white/20 backdrop-blur-lg border border-white/30 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
                           placeholder="your.email@example.com"
                         />
                       </div>
@@ -129,7 +129,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
+                        className="w-full px-3 py-2.5 bg-white/20 backdrop-blur-lg border border-white/30 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 text-sm"
                         placeholder="What's this about?"
                       />
                     </div>
@@ -145,7 +145,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                         required
                         rows={4}
-                        className="w-full px-3 py-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none text-sm"
+                        className="w-full px-3 py-2.5 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 rounded-md text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none text-sm"
                         placeholder="Tell me about your project, request for my resume, discuss an opportunity, or just say hello!"
                       />
                     </div>

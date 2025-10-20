@@ -64,8 +64,8 @@ export default function Experience() {
           </div>
 
           {/* Timeline */}
-          <div className="relative max-w-4xl mx-auto">
-            {/* Central Timeline Line - Hidden on mobile, visible on md+ */}
+          <div className="relative max-w-full mx-auto">
+            {/* Central Timeline Line - Only visible on desktop */}
             <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-purple-600 to-pink-400 rounded-full" />
 
             <div className="space-y-16">
@@ -78,26 +78,31 @@ export default function Experience() {
 
                 return (
                 <div key={year} className="relative">
-                  {/* Year Label - Centered on mobile, alternating on desktop */}
+                  {/* Year Label - Only visible on desktop, alternating */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ delay: 0.6 + yearIndex * 0.3, duration: 0.6 }}
-                    className="absolute -translate-y-1/2 z-20 md:block"
+                    className="hidden md:block absolute -translate-y-1/2 z-20"
                     style={{
                       left: yearIndex % 2 === 0 ? 'calc(50% - 80px)' : 'calc(50% + 20px)'
                     }}
                   >
-                    <div className="text-purple-600 font-bold text-lg md:text-xl whitespace-nowrap text-center md:text-left">
+                    <div className="text-purple-600 font-bold text-xl whitespace-nowrap">
                       {year}
                     </div>
                   </motion.div>
 
-                  {/* Year Dot - Hidden on mobile, visible on md+ */}
+                  {/* Year Dot - Only visible on desktop */}
                   <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full border-4 border-white shadow-lg z-10" />
 
+                  {/* Mobile: Year Header */}
+                  <div className="md:hidden mb-4">
+                    <h3 className="text-purple-600 font-bold text-lg">{year}</h3>
+                  </div>
+
                   {/* Experience Cards for this Year */}
-                  <div className="pt-8 space-y-8">
+                  <div className="pt-0 md:pt-8 space-y-4 md:space-y-8">
                     {experiencesByYear[year].map((experience, expIndex) => {
                         // Use global experience index for proper alternating
                         const isLeft = (globalExpIndex + expIndex) % 2 === 0;
@@ -111,11 +116,11 @@ export default function Experience() {
                             delay: 0.8 + yearIndex * 0.3 + expIndex * 0.2,
                             duration: 0.6
                           }}
-                          className={`relative md:${isLeft ? 'pr-1/2 pl-4' : 'pl-1/2 pr-4'} flex ${
+                          className={`relative ${isLeft ? 'md:pr-1/2 md:pl-4' : 'md:pl-1/2 md:pr-4'} flex ${
                             expandedCards.has(experience.id)
                               ? 'justify-center'
-                              : 'justify-center md:justify-start md:justify-end'
-                          } w-full md:group-hover:justify-center`}
+                              : isLeft ? 'justify-center md:justify-start' : 'justify-center md:justify-end'
+                          } w-full max-w-full md:group-hover:justify-center`}
                   >
 
                     {/* Experience Card */}
@@ -128,15 +133,20 @@ export default function Experience() {
                             whileTap={{ scale: 0.98 }}
                             onClick={() => {
                               // Only allow click on mobile devices
-                              if (window.innerWidth < 768) {
+                              if (window.matchMedia('(max-width: 767px)').matches) {
                                 toggleCard(experience.id);
                               }
                             }}
-                            className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-xl transition-all duration-300 hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 group text-left cursor-pointer md:cursor-default ${
+                            className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-xl transition-all duration-300 group text-left ${
                               expandedCards.has(experience.id)
-                                ? 'p-4 w-full max-w-[600px]'
-                                : 'p-3 w-full max-w-md'
-                            } md:group-hover:w-[600px] md:group-hover:max-w-[600px] md:group-hover:p-4`}
+                                ? 'p-4 w-full max-w-full md:max-w-[600px]'
+                                : 'p-3 w-full max-w-full md:max-w-md'
+                            } ${
+                              // Mobile: click to expand, Desktop: hover to expand
+                              window.matchMedia('(max-width: 767px)').matches
+                                ? 'cursor-pointer'
+                                : 'cursor-default hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 md:group-hover:w-[600px] md:group-hover:max-w-[600px] md:group-hover:p-4'
+                            }`}
                           >
                             {/* Always Visible Content - Role, Company, Location */}
                             <div className="flex flex-col items-start space-y-1">

@@ -1,10 +1,9 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 /* Base styles */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -14,6 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 * {
