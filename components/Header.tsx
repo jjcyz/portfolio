@@ -66,7 +66,7 @@ export default function Header() {
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`text-slate-700 hover:text-slate-800 transition-all duration-300 relative px-4 py-2 rounded-lg ${
+                className={`text-slate-700 hover:text-slate-800 transition-all duration-300 relative px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 ${
                   activeSection === item.href.substring(1) ? 'bg-white/15' : ''
                 }`}
                 data-section={item.href.substring(1)}
@@ -128,7 +128,7 @@ export default function Header() {
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => handleNavClick(item.href)}
-                    className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 ${
+                    className={`block w-full text-left px-4 py-2 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 ${
                       activeSection === item.href.substring(1)
                         ? 'bg-white/15 text-purple-700'
                         : 'text-slate-700 hover:bg-white/10 hover:text-purple-700'

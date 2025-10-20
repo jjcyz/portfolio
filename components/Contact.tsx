@@ -67,7 +67,7 @@ export default function Contact() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <div className="glass-card p-6">
+              <div className="glass-card p-4 sm:p-6">
 
                 {isSubmitted ? (
                   <motion.div

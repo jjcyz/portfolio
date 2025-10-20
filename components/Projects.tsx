@@ -49,10 +49,10 @@ export default function Projects() {
   const projectsWithStructuredData = projects;
 
   const categoryColors = {
-    ai: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-    web: 'bg-green-500/20 text-green-400 border-green-500/30',
+    ai: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+    web: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
     research: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    systems: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
+    systems: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
   };
 
   return (
@@ -72,7 +72,7 @@ export default function Projects() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {projectsWithStructuredData.map((project, index) => {
 
               return (
@@ -86,7 +86,7 @@ export default function Projects() {
 
                   <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl overflow-hidden hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 h-full flex flex-col">
                     {/* Project Image or Iframe */}
-                    <div className="relative h-90 overflow-hidden">
+                    <div className="relative h-48 sm:h-64 lg:h-80 overflow-hidden">
                       {project.iframeUrl ? (
                         <>
                           <LazyIframe
@@ -184,7 +184,7 @@ export default function Projects() {
                     </div>
 
                     {/* Project Content */}
-                    <div className="p-6 flex-1 flex flex-col">
+                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
                       <h3 className="text-base font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors duration-200">
                         {project.title}
                       </h3>
@@ -204,7 +204,7 @@ export default function Projects() {
                               delay: 0.8 + index * 0.2 + techIndex * 0.1,
                               duration: 0.4
                             }}
-                            className="px-2 py-1 bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 text-purple-800 rounded-full text-xs font-medium"
+                            className="px-2 py-1 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-purple-700 rounded-full text-xs font-medium"
                           >
                             {tech}
                           </motion.span>

@@ -68,7 +68,7 @@ export default function Skills() {
           {/* Computer Component Layout */}
           <div className="relative max-w-6xl mx-auto">
             {/* Main Computer Component Container - Like a motherboard */}
-            <div className="relative bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl border-2 border-purple-400/30 shadow-2xl shadow-purple-500/20 rounded-3xl p-8 overflow-hidden">
+            <div className="relative bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl border-2 border-purple-400/30 shadow-2xl shadow-purple-500/20 rounded-3xl p-4 sm:p-6 lg:p-8 overflow-hidden">
               {/* Circuit Board Pattern Background */}
               <div className="absolute inset-0 opacity-20">
                 <div className="absolute top-4 left-4 w-2 h-2 bg-purple-400 rounded-full"></div>
@@ -82,7 +82,7 @@ export default function Skills() {
               </div>
 
               {/* Component Grid */}
-              <div className="relative grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {Object.entries(skillCategories).map(([categoryKey, categoryInfo], categoryIndex) => {
               const categorySkills = skillsByCategory[categoryKey] || [];
               const IconComponent = categoryInfo.icon;
@@ -136,7 +136,7 @@ export default function Skills() {
                                     delay: 1 + categoryIndex * 0.1 + skillIndex * 0.03,
                                     duration: 0.3
                           }}
-                                  className="px-2 py-1 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-slate-800 text-xs font-medium rounded-full transition-all duration-200"
+                                  className="px-2 py-1 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-purple-700 text-xs font-medium rounded-full transition-all duration-200"
                         >
                           {skill.name}
                         </motion.span>

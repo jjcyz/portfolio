@@ -58,13 +58,13 @@ export default function About() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-start">
             {/* About Text */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-10"
+              className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl p-6 sm:p-8 lg:p-10"
             >
               <div className="space-y-6">
                 <p className="text-slate-800 leading-relaxed">
@@ -89,13 +89,13 @@ export default function About() {
             </motion.div>
 
             {/* Right Side - Two Modules */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Education Module - Top Right */}
               <ModuleContainer
               initial={{ opacity: 0, x: 50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-                className="p-6"
+                className="p-4 sm:p-6"
             >
 
                 {/* Education Header */}
@@ -147,7 +147,7 @@ export default function About() {
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                 transition={{ delay: 1.0, duration: 0.8 }}
-                className="group p-4"
+                className="group p-3 sm:p-4"
               >
 
                 {/* Personal Life Header - Always Visible */}

@@ -20,7 +20,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-12"
+          className="max-w-5xl mx-auto bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-6 sm:p-8 lg:p-12"
         >
           {/* Greeting */}
           <motion.p

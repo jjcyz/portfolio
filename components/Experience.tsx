@@ -65,8 +65,8 @@ export default function Experience() {
 
           {/* Timeline */}
           <div className="relative max-w-4xl mx-auto">
-            {/* Central Timeline Line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-purple-600 to-pink-400 rounded-full" />
+            {/* Central Timeline Line - Hidden on mobile, visible on md+ */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-purple-600 to-pink-400 rounded-full" />
 
             <div className="space-y-16">
               {sortedYears.map((year, yearIndex) => {
@@ -78,23 +78,23 @@ export default function Experience() {
 
                 return (
                 <div key={year} className="relative">
-                  {/* Year Label - Alternating left and right */}
+                  {/* Year Label - Centered on mobile, alternating on desktop */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{ delay: 0.6 + yearIndex * 0.3, duration: 0.6 }}
-                    className="absolute -translate-y-1/2 z-20"
+                    className="absolute -translate-y-1/2 z-20 md:block"
                     style={{
                       left: yearIndex % 2 === 0 ? 'calc(50% - 80px)' : 'calc(50% + 20px)'
                     }}
                   >
-                    <div className="text-purple-600 font-bold text-xl whitespace-nowrap">
+                    <div className="text-purple-600 font-bold text-lg md:text-xl whitespace-nowrap text-center md:text-left">
                       {year}
                     </div>
                   </motion.div>
 
-                  {/* Year Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full border-4 border-white shadow-lg z-10" />
+                  {/* Year Dot - Hidden on mobile, visible on md+ */}
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full border-4 border-white shadow-lg z-10" />
 
                   {/* Experience Cards for this Year */}
                   <div className="pt-8 space-y-8">
@@ -111,11 +111,11 @@ export default function Experience() {
                             delay: 0.8 + yearIndex * 0.3 + expIndex * 0.2,
                             duration: 0.6
                           }}
-                          className={`relative ${isLeft ? 'pr-1/2 pl-4' : 'pl-1/2 pr-4'} flex ${
+                          className={`relative md:${isLeft ? 'pr-1/2 pl-4' : 'pl-1/2 pr-4'} flex ${
                             expandedCards.has(experience.id)
                               ? 'justify-center'
-                              : isLeft ? 'justify-start' : 'justify-end'
-                          } w-full group-hover:justify-center`}
+                              : 'justify-center md:justify-start md:justify-end'
+                          } w-full md:group-hover:justify-center`}
                   >
 
                     {/* Experience Card */}
@@ -134,8 +134,8 @@ export default function Experience() {
                             }}
                             className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-xl transition-all duration-300 hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 group text-left cursor-pointer md:cursor-default ${
                               expandedCards.has(experience.id)
-                                ? 'p-4 w-[600px] max-w-[600px]'
-                                : 'p-3 w-[400px] max-w-md'
+                                ? 'p-4 w-full max-w-[600px]'
+                                : 'p-3 w-full max-w-md'
                             } md:group-hover:w-[600px] md:group-hover:max-w-[600px] md:group-hover:p-4`}
                           >
                             {/* Always Visible Content - Role, Company, Location */}

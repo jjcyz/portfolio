@@ -26,6 +26,12 @@ module.exports = {
           start: '#8B9BD6',
           end: '#E6B8E6',
         },
+        glass: {
+          bg: 'rgba(255, 255, 255, 0.2)',
+          border: 'rgba(255, 255, 255, 0.3)',
+          'bg-hover': 'rgba(255, 255, 255, 0.3)',
+          'border-hover': 'rgba(255, 255, 255, 0.4)',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
