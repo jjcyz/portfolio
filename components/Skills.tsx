@@ -128,7 +128,7 @@ export default function Skills() {
                     >
                       {/* Component Card - Compact by default, expands on hover (desktop) or click (mobile) */}
                       <div
-                        className={`w-full bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl transition-all duration-300 overflow-hidden relative ${
+                        className={`w-full bg-white/20 backdrop-blur-2xl border border-purple-300/40 shadow-xl shadow-purple-500/20 rounded-xl transition-all duration-300 overflow-hidden relative z-10 ${
                           // Mobile: click to expand, Desktop: hover to expand
                           isMobile
                             ? 'cursor-pointer'
@@ -143,7 +143,7 @@ export default function Skills() {
                       >
 
                         {/* Default State - Compact Header Only */}
-                        <div className={`p-4 ${expandedSkills.has(categoryKey) ? 'hidden' : 'block md:group-hover:hidden'}`}>
+                        <div className={`p-4 bg-white/20 backdrop-blur-2xl relative z-20 ${expandedSkills.has(categoryKey) ? 'hidden' : 'block md:group-hover:hidden'}`}>
                           <div className="flex items-center gap-3">
                             <div className="p-2">
                               <IconComponent size={16} className="text-slate-700" />
@@ -155,7 +155,7 @@ export default function Skills() {
                         </div>
 
                         {/* Expanded State - Shows on hover (desktop) or click (mobile) */}
-                        <div className={`${expandedSkills.has(categoryKey) ? 'block' : 'hidden md:group-hover:block'} p-4`}>
+                        <div className={`${expandedSkills.has(categoryKey) ? 'block' : 'hidden md:group-hover:block'} p-4 bg-white/20 backdrop-blur-2xl relative z-20`}>
                           {/* Expanded Header */}
                           <div className="flex items-center gap-3 mb-4">
                             <div className="p-2 group-hover:scale-110 transition-transform duration-200">

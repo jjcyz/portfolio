@@ -63,12 +63,12 @@ export default function Footer() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="p-3 bg-white/15 backdrop-blur-xl border border-white/25 shadow-2xl shadow-black/20 rounded-lg hover:bg-white/25 hover:backdrop-blur-2xl hover:border-white/35 hover:shadow-2xl hover:shadow-black/25 transition-all duration-200 group"
+                  whileHover={{ scale: 1.2, y: -2 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="text-slate-700 hover:text-purple-700 transition-colors duration-200"
                   aria-label={`Visit ${link.name} profile`}
                 >
-                  <IconComponent size={20} className="text-slate-700 group-hover:text-purple-700 transition-colors duration-200" />
+                  <IconComponent size={24} />
                 </motion.a>
               );
             })}

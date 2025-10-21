@@ -36,7 +36,8 @@ const ModuleContainer = ({ children, className = "", ...props }: ModuleContainer
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [isPersonalLifeExpanded, setIsPersonalLifeExpanded] = useState(false);
+  const [isHobbiesExpanded, setIsHobbiesExpanded] = useState(false);
+  const [isCurrentFavouritesExpanded, setIsCurrentFavouritesExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -93,14 +94,22 @@ export default function About() {
                 </p>
 
                 <p className="text-slate-800 leading-relaxed">
-                  I&apos;ve worked on projects that range from <span className="text-purple-600 font-semibold">full stack web development</span> to building new applications with the latest
-                  AI technologies. I&apos;m excited for what is possible with these technologies and how they can be applied in <span className="text-purple-600 font-semibold">innovative scenarios</span>.
+                  I&apos;ve worked extensively with <span className="text-purple-600 font-semibold">full stack web development</span>, particularly enjoying the
+                  <span className="text-purple-600 font-semibold"> JavaScript, React, and Tailwind CSS</span> combination. This stack allows me to build
+                  responsive, interactive interfaces while maintaining clean, maintainable code. I&apos;m excited about the possibilities these technologies
+                  offer for creating <span className="text-purple-600 font-semibold">innovative user experiences</span>.
                 </p>
 
                 <p className="text-slate-800 leading-relaxed">
                   I also had the opportunity to enhance my global perspective of technology and business during my
                   exchange studies at <span className="text-purple-600 font-semibold">Tsinghua University</span> in Beijing, China, which focused on <span className="text-purple-600 font-semibold">machine learning</span>. I got
                   to see how some of the brightest innovators are pioneering the new era of technology at scales unheard of before.
+                </p>
+
+                <p className="text-slate-800 leading-relaxed">
+                  I&apos;ve started appreciating <span className="text-purple-600 font-semibold">user experience design</span> more deeply.
+                  There&apos;s something satisfying about crafting interfaces that feel intuitive and delightful to use,
+                  where every interaction serves a purpose and enhances the user&apos;s journey.
                 </p>
               </div>
             </motion.div>
@@ -159,58 +168,110 @@ export default function About() {
                 </div>
               </ModuleContainer>
 
-              {/* Personal Life Module - Bottom Right */}
-              <ModuleContainer
-                initial={{ opacity: 0, x: 50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-                transition={{ delay: 1.0, duration: 0.8 }}
-                className={`group p-3 sm:p-4 ${
-                  // Mobile: click to expand, Desktop: hover to expand
-                  isMobile
-                    ? 'cursor-pointer'
-                    : 'cursor-default'
-                }`}
-                onClick={() => {
-                  // Only allow click on mobile devices
-                  if (isMobile) {
-                    setIsPersonalLifeExpanded(!isPersonalLifeExpanded);
-                  }
-                }}
-              >
+              {/* Bottom Row - Hobbies and Current Favourites Side by Side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                {/* Hobbies Module - Left */}
+                <ModuleContainer
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                  transition={{ delay: 1.0, duration: 0.8 }}
+                  className={`group/hobbies p-3 sm:p-4 ${
+                    // Mobile: click to expand, Desktop: hover to expand
+                    isMobile
+                      ? 'cursor-pointer'
+                      : 'cursor-default'
+                  }`}
+                  onClick={() => {
+                    // Only allow click on mobile devices
+                    if (isMobile) {
+                      setIsHobbiesExpanded(!isHobbiesExpanded);
+                    }
+                  }}
+                >
 
-                {/* Personal Life Header - Always Visible */}
-                <div className="relative z-10 mb-6">
-                  <h3 className="text-xl font-bold text-purple-600 flex items-center gap-2">
-                    <Heart size={24} className="mt-0.5" />
-                    Personal Life
-                  </h3>
-                </div>
-
-                {/* Personal Life Content - Hidden by default, shown on hover (desktop) or click (mobile) */}
-                <div className={`relative z-10 transition-all duration-300 overflow-hidden ${
-                  isPersonalLifeExpanded
-                    ? 'opacity-100 max-h-96'
-                    : 'opacity-0 max-h-0 md:group-hover:opacity-100 md:group-hover:max-h-96'
-                }`}>
-                  <p className="text-slate-800 leading-relaxed mb-4 text-sm">
-                    Asides from all the tech stuff, I enjoy exploring a mash of the great outdoors and city life that Vancouver
-                    blesses me with. From going on hikes in Squamish to beaches in 30 mins to skiing and snowboarding in Whistler.
-                    I also love to visit the variety of cafes and restaurants in the city. (need new recommendations)
-                  </p>
-
-                  {/* Personal Interests */}
-                  <div className="flex flex-wrap gap-2">
-                    {['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Coffee ☕', 'Omakase 🍣'].map((interest, index) => (
-                      <span
-                        key={interest}
-                        className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
-                      >
-                        {interest}
-                      </span>
-                    ))}
+                  {/* Hobbies Header - Always Visible */}
+                  <div className="relative z-10 mb-6 text-center">
+                    <h3 className="text-xl font-bold text-purple-600 flex items-center justify-center gap-2">
+                      Hobbies
+                    </h3>
                   </div>
-                </div>
-              </ModuleContainer>
+
+                  {/* Hobbies Content - Hidden by default, shown on hover (desktop) or click (mobile) */}
+                  <div className={`relative z-10 transition-all duration-300 overflow-hidden ${
+                    isHobbiesExpanded
+                      ? 'opacity-100 max-h-96'
+                      : 'opacity-0 max-h-0 group-hover/hobbies:opacity-100 group-hover/hobbies:max-h-96'
+                  }`}>
+                    <p className="text-slate-800 leading-relaxed mb-4 text-sm">
+                      I love exploring the great outdoors and city life that Vancouver offers. From hiking in Squamish to skiing and snowboarding in Whistler,
+                      I&apos;m always up for an adventure. I also enjoy discovering new cafes and restaurants around the city.
+                    </p>
+
+                    {/* Hobby Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Cafes ☕'].map((hobby, index) => (
+                        <span
+                          key={hobby}
+                          className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
+                        >
+                          {hobby}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </ModuleContainer>
+
+                {/* Current Favourites Module - Right */}
+                <ModuleContainer
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                  transition={{ delay: 1.2, duration: 0.8 }}
+                  className={`group/favourites p-3 sm:p-4 ${
+                    // Mobile: click to expand, Desktop: hover to expand
+                    isMobile
+                      ? 'cursor-pointer'
+                      : 'cursor-default'
+                  }`}
+                  onClick={() => {
+                    // Only allow click on mobile devices
+                    if (isMobile) {
+                      setIsCurrentFavouritesExpanded(!isCurrentFavouritesExpanded);
+                    }
+                  }}
+                >
+
+                  {/* Current Favourites Header - Always Visible */}
+                  <div className="relative z-10 mb-6 text-center">
+                    <h3 className="text-xl font-bold text-purple-600 flex items-center justify-center gap-2">
+                      Current Favourites
+                    </h3>
+                  </div>
+
+                  {/* Current Favourites Content - Hidden by default, shown on hover (desktop) or click (mobile) */}
+                  <div className={`relative z-10 transition-all duration-300 overflow-hidden ${
+                    isCurrentFavouritesExpanded
+                      ? 'opacity-100 max-h-96'
+                      : 'opacity-0 max-h-0 group-hover/favourites:opacity-100 group-hover/favourites:max-h-96'
+                  }`}>
+                    <p className="text-slate-800 leading-relaxed mb-4 text-sm">
+                      I have a bias for glassmorphic designs. Perhaps it&apos;s what I though metaverse would deliver, but didn&apos;t end up doing.
+                      When it comes to drinks, my current favourite are hojicha oat lattes. If you haven&apos;t tried, you&apos;re missing out.
+                    </p>
+
+                    {/* Current Favourites Tags */}
+                    <div className="flex flex-wrap gap-2">
+                      {['Glassmorphism ✨', 'Hojicha Oat 🍵', 'UX Design 🎨', 'Minimalistic 📱'].map((favourite, index) => (
+                        <span
+                          key={favourite}
+                          className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
+                        >
+                          {favourite}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </ModuleContainer>
+              </div>
             </div>
 
           </div>

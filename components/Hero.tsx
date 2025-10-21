@@ -2,17 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
-import Link from 'next/link';
 
 export default function Hero() {
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Elements */}
+      {/* Background Elements - Optimized */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-gradient-to-r from-pink-400/20 to-purple-400/20 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-[600px] sm:h-[600px] bg-gradient-to-r from-purple-300/10 to-pink-300/10 rounded-full blur-3xl animate-pulse delay-500" />
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-r from-pink-400/15 to-purple-400/15 rounded-full blur-2xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-r from-purple-300/8 to-pink-300/8 rounded-full blur-2xl animate-pulse delay-500" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
@@ -20,13 +19,13 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-6 sm:p-8 lg:p-12"
+          className="max-w-5xl mx-auto bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-6 sm:p-8 lg:p-12"
         >
           {/* Greeting */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
             className="text-purple-700 text-lg sm:text-xl mb-6 font-medium"
           >
             Hello, I&apos;m
@@ -36,7 +35,7 @@ export default function Hero() {
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
           >
             <span className="gradient-text">Jessica Zhou</span>
@@ -46,7 +45,7 @@ export default function Hero() {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
             className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light"
           >
             Full-stack developer
@@ -56,7 +55,7 @@ export default function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 0.4, duration: 0.4 }}
             className="text-lg sm:text-xl text-slate-700 mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             <span className="text-purple-700">Based in Vancouver, BC, Canada.</span>
@@ -67,7 +66,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.4 }}
             className="flex flex-col items-center"
           >
             <motion.button

@@ -48,12 +48,6 @@ export default function Projects() {
   // Use projects directly without runtime structured data generation
   const projectsWithStructuredData = projects;
 
-  const categoryColors = {
-    ai: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    web: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    research: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-    systems: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
-  };
 
   return (
     <section id="projects" className="py-20 sm:py-24 lg:py-32">
@@ -136,12 +130,6 @@ export default function Projects() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       )}
 
-                      {/* Category Badge */}
-                      <div className="absolute top-4 left-4">
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium border ${categoryColors[project.category]}`}>
-                          {project.category.toUpperCase()}
-                        </span>
-                      </div>
 
                       {/* Action Buttons - only show for images, not iframes */}
                       {!project.iframeUrl && (
