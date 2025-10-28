@@ -9,14 +9,24 @@ export const contactInfo: ContactInfo = {
 
 export const projects: Project[] = [
   {
+    id: 'real-time-fraud-detection',
+    title: 'Real time Fraud Detection System',
+    description: 'Full-stack fraud detection system with Java Spring Boot backend and React frontend for real-time transaction monitoring and multi-layered fraud detection.',
+    longDescription: 'Developed a comprehensive fraud detection platform featuring 7 detection rules, real-time analysis, PostgreSQL database with JPA/Hibernate ORM, RESTful API, and Apache Kafka integration for event-driven async processing.',
+    image: '/images/ml_paper_pipeline.PNG',
+    technologies: ['Java', 'Spring Boot', 'React', 'PostgreSQL', 'Apache Kafka', 'JPA/Hibernate'],
+    liveUrl: 'https://github.com/jjcyz/real-time-security',
+    featured: true,
+    category: 'ai',
+  },
+  {
     id: 'ubc-bolt-website',
     title: 'UBC BOLT Website',
     description: 'Official website for UBC Data Analytics (BOLT) student organization, featuring modern design, event management, and member resources for 200+ data science enthusiasts.',
     longDescription: 'Designed and developed the official website for UBC\'s premier data analytics student organization. Features responsive design, event calendar integration, member resources, and seamless user experience to support the club\'s 200+ members and various data science initiatives.',
     image: '/images/placeholder.svg',
     technologies: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'Web Development'],
-    liveUrl: 'https://www.boltubc.com/',
-    iframeUrl: 'https://www.boltubc.com/',
+    liveUrl: 'https://boltubc.com/',
     featured: true,
     category: 'web',
   },
@@ -210,6 +220,7 @@ export const skills: Skill[] = [
   { name: 'R', category: 'languages' },
   { name: 'HTML/CSS', category: 'languages' },
 
+
   // Frameworks & Libraries
   { name: 'ReactJS', category: 'frameworks' },
   { name: 'NodeJS', category: 'frameworks' },
@@ -217,25 +228,29 @@ export const skills: Skill[] = [
   { name: 'PyTorch', category: 'frameworks' },
   { name: 'TensorFlow', category: 'frameworks' },
   { name: 'Next.js', category: 'frameworks' },
+  // { name: 'Express', category: 'frameworks' },
 
-  // Cloud & Infrastructure
+  // Cloud & DevOps
   { name: 'AWS', category: 'cloud' },
-  { name: 'Google Cloud Platform', category: 'cloud' },
+  { name: 'GCP', category: 'cloud' },
   { name: 'Docker', category: 'cloud' },
-  { name: 'Firebase', category: 'cloud' },
+  { name: 'GitHub Actions', category: 'cloud' },
+  // { name: 'Kubernetes', category: 'cloud' },
 
   // Databases
   { name: 'MongoDB', category: 'databases' },
   { name: 'MySQL', category: 'databases' },
+  { name: 'PostgreSQL', category: 'databases' },
+  { name: 'Supabase', category: 'databases' },
 
   // AI
   { name: 'AI Agents', category: 'ai' },
+  { name: 'Automation', category: 'ai' },
   { name: 'Context Engineering', category: 'ai' },
-  { name: 'Automations', category: 'ai' },
 
   // Tools & Technologies
   { name: 'Git', category: 'tools' },
-  { name: 'Pytest', category: 'tools' },
+  { name: 'Jira', category: 'tools' },
 
   // Certifications (not inlcuded)
   { name: 'AWS Cloud Solutions Architect', category: 'certifications' },

@@ -39,7 +39,7 @@ export default function Footer() {
           >
             <h3 className="text-2xl font-bold gradient-text mb-2">Jessica Zhou</h3>
             <p className="text-slate-700 text-sm">
-              Software Engineer
+              Full-Stack Software Engineer
             </p>
           </motion.div>
 

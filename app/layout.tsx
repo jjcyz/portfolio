@@ -10,18 +10,21 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Jessica Zhou | Software Engineer',
+  title: 'Jessica Zhou | Full-Stack Software Engineer',
   description: 'Computer Science and Business student at UBC, specializing in AI, automations, software development, and the intersection of technology and business. Based in Vancouver, BC.',
   keywords: [
     'Jessica Zhou',
     'Software Engineer',
+    'Web Development',
     'Machine Learning',
     'Computer Science',
-    'UBC',
-    'Vancouver',
-    'Python',
+    'University of British Columbia',
+    'Vancouver, Canada',
+    'JavaScript',
     'React',
-    'PyTorch',
+    'Next.js',
+    'Tailwind CSS',
+    'TypeScript',
     'Portfolio',
   ],
   authors: [{ name: 'Jessica Zhou' }],

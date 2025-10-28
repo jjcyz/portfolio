@@ -17,6 +17,19 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   generateEtags: false,
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-src 'self' https://boltubc.com https://*.vercel.app https://*.netlify.app; frame-ancestors 'self';"
+          }
+        ]
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Calendar, MapPin } from 'lucide-react';
+import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { experiences } from '@/lib/data';
 
 export default function Experience() {
@@ -13,7 +13,9 @@ export default function Experience() {
 
   useEffect(() => {
     const checkIsMobile = () => {
-      setIsMobile(window.matchMedia('(max-width: 767px)').matches);
+      const isMobileDevice = window.matchMedia('(max-width: 767px)').matches;
+      console.log('Mobile detection:', isMobileDevice);
+      setIsMobile(isMobileDevice);
     };
 
     // Check on mount
@@ -82,7 +84,7 @@ export default function Experience() {
           {/* Timeline */}
           <div className="relative max-w-full mx-auto">
             {/* Central Timeline Line - Only visible on desktop */}
-            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-500 via-purple-600 to-pink-400 rounded-full" />
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-[#8B9BD6] via-[#C4A5D6] to-[#E6B8E6] rounded-full" />
 
             <div className="space-y-16">
               {sortedYears.map((year, yearIndex) => {
@@ -110,7 +112,12 @@ export default function Experience() {
                   </motion.div>
 
                   {/* Year Dot - Only visible on desktop */}
-                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-pink-400 rounded-full border-4 border-white shadow-lg z-10" />
+                  <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-[#8B9BD6] to-[#E6B8E6] rounded-full shadow-lg z-10" />
+
+                  {/* Purple Glow Effect for 2025 - Only visible on desktop */}
+                  {year === '2025' && (
+                    <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full shadow-purple-500/80 shadow-[0_0_20px_rgba(147,51,234,0.8)] animate-pulse z-5" />
+                  )}
 
                   {/* Mobile: Year Header */}
                   <div className="md:hidden mb-4">
@@ -150,7 +157,8 @@ export default function Experience() {
                             onClick={() => {
                               // Only allow click on mobile devices
                               if (isMobile) {
-                                toggleCard(experience.id);
+                                console.log('Mobile click detected for:', experience.id);
+                                (experience.id);
                               }
                             }}
                             className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-xl transition-all duration-300 group text-left ${
@@ -166,9 +174,19 @@ export default function Experience() {
                           >
                             {/* Always Visible Content - Role, Company, Location */}
                             <div className="flex flex-col items-start space-y-1">
-                              <h3 className="text-sm font-bold text-purple-600 leading-tight">
-                            {experience.title}
-                          </h3>
+                              <div className="flex items-center justify-between w-full">
+                                <h3 className="text-sm font-bold text-purple-600 leading-tight">
+                                  {experience.title}
+                                </h3>
+                                <ChevronDown
+                                  size={14}
+                                  className={`text-slate-600 transition-transform duration-200 ${
+                                    expandedCards.has(experience.id)
+                                      ? 'rotate-180'
+                                      : 'rotate-0'
+                                  }`}
+                                />
+                              </div>
                               <h4 className="text-xs font-semibold text-slate-800 leading-tight">
                             {experience.company}
                           </h4>

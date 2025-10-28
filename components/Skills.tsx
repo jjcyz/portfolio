@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Code, Database, Cloud, Brain, Wrench, Sparkles } from 'lucide-react';
+import { Code, Database, Cloud, Brain, Wrench, Sparkles, ChevronDown } from 'lucide-react';
 import { skills } from '@/lib/data';
 
 const skillCategories = {
@@ -16,7 +16,7 @@ const skillCategories = {
   },
   cloud: {
     icon: Cloud,
-    label: 'Cloud & Infrastructure'
+    label: 'Cloud & DevOps'
   },
   databases: {
     icon: Database,
@@ -144,27 +144,39 @@ export default function Skills() {
 
                         {/* Default State - Compact Header Only */}
                         <div className={`p-4 bg-white/20 backdrop-blur-2xl relative z-20 ${expandedSkills.has(categoryKey) ? 'hidden' : 'block md:group-hover:hidden'}`}>
-                          <div className="flex items-center gap-3">
-                            <div className="p-2">
-                              <IconComponent size={16} className="text-slate-700" />
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2">
+                                <IconComponent size={16} className="text-slate-700" />
+                              </div>
+                              <h3 className="text-sm font-semibold text-slate-800">
+                                {categoryInfo.label}
+                              </h3>
                             </div>
-                            <h3 className="text-sm font-semibold text-slate-800">
-                              {categoryInfo.label}
-                            </h3>
+                            <ChevronDown
+                              size={14}
+                              className={`text-slate-600 transition-transform duration-200 ${isMobile ? 'rotate-0' : 'group-hover:rotate-180'}`}
+                            />
                           </div>
                         </div>
 
                         {/* Expanded State - Shows on hover (desktop) or click (mobile) */}
                         <div className={`${expandedSkills.has(categoryKey) ? 'block' : 'hidden md:group-hover:block'} p-4 bg-white/20 backdrop-blur-2xl relative z-20`}>
                           {/* Expanded Header */}
-                          <div className="flex items-center gap-3 mb-4">
-                            <div className="p-2 group-hover:scale-110 transition-transform duration-200">
-                              <IconComponent size={16} className="text-slate-700" />
-                      </div>
-                            <h3 className="text-sm font-semibold text-slate-800">
-                        {categoryInfo.label}
-                      </h3>
-                    </div>
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 group-hover:scale-110 transition-transform duration-200">
+                                <IconComponent size={16} className="text-slate-700" />
+                              </div>
+                              <h3 className="text-sm font-semibold text-slate-800">
+                                {categoryInfo.label}
+                              </h3>
+                            </div>
+                            <ChevronDown
+                              size={14}
+                              className={`text-slate-600 transition-transform duration-200 ${expandedSkills.has(categoryKey) ? 'rotate-180' : 'rotate-0'}`}
+                            />
+                          </div>
 
                           {/* Skills List */}
                           <div className="mb-4">
@@ -178,7 +190,8 @@ export default function Skills() {
                                     delay: 1 + categoryIndex * 0.1 + skillIndex * 0.03,
                                     duration: 0.3
                           }}
-                                  className="px-2 py-1 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-purple-700 text-xs font-medium rounded-full transition-all duration-200"
+                                  className="px-3 py-1.5 bg-white/20 backdrop-blur-xl border border-white/30 text-purple-600 text-xs font-medium rounded-full transition-all duration-200 shadow-lg shadow-purple-500/10 hover:bg-white/30 hover:border-white/40 hover:shadow-xl hover:shadow-purple-500/20 hover:text-purple-700"
+                                  style={{ textShadow: '0 0 8px rgba(147, 51, 234, 0.3)' }}
                         >
                           {skill.name}
                         </motion.span>
