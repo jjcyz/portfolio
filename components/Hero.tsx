@@ -14,7 +14,7 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-r from-purple-300/8 to-pink-300/8 rounded-full blur-2xl animate-pulse delay-500" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ export default function Hero() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
           >
-            <span className="gradient-text">Jessica Zhou</span>
+            <span className="gradient-text">Jessica</span>
           </motion.h1>
 
           {/* Title */}

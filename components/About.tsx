@@ -1,9 +1,11 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, ReactNode, useState, useEffect } from 'react';
-import { MapPin, Calendar, GraduationCap, Heart } from 'lucide-react';
+import { useRef } from 'react';
+import { MapPin, Calendar, GraduationCap } from 'lucide-react';
 import { education } from '@/lib/data';
+import SectionHeader from '@/components/ui/SectionHeader';
+import ExpandableModule from '@/components/ui/ExpandableModule';
 
 // Shared components
 const CircuitBoardPattern = () => (
@@ -18,7 +20,7 @@ const CircuitBoardPattern = () => (
 );
 
 interface ModuleContainerProps {
-  children: ReactNode;
+  children: React.ReactNode;
   className?: string;
   [key: string]: any;
 }
@@ -36,47 +38,19 @@ const ModuleContainer = ({ children, className = "", ...props }: ModuleContainer
 export default function About() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [isHobbiesExpanded, setIsHobbiesExpanded] = useState(false);
-  const [isCurrentFavouritesExpanded, setIsCurrentFavouritesExpanded] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.matchMedia('(max-width: 767px)').matches);
-    };
-
-    // Check on mount
-    checkIsMobile();
-
-    // Listen for resize events
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-    mediaQuery.addEventListener('change', checkIsMobile);
-
-    return () => mediaQuery.removeEventListener('change', checkIsMobile);
-  }, []);
 
   return (
     <section id="about" className="py-20 sm:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4"
-            >
-              <span className="gradient-text">About Me</span>
-            </motion.h2>
-          </div>
+          <SectionHeader title="About Me" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start">
             {/* About Text */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -94,8 +68,7 @@ export default function About() {
                 </p>
 
                 <p className="text-slate-800 leading-relaxed">
-                  I&apos;ve worked extensively with <span className="text-purple-600 font-semibold">full stack web development</span>, particularly enjoying the
-                  <span className="text-purple-600 font-semibold"> JavaScript, React, and Tailwind CSS</span> combination. This stack allows me to build
+                  I&apos;ve worked extensively with <span className="text-purple-600 font-semibold">full stack web development</span>, which has allowed me to build
                   responsive, interactive interfaces while maintaining clean, maintainable code. I&apos;m excited about the possibilities these technologies
                   offer for creating <span className="text-purple-600 font-semibold">innovative user experiences</span>.
                 </p>
@@ -171,106 +144,40 @@ export default function About() {
               {/* Bottom Row - Hobbies and Current Favourites Side by Side */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 {/* Hobbies Module - Left */}
-                <ModuleContainer
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-                  transition={{ delay: 1.0, duration: 0.8 }}
-                  className={`group/hobbies p-3 sm:p-4 ${
-                    // Mobile: click to expand, Desktop: hover to expand
-                    isMobile
-                      ? 'cursor-pointer'
-                      : 'cursor-default'
-                  }`}
-                  onClick={() => {
-                    // Only allow click on mobile devices
-                    if (isMobile) {
-                      setIsHobbiesExpanded(!isHobbiesExpanded);
-                    }
-                  }}
-                >
-
-                  {/* Hobbies Header - Always Visible */}
-                  <div className="relative z-10 mb-6 text-center">
-                    <h3 className="text-xl font-bold text-purple-600 flex items-center justify-center gap-2">
-                      Hobbies
-                    </h3>
+                <ExpandableModule title="Hobbies" delay={1.0}>
+                  <p className="text-slate-800 leading-relaxed mb-4 text-sm">
+                    I love exploring the great outdoors and city life that Vancouver offers. From hiking in Squamish to skiing and snowboarding in Whistler,
+                    I&apos;m always up for an adventure. I also enjoy discovering new cafes and restaurants around the city.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Cafes ☕'].map((hobby) => (
+                      <span
+                        key={hobby}
+                        className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
+                      >
+                        {hobby}
+                      </span>
+                    ))}
                   </div>
-
-                  {/* Hobbies Content - Hidden by default, shown on hover (desktop) or click (mobile) */}
-                  <div className={`relative z-10 transition-all duration-300 overflow-hidden ${
-                    isHobbiesExpanded
-                      ? 'opacity-100 max-h-96'
-                      : 'opacity-0 max-h-0 group-hover/hobbies:opacity-100 group-hover/hobbies:max-h-96'
-                  }`}>
-                    <p className="text-slate-800 leading-relaxed mb-4 text-sm">
-                      I love exploring the great outdoors and city life that Vancouver offers. From hiking in Squamish to skiing and snowboarding in Whistler,
-                      I&apos;m always up for an adventure. I also enjoy discovering new cafes and restaurants around the city.
-                    </p>
-
-                    {/* Hobby Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Cafes ☕'].map((hobby, index) => (
-                        <span
-                          key={hobby}
-                          className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
-                        >
-                          {hobby}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </ModuleContainer>
+                </ExpandableModule>
 
                 {/* Current Favourites Module - Right */}
-                <ModuleContainer
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-                  transition={{ delay: 1.2, duration: 0.8 }}
-                  className={`group/favourites p-3 sm:p-4 ${
-                    // Mobile: click to expand, Desktop: hover to expand
-                    isMobile
-                      ? 'cursor-pointer'
-                      : 'cursor-default'
-                  }`}
-                  onClick={() => {
-                    // Only allow click on mobile devices
-                    if (isMobile) {
-                      setIsCurrentFavouritesExpanded(!isCurrentFavouritesExpanded);
-                    }
-                  }}
-                >
-
-                  {/* Current Favourites Header - Always Visible */}
-                  <div className="relative z-10 mb-6 text-center">
-                    <h3 className="text-xl font-bold text-purple-600 flex items-center justify-center gap-2">
-                      Current Favourites
-                    </h3>
+                <ExpandableModule title="Current Favourites" delay={1.2}>
+                  <p className="text-slate-800 leading-relaxed mb-4 text-sm">
+                    I have a bias for glassmorphic designs. Perhaps it&apos;s what I though metaverse would deliver, but didn&apos;t end up doing.
+                    When it comes to drinks, my current favourite are hojicha oat lattes. If you haven&apos;t tried, you&apos;re missing out.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Glassmorphism ✨', 'Hojicha Oat 🍵', 'UX Design 🎨', 'Minimalistic 📱'].map((favourite) => (
+                      <span
+                        key={favourite}
+                        className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
+                      >
+                        {favourite}
+                      </span>
+                    ))}
                   </div>
-
-                  {/* Current Favourites Content - Hidden by default, shown on hover (desktop) or click (mobile) */}
-                  <div className={`relative z-10 transition-all duration-300 overflow-hidden ${
-                    isCurrentFavouritesExpanded
-                      ? 'opacity-100 max-h-96'
-                      : 'opacity-0 max-h-0 group-hover/favourites:opacity-100 group-hover/favourites:max-h-96'
-                  }`}>
-                    <p className="text-slate-800 leading-relaxed mb-4 text-sm">
-                      I have a bias for glassmorphic designs. Perhaps it&apos;s what I though metaverse would deliver, but didn&apos;t end up doing.
-                      When it comes to drinks, my current favourite are hojicha oat lattes. If you haven&apos;t tried, you&apos;re missing out.
-                    </p>
-
-                    {/* Current Favourites Tags */}
-                    <div className="flex flex-wrap gap-2">
-                      {['Glassmorphism ✨', 'Hojicha Oat 🍵', 'UX Design 🎨', 'Minimalistic 📱'].map((favourite, index) => (
-                        <span
-                          key={favourite}
-                          className="bg-purple-100 text-purple-700 border border-purple-200 px-2 py-1 rounded-full text-xs font-medium"
-                        >
-                          {favourite}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </ModuleContainer>
+                </ExpandableModule>
               </div>
             </div>
 

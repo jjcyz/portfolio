@@ -1,32 +1,17 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { experiences } from '@/lib/data';
+import { useMobile } from '@/hooks/useMobile';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      const isMobileDevice = window.matchMedia('(max-width: 767px)').matches;
-      console.log('Mobile detection:', isMobileDevice);
-      setIsMobile(isMobileDevice);
-    };
-
-    // Check on mount
-    checkIsMobile();
-
-    // Listen for resize events
-    const mediaQuery = window.matchMedia('(max-width: 767px)');
-    mediaQuery.addEventListener('change', checkIsMobile);
-
-    return () => mediaQuery.removeEventListener('change', checkIsMobile);
-  }, []);
+  const isMobile = useMobile();
 
   // Group experiences by year
   const experiencesByYear = experiences.reduce((acc, experience) => {
@@ -62,24 +47,14 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 sm:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4"
-            >
-              <span className="gradient-text">Experience</span>
-            </motion.h2>
-          </div>
+          <SectionHeader title="Experience" />
 
           {/* Timeline */}
           <div className="relative max-w-full mx-auto">
@@ -157,8 +132,7 @@ export default function Experience() {
                             onClick={() => {
                               // Only allow click on mobile devices
                               if (isMobile) {
-                                console.log('Mobile click detected for:', experience.id);
-                                (experience.id);
+                                toggleCard(experience.id);
                               }
                             }}
                             className={`bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-xl transition-all duration-300 group text-left ${

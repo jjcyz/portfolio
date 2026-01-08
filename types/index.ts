@@ -36,7 +36,8 @@ export interface Education {
 
 export interface Skill {
   name: string;
-  category: 'languages' | 'frameworks' | 'cloud' | 'databases' | 'ai' | 'tools' | 'certifications';
+  category: 'frontend' | 'backend' | 'tools' | 'design' | 'languages' | 'frameworks' | 'cloud' | 'databases' | 'ai' | 'certifications';
+  description?: string;
 }
 
 export interface ContactInfo {
@@ -44,12 +45,4 @@ export interface ContactInfo {
   linkedin: string;
   github: string;
   instagram?: string;
-}
-
-export interface SEOData {
-  title: string;
-  description: string;
-  keywords: string[];
-  ogImage?: string;
-  canonicalUrl?: string;
 }

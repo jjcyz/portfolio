@@ -10,7 +10,6 @@ const navItems = [
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
   { href: '#experience', label: 'Experience' },
-  { href: '#contact', label: 'Contact' },
 ];
 
 export default function Header() {
@@ -92,7 +91,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 mt-2 w-48 bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-xl overflow-hidden relative"
+              className="absolute top-full left-0 mt-2 w-48 bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-xl overflow-hidden"
             >
               {/* Gradient Background Effects */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 animate-pulse" />

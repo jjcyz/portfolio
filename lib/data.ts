@@ -12,9 +12,9 @@ export const projects: Project[] = [
     id: 'real-time-fraud-detection',
     title: 'Real time Fraud Detection System',
     description: 'Full-stack fraud detection system with Java Spring Boot backend and React frontend for real-time transaction monitoring and multi-layered fraud detection.',
-    longDescription: 'Developed a comprehensive fraud detection platform featuring 7 detection rules, real-time analysis, PostgreSQL database RESTful API, and Apache Kafka integration for event-driven async processing.',
+    longDescription: 'Developed a comprehensive fraud detection platform featuring 7 detection rules, real-time analysis, MySQL database RESTful API, and Apache Kafka integration for event-driven async processing.',
     image: '/images/ml_paper_pipeline.PNG',
-    technologies: ['Java', 'Spring Boot', 'React', 'PostgreSQL', 'Apache Kafka'],
+    technologies: ['Java', 'Spring Boot', 'React', 'MySQL', 'Apache Kafka'],
     liveUrl: 'https://github.com/jjcyz/real-time-security',
     featured: true,
     category: 'ai',
@@ -223,53 +223,35 @@ export const education: Education[] = [
 ];
 
 export const skills: Skill[] = [
-  // Programming Languages
-  { name: 'Python', category: 'languages' },
-  { name: 'Java', category: 'languages' },
-  { name: 'C/C++', category: 'languages' },
-  { name: 'JavaScript', category: 'languages' },
-  { name: 'TypeScript', category: 'languages' },
-  { name: 'SQL', category: 'languages' },
-  { name: 'R', category: 'languages' },
-  { name: 'HTML/CSS', category: 'languages' },
+  // Frontend
+  { name: 'JavaScript', category: 'frontend', description: 'Dynamic language for interactive web experiences.' },
+  { name: 'TypeScript', category: 'frontend', description: 'Typed JavaScript for safer, scalable code.' },
+  { name: 'ReactJS', category: 'frontend', description: 'For building fast, interactive UIs.' },
+  { name: 'Next.js', category: 'frontend', description: 'React framework with routing & SSR.' },
+  { name: 'TailwindCSS', category: 'frontend', description: 'Utility-first CSS for rapid UI development.' },
 
+  // Backend
+  { name: 'Python', category: 'backend', description: 'Versatile language for data science & APIs.' },
+  { name: 'Java', category: 'backend', description: 'Enterprise-grade backend development.' },
+  { name: 'NodeJS', category: 'backend', description: 'JavaScript runtime for servers.' },
+  { name: 'MySQL', category: 'backend', description: 'Reliable relational database management.' },
+  { name: 'MongoDB', category: 'backend', description: 'Flexible NoSQL database system.' },
+  { name: 'Supabase', category: 'backend', description: 'Open-source Firebase alternative.' },
+  { name: 'PyTorch', category: 'backend', description: 'Deep learning framework for ML models.' },
+  { name: 'TensorFlow', category: 'backend', description: 'End-to-end machine learning platform.' },
+  { name: 'C/C++', category: 'backend', description: 'Systems programming and performance-critical apps.' },
 
-  // Frameworks & Libraries
-  { name: 'ReactJS', category: 'frameworks' },
-  { name: 'NodeJS', category: 'frameworks' },
-  { name: 'TailwindCSS', category: 'frameworks' },
-  { name: 'PyTorch', category: 'frameworks' },
-  { name: 'TensorFlow', category: 'frameworks' },
-  { name: 'Next.js', category: 'frameworks' },
-  // { name: 'Express', category: 'frameworks' },
+  // Tools & DevOps
+  { name: 'Git & GitHub', category: 'tools', description: 'Version control and collaboration.' },
+  { name: 'Docker', category: 'tools', description: 'Containers for isolated environments.' },
+  { name: 'AWS', category: 'tools', description: 'Cloud infrastructure and services.' },
+  { name: 'GCP', category: 'tools', description: 'Google Cloud Platform for scalable apps.' },
+  { name: 'Vercel', category: 'tools', description: 'Deploy and host modern web applications.' },
+  { name: 'Jira', category: 'tools', description: 'Project management and issue tracking.' },
+  { name: 'Confluence', category: 'tools', description: 'Team collaboration and documentation.' },
 
-  // Cloud & DevOps
-  { name: 'AWS', category: 'cloud' },
-  { name: 'GCP', category: 'cloud' },
-  { name: 'Docker', category: 'cloud' },
-  { name: 'GitHub Actions', category: 'cloud' },
-  // { name: 'Kubernetes', category: 'cloud' },
-
-  // Databases
-  { name: 'MongoDB', category: 'databases' },
-  { name: 'MySQL', category: 'databases' },
-  { name: 'PostgreSQL', category: 'databases' },
-  { name: 'Supabase', category: 'databases' },
-
-  // AI
-  { name: 'AI Agents', category: 'ai' },
-  { name: 'Automation', category: 'ai' },
-  { name: 'Context Engineering', category: 'ai' },
-
-  // Tools & Technologies
-  { name: 'Git', category: 'tools' },
-  { name: 'Jira', category: 'tools' },
-  { name: 'Confluence', category: 'tools' },
-  { name: 'Vercel', category: 'tools' },
-
-  // Certifications (not inlcuded)
-  { name: 'AWS Cloud Solutions Architect', category: 'certifications' },
-  { name: 'Google Cloud Essentials', category: 'certifications' },
-  { name: 'SAP Cloud Application Programming Model', category: 'certifications' },
-  { name: 'SAP Commerce Cloud and SAP S/4 HANA Cloud Integrations', category: 'certifications' },
+  // Design & Workflow
+  { name: 'AI Agents', category: 'design', description: 'Building intelligent autonomous systems.' },
+  { name: 'Automation', category: 'design', description: 'Streamlining workflows with AI.' },
+  { name: 'Context Engineering', category: 'design', description: 'Optimizing AI prompt strategies.' },
 ];

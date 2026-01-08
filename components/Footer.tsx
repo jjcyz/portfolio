@@ -1,13 +1,18 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Instagram, Heart } from 'lucide-react';
+import { Github, Linkedin, Instagram, Heart, Mail } from 'lucide-react';
 import { contactInfo } from '@/lib/data';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
+    {
+      name: 'Email',
+      href: `mailto:${contactInfo.email}`,
+      icon: Mail,
+    },
     {
       name: 'GitHub',
       href: contactInfo.github,
@@ -26,9 +31,16 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 border-t border-white/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-3 gap-8 items-center">
+    <footer className="py-20 sm:py-24 lg:py-32 relative overflow-hidden">
+      {/* Background Glow Elements - Matching page style */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-r from-purple-400/15 to-pink-400/15 rounded-full blur-2xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-48 h-48 sm:w-64 sm:h-64 bg-gradient-to-r from-pink-400/15 to-purple-400/15 rounded-full blur-2xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-r from-purple-300/8 to-pink-300/8 rounded-full blur-2xl animate-pulse delay-500" />
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-3 gap-8 items-center py-12">
           {/* Logo and Description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -57,8 +69,7 @@ export default function Footer() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  {...(link.name !== 'Email' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
@@ -66,7 +77,7 @@ export default function Footer() {
                   whileHover={{ scale: 1.2, y: -2 }}
                   whileTap={{ scale: 0.9 }}
                   className="text-slate-700 hover:text-purple-700 transition-colors duration-200"
-                  aria-label={`Visit ${link.name} profile`}
+                  aria-label={link.name === 'Email' ? 'Send email' : `Visit ${link.name} profile`}
                 >
                   <IconComponent size={24} />
                 </motion.a>

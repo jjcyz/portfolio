@@ -1,11 +1,12 @@
 'use client';
 
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLink, Github, FileText } from 'lucide-react';
+import { ExternalLink, Github, FileText, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '@/lib/data';
+import SectionHeader from '@/components/ui/SectionHeader';
 
 // Lazy loading iframe component
 const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key: string]: any }) => {
@@ -43,181 +44,222 @@ const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Use projects directly without runtime structured data generation
-  const projectsWithStructuredData = projects;
+  // Auto-advance carousel
+  useEffect(() => {
+    if (!isAutoPlaying) return;
 
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 5000); // Change every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const goToNext = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  };
+
+  const goToPrevious = () => {
+    setIsAutoPlaying(false);
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setIsAutoPlaying(false);
+    setCurrentIndex(index);
+  };
+
+  const currentProject = projects[currentIndex];
 
   return (
     <section id="projects" className="py-20 sm:py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
-              <span className="gradient-text">Featured Projects</span>
-            </h2>
-          </div>
+          <SectionHeader title="Featured Projects" />
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {projectsWithStructuredData.map((project, index) => {
-
-              return (
-                <div
-                  key={project.id}
-                  className="group"
-                  onMouseEnter={() => setHoveredProject(project.id)}
-                  onMouseLeave={() => setHoveredProject(null)}
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Carousel */}
+            <div className="relative overflow-hidden rounded-3xl">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentProject.id}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl overflow-hidden"
+                  onMouseEnter={() => setIsAutoPlaying(false)}
+                  onMouseLeave={() => setIsAutoPlaying(true)}
                 >
-                  {/* Structured Data */}
-
-                  <div className="bg-white/20 backdrop-blur-2xl border border-white/30 shadow-2xl shadow-black/15 rounded-3xl overflow-hidden hover:bg-white/30 hover:backdrop-blur-3xl hover:border-white/40 hover:shadow-2xl hover:shadow-black/20 transition-all duration-300 h-full flex flex-col">
-                    {/* Project Image or Iframe */}
-                    <div className="relative h-48 sm:h-64 lg:h-80 overflow-hidden">
-                      {project.iframeUrl ? (
+                  {/* Horizontal Layout: Image/Iframe on left, Content on right */}
+                  <div className="flex flex-col lg:flex-row">
+                    {/* Project Image or Iframe - Horizontal */}
+                    <div className="relative w-full lg:w-1/2 h-64 sm:h-80 lg:h-96 overflow-hidden">
+                      {currentProject.iframeUrl ? (
                         <>
                           <LazyIframe
-                            src={project.iframeUrl}
-                            title={`${project.title} live demo`}
+                            src={currentProject.iframeUrl}
+                            title={`${currentProject.title} live demo`}
                             className="w-full h-full border-0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                           />
-                          {/* Vercel Button - only show for iframes */}
+                          {/* Action Buttons */}
                           <div className="absolute top-4 right-4 flex gap-2">
-                            {project.githubUrl && (
+                            {currentProject.githubUrl && (
                               <Link
-                                href={project.githubUrl}
+                                href={currentProject.githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                                aria-label={`View ${project.title} source code`}
+                                aria-label={`View ${currentProject.title} source code`}
                               >
                                 <Github size={16} className="text-white" />
                               </Link>
                             )}
                             <Link
-                              href={project.liveUrl || project.iframeUrl}
+                              href={currentProject.liveUrl || currentProject.iframeUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                              aria-label={`View ${project.title} on Vercel`}
+                              aria-label={`View ${currentProject.title} live demo`}
                             >
                               <ExternalLink size={16} className="text-white" />
                             </Link>
                           </div>
                         </>
                       ) : (
-                        <Image
-                          src={project.image}
-                          alt={`${project.title} project`}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          priority={index < 2}
-                        />
-                      )}
-
-                      {/* Overlay - only show for images, not iframes */}
-                      {!project.iframeUrl && (
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      )}
-
-
-                      {/* Action Buttons - only show for images, not iframes */}
-                      {!project.iframeUrl && (
-                        <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {project.githubUrl && (
-                          <Link
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                            aria-label={`View ${project.title} source code`}
-                          >
-                            <Github size={16} className="text-white" />
-                          </Link>
-                        )}
-                        {project.liveUrl && (
-                          <Link
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                            aria-label={`View ${project.title} live demo`}
-                          >
-                            <ExternalLink size={16} className="text-white" />
-                          </Link>
-                        )}
-                        {project.paperUrl && (
-                          <Link
-                            href={project.paperUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-                            aria-label={`View ${project.title} research paper`}
-                          >
-                            <FileText size={16} className="text-white" />
-                          </Link>
-                        )}
-                      </div>
+                        <>
+                          <Image
+                            src={currentProject.image}
+                            alt={`${currentProject.title} project`}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            priority
+                          />
+                          {/* Action Buttons */}
+                          <div className="absolute top-4 right-4 flex gap-2">
+                            {currentProject.githubUrl && (
+                              <Link
+                                href={currentProject.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200"
+                                aria-label={`View ${currentProject.title} source code`}
+                              >
+                                <Github size={16} className="text-white" />
+                              </Link>
+                            )}
+                            {currentProject.liveUrl && (
+                              <Link
+                                href={currentProject.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200"
+                                aria-label={`View ${currentProject.title} live demo`}
+                              >
+                                <ExternalLink size={16} className="text-white" />
+                              </Link>
+                            )}
+                            {currentProject.paperUrl && (
+                              <Link
+                                href={currentProject.paperUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 bg-black/50 rounded-lg hover:bg-black/70 transition-colors duration-200"
+                                aria-label={`View ${currentProject.title} research paper`}
+                              >
+                                <FileText size={16} className="text-white" />
+                              </Link>
+                            )}
+                          </div>
+                        </>
                       )}
                     </div>
 
                     {/* Project Content */}
-                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
-                      <h3 className="text-base font-bold text-slate-800 mb-2 group-hover:text-purple-600 transition-colors duration-200">
-                        {project.title}
+                    <div className="w-full lg:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+                      <h3 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-4">
+                        {currentProject.title}
                       </h3>
 
-                      <p className="text-slate-800 mb-3 flex-1 leading-relaxed text-sm">
-                        {project.description}
+                      <p className="text-slate-800 mb-6 leading-relaxed text-base">
+                        {currentProject.description}
                       </p>
 
                       {/* Technologies */}
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {project.technologies.map((tech, techIndex) => (
-                          <motion.span
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {currentProject.technologies.map((tech) => (
+                          <span
                             key={tech}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                            transition={{
-                              delay: 0.8 + index * 0.2 + techIndex * 0.1,
-                              duration: 0.4
-                            }}
-                            className="px-2 py-1 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-purple-700 rounded-full text-xs font-medium"
+                            className="px-3 py-1.5 bg-purple-100/50 backdrop-blur-lg border border-purple-200/50 text-purple-700 rounded-full text-sm font-medium"
                           >
                             {tech}
-                          </motion.span>
+                          </span>
                         ))}
                       </div>
 
                       {/* View Project Button */}
-                      <div className="mt-auto">
+                      <div>
                         <Link
-                          href={project.githubUrl || project.liveUrl || project.paperUrl || '#'}
+                          href={currentProject.githubUrl || currentProject.liveUrl || currentProject.paperUrl || '#'}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-purple-700 hover:text-purple-800 font-medium transition-colors duration-200 group/link text-sm"
+                          className="inline-flex items-center gap-2 text-purple-700 hover:text-purple-800 font-medium transition-colors duration-200 group/link text-base"
                         >
                           <span>View Project</span>
-                          <ExternalLink size={14} className="group-hover/link:translate-x-1 transition-transform duration-200" />
+                          <ExternalLink size={18} className="group-hover/link:translate-x-1 transition-transform duration-200" />
                         </Link>
                       </div>
                     </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
+            {/* Navigation Arrows */}
+            <button
+              onClick={goToPrevious}
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full shadow-lg hover:bg-white/30 transition-all duration-200 z-10"
+              aria-label="Previous project"
+            >
+              <ChevronLeft size={24} className="text-slate-700" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/20 backdrop-blur-xl border border-white/30 rounded-full shadow-lg hover:bg-white/30 transition-all duration-200 z-10"
+              aria-label="Next project"
+            >
+              <ChevronRight size={24} className="text-slate-700" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {projects.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? 'w-8 bg-purple-600'
+                      : 'w-2 bg-purple-300/50 hover:bg-purple-400/50'
+                  }`}
+                  aria-label={`Go to project ${index + 1}`}
+                />
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
