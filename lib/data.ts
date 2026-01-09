@@ -16,6 +16,7 @@ export const projects: Project[] = [
     image: '/images/ml_paper_pipeline.PNG',
     technologies: ['Java', 'Spring Boot', 'React', 'MySQL', 'Apache Kafka'],
     liveUrl: 'https://github.com/jjcyz/real-time-security',
+    iframeUrl: 'https://real-time-security.vercel.app/',
     featured: true,
     category: 'ai',
   },
@@ -205,20 +206,18 @@ export const education: Education[] = [
   {
     id: 'ubc-bucs',
     institution: 'University of British Columbia',
-    degree: 'Combined Major in Computer Science and Business (BUCS)',
+    degree: 'Bachelors in Computer Science & Business',
     location: 'Vancouver, CA',
     startDate: '2022-09',
     endDate: '2026-04',
-    description: 'Data Structure \& Algorithms, Relational Databases, Data Analytics, Computer Architecture, Business Strategy',
   },
   {
     id: 'tsinghua-exchange',
     institution: 'Tsinghua University',
-    degree: 'Exchange Studies at SEM & Department of Computer Science and Technology',
+    degree: 'Exchange Studies',
     location: 'Beijing, CN',
     startDate: '2024-02',
     endDate: '2025-01',
-    description: 'ML/AI, Computer Systems, Distributed Database Systems, Financial Technologies',
   },
 ];
 
@@ -246,12 +245,9 @@ export const skills: Skill[] = [
   { name: 'Docker', category: 'tools', description: 'Containers for isolated environments.' },
   { name: 'AWS', category: 'tools', description: 'Cloud infrastructure and services.' },
   { name: 'GCP', category: 'tools', description: 'Google Cloud Platform for scalable apps.' },
-  { name: 'Vercel', category: 'tools', description: 'Deploy and host modern web applications.' },
   { name: 'Jira', category: 'tools', description: 'Project management and issue tracking.' },
   { name: 'Confluence', category: 'tools', description: 'Team collaboration and documentation.' },
 
   // Design & Workflow
-  { name: 'AI Agents', category: 'design', description: 'Building intelligent autonomous systems.' },
-  { name: 'Automation', category: 'design', description: 'Streamlining workflows with AI.' },
-  { name: 'Context Engineering', category: 'design', description: 'Optimizing AI prompt strategies.' },
+  { name: 'Github Actions', category: 'design', description: 'CI/CD automation and workflow orchestration.' },
 ];

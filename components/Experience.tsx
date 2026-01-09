@@ -1,11 +1,18 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useRef, useState, useMemo, useCallback } from 'react';
 import { Calendar, MapPin, ChevronDown } from 'lucide-react';
 import { experiences } from '@/lib/data';
 import { useMobile } from '@/hooks/useMobile';
 import SectionHeader from '@/components/ui/SectionHeader';
+
+const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] as const;
+
+const formatDateWithMonth = (dateString: string) => {
+  const [year, month] = dateString.split('-');
+  return `${MONTH_NAMES[parseInt(month) - 1]} ${year}`;
+};
 
 export default function Experience() {
   const ref = useRef(null);
@@ -13,25 +20,20 @@ export default function Experience() {
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
   const isMobile = useMobile();
 
-  // Group experiences by year
-  const experiencesByYear = experiences.reduce((acc, experience) => {
-    const year = experience.startDate.split('-')[0]; // Extract year from YYYY-MM format
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(experience);
-    return acc;
-  }, {} as Record<string, typeof experiences>);
+  // Group experiences by year - memoized
+  const experiencesByYear = useMemo(() => {
+    return experiences.reduce((acc, experience) => {
+      const year = experience.startDate.split('-')[0];
+      if (!acc[year]) {
+        acc[year] = [];
+      }
+      acc[year].push(experience);
+      return acc;
+    }, {} as Record<string, typeof experiences>);
+  }, []);
 
-  // Function to format date with month
-  const formatDateWithMonth = (dateString: string) => {
-    const [year, month] = dateString.split('-');
-    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return `${monthNames[parseInt(month) - 1]} ${year}`;
-  };
-
-  // Function to toggle card expansion (for mobile)
-  const toggleCard = (cardId: string) => {
+  // Function to toggle card expansion (for mobile) - memoized
+  const toggleCard = useCallback((cardId: string) => {
     setExpandedCards(prev => {
       const newSet = new Set(prev);
       if (newSet.has(cardId)) {
@@ -41,9 +43,11 @@ export default function Experience() {
       }
       return newSet;
     });
-  };
+  }, []);
 
-  const sortedYears = Object.keys(experiencesByYear).sort((a, b) => b.localeCompare(a));
+  const sortedYears = useMemo(() => {
+    return Object.keys(experiencesByYear).sort((a, b) => b.localeCompare(a));
+  }, [experiencesByYear]);
 
   return (
     <section id="experience" className="py-20 sm:py-24 lg:py-32">

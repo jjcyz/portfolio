@@ -14,81 +14,78 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 bg-gradient-to-r from-purple-300/8 to-pink-300/8 rounded-full blur-2xl animate-pulse delay-500" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20"
+      >
+        {/* Greeting */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-5xl mx-auto bg-white/20 backdrop-blur-xl border border-white/30 shadow-2xl shadow-black/15 rounded-2xl p-6 sm:p-8 lg:p-12"
+          transition={{ delay: 0.1, duration: 0.4 }}
+          className="text-purple-700 text-lg sm:text-xl mb-6 font-medium"
         >
-          {/* Greeting */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.4 }}
-            className="text-purple-700 text-lg sm:text-xl mb-6 font-medium"
-          >
-            Hello, I&apos;m
-          </motion.p>
+          Hello, I&apos;m
+        </motion.p>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
-          >
-            <span className="gradient-text">Jessica</span>
-          </motion.h1>
+        {/* Name */}
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
+        >
+          <span className="gradient-text">Jessica</span>
+        </motion.h1>
 
-          {/* Title */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.4 }}
-            className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light"
-          >
-            Full-stack developer
-          </motion.h2>
+        {/* Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light"
+        >
+          Full-stack developer
+        </motion.h2>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.4 }}
-            className="text-lg sm:text-xl text-slate-700 mb-12 max-w-2xl mx-auto leading-relaxed"
-          >
-            <span className="text-purple-700">Based in Vancouver, BC, Canada.</span>
-          </motion.p>
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.4 }}
+          className="text-lg sm:text-xl text-slate-700 mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          <span className="text-purple-700">Based in Vancouver, BC, Canada.</span>
+        </motion.p>
 
-
-          {/* Scroll Indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.4 }}
-            className="flex flex-col items-center"
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.4 }}
+          className="flex flex-col items-center"
+        >
+          <motion.button
+            onClick={() => {
+              const aboutSection = document.getElementById('about');
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+            className="focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-md"
+            aria-label="Scroll to about section"
           >
-            <motion.button
-              onClick={() => {
-                const aboutSection = document.getElementById('about');
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-              className="focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-slate-50 rounded-md"
-              aria-label="Scroll to about section"
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
             >
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                <ArrowDown size={24} className="text-purple-700" />
-              </motion.div>
-            </motion.button>
-          </motion.div>
+              <ArrowDown size={24} className="text-purple-700" />
+            </motion.div>
+          </motion.button>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

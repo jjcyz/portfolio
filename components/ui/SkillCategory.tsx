@@ -1,7 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Skill } from '@/types';
 import SkillIcon from './SkillIcon';
@@ -37,7 +36,6 @@ export default function SkillCategory({
       transition={{ delay, duration: 0.6 }}
     >
       <h3 className="text-xl font-bold text-slate-800 mb-6">{label}</h3>
-      <div className="h-px bg-gradient-to-r from-purple-300 to-transparent mb-6"></div>
       <div className="space-y-6">
         {skills.map((skill, index) => (
           <motion.div

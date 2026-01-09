@@ -31,13 +31,12 @@ export const skillIconMap: Record<string, string> = {
   'Supabase': 'supabase',
 
   // AI
-  'AI Agents': 'openai',
-  'Automation': 'automation',
-  'Context Engineering': 'openai',
+  'AI Development': 'openai',
 
   // Tools & Technologies
   'Git': 'git',
   'Git & GitHub': 'github',
+  'Github Actions': 'githubactions',
   'Jira': 'jira',
   'Confluence': 'confluence',
   'Vercel': 'vercel',
