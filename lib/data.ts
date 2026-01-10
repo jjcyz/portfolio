@@ -188,18 +188,6 @@ export const experiences: Experience[] = [
     ],
     technologies: ['Python', 'Tensorflow', 'PyTorch', 'Machine Learning'],
   },
-  {
-    id: 'student-mentor',
-    title: 'Student Mentor',
-    company: 'University of British Columbia',
-    location: 'Vancouver, CA',
-    startDate: '2023-11',
-    endDate: '2023-12',
-    description: [
-      'Career guidance and academics',
-    ],
-    technologies: ['Leadership', 'Communication', 'Mentoring'],
-  },
 ];
 
 export const education: Education[] = [

@@ -109,7 +109,7 @@ export default function About() {
                 </p>
 
                 <p className="text-slate-800 leading-relaxed">
-                  Senior student at <span className="text-purple-600 font-semibold">The University of British Columbia</span> graduating April 2026. I studied abroad for one year at <span className="text-purple-600 font-semibold">Tsinghua University</span>, where I took computer science courses in <span className="text-purple-600 font-semibold">AI</span>, <span className="text-purple-600 font-semibold">ML</span>, and others. An opportunity that gave me a unique global perspective of technology beyond borders.
+                  Senior student at <span className="text-purple-600 font-semibold">The University of British Columbia</span> graduating April 2026. I studied abroad for one year at <span className="text-purple-600 font-semibold">Tsinghua University</span>, where I took computer science courses in <span className="text-purple-600 font-semibold">AI</span>, <span className="text-purple-600 font-semibold">ML</span>, and other interesting areas. An opportunity that gave me a unique global perspective of technology beyond borders.
                 </p>
 
                 <p className="text-slate-800 leading-relaxed">
@@ -160,7 +160,7 @@ export default function About() {
                 </div>
               </ModuleContainer>
 
-              {/* Hobbies & Favourites Combined Module */}
+              {/* "I like x"  Module */}
               <ModuleContainer
                 initial={{ opacity: 0, x: 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
