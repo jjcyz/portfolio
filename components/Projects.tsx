@@ -10,35 +10,17 @@ import { projects } from '@/lib/data';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { Carousel, Card } from '@/components/ui/apple-cards-carousel';
 
-const DummyContent = () => {
+const ImageContent = ({ src, alt }: { src: string; alt: string }) => {
   return (
-    <>
-      {[...new Array(3).fill(1)].map((_, index) => {
-        return (
-          <div
-            key={"dummy-content" + index}
-            className="bg-[#F5F5F7] p-8 md:p-14 rounded-3xl mb-4"
-          >
-            <p className="text-neutral-600 text-base md:text-2xl font-sans max-w-3xl mx-auto">
-              <span className="font-bold text-neutral-700">
-                The first rule of Apple club is that you boast about Apple club.
-              </span>{" "}
-              Keep a journal, quickly jot down a grocery list, and take amazing
-              class notes. Want to convert those notes to text? No problem.
-              Langotiya jeetu ka mara hua yaar is ready to capture every
-              thought.
-            </p>
-            <Image
-              src="https://assets.aceternity.com/macbook.png"
-              alt="Macbook mockup from Aceternity UI"
-              height={500}
-              width={500}
-              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
-            />
-          </div>
-        );
-      })}
-    </>
+    <div className="w-full h-full flex items-center justify-center">
+      <Image
+        src={src}
+        alt={alt}
+        width={1920}
+        height={1080}
+        className="w-full h-auto object-contain"
+      />
+    </div>
   );
 };
 
@@ -46,38 +28,32 @@ const carouselData = [
   {
     category: "Artificial Intelligence",
     title: "Login to the membership portal",
-    src: "",
-    content: <DummyContent />,
+    src: "/images/membership-portal.png",
+    content: <ImageContent src="/images/membership-portal.png" alt="Login to the membership portal" />,
   },
   {
     category: "Productivity",
     title: "Manage user information",
-    src: "",
-    content: <DummyContent />,
+    src: "/images/user-management.png",
+    content: <ImageContent src="/images/user-management.png" alt="Manage user information" />,
   },
   {
     category: "Product",
     title: "Manage upcoming events",
-    src: "",
-    content: <DummyContent />,
+    src: "/images/registration.png",
+    content: <ImageContent src="/images/registration.png" alt="Manage upcoming events" />,
   },
   {
     category: "Product",
     title: "Broadcast announcements",
-    src: "",
-    content: <DummyContent />,
+    src: "/images/announcements.png",
+    content: <ImageContent src="/images/announcements.png" alt="Broadcast announcements" />,
   },
   {
     category: "iOS",
     title: "View the statistics dashboard",
-    src: "",
-    content: <DummyContent />,
-  },
-  {
-    category: "Hiring",
-    title: "Search for members in the directory",
-    src: "",
-    content: <DummyContent />,
+    src: "/images/statistics.png",
+    content: <ImageContent src="/images/statistics.png" alt="View the statistics dashboard" />,
   },
 ];
 
