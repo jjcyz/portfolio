@@ -38,7 +38,7 @@ export const projects: Project[] = [
     description: 'Official website for UBC Data Analytics (BOLT) student organization, featuring modern design, event management, and member resources for 200+ data science enthusiasts.',
     longDescription: 'Designed and developed the official website for UBC\'s premier data analytics student organization. Features responsive design, event calendar integration, member resources, and seamless user experience to support the club\'s 200+ members and various data science initiatives.',
     image: '/images/placeholder.svg',
-    technologies: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'Supabase'],
+    technologies: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'Supabase', 'Google API'],
     liveUrl: 'https://boltubc.com/',
     iframeUrl: 'https://boltubc.com/',
     featured: true,
@@ -131,7 +131,7 @@ export const experiences: Experience[] = [
       'Manage technical infrastructure and ensure smooth operation of club events and competitions',
       'Mentor junior members in data analytics and technical project development',
     ],
-    technologies: ['Data Analytics', 'Python', 'Leadership', 'JavaScript', 'React'],
+    technologies: ['Data Analytics', 'Python', 'Leadership', 'JavaScript', 'React, Atlassian Suite'],
   },
   {
     id: 'software-developer-ux-hub',

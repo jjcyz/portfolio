@@ -5,8 +5,81 @@ import { useRef, useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink, Github, FileText } from 'lucide-react';
+import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react';
 import { projects } from '@/lib/data';
 import SectionHeader from '@/components/ui/SectionHeader';
+import { Carousel, Card } from '@/components/ui/apple-cards-carousel';
+
+const DummyContent = () => {
+  return (
+    <>
+      {[...new Array(3).fill(1)].map((_, index) => {
+        return (
+          <div
+            key={"dummy-content" + index}
+            className="bg-[#F5F5F7] p-8 md:p-14 rounded-3xl mb-4"
+          >
+            <p className="text-neutral-600 text-base md:text-2xl font-sans max-w-3xl mx-auto">
+              <span className="font-bold text-neutral-700">
+                The first rule of Apple club is that you boast about Apple club.
+              </span>{" "}
+              Keep a journal, quickly jot down a grocery list, and take amazing
+              class notes. Want to convert those notes to text? No problem.
+              Langotiya jeetu ka mara hua yaar is ready to capture every
+              thought.
+            </p>
+            <Image
+              src="https://assets.aceternity.com/macbook.png"
+              alt="Macbook mockup from Aceternity UI"
+              height={500}
+              width={500}
+              className="md:w-1/2 md:h-1/2 h-full w-full mx-auto object-contain"
+            />
+          </div>
+        );
+      })}
+    </>
+  );
+};
+
+const carouselData = [
+  {
+    category: "Artificial Intelligence",
+    title: "Login to the membership portal",
+    src: "",
+    content: <DummyContent />,
+  },
+  {
+    category: "Productivity",
+    title: "Manage user information",
+    src: "",
+    content: <DummyContent />,
+  },
+  {
+    category: "Product",
+    title: "Manage upcoming events",
+    src: "",
+    content: <DummyContent />,
+  },
+  {
+    category: "Product",
+    title: "Broadcast announcements",
+    src: "",
+    content: <DummyContent />,
+  },
+  {
+    category: "iOS",
+    title: "View the statistics dashboard",
+    src: "",
+    content: <DummyContent />,
+  },
+  {
+    category: "Hiring",
+    title: "Search for members in the directory",
+    src: "",
+    content: <DummyContent />,
+  },
+];
 
 // Lazy loading iframe component
 const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key: string]: any }) => {
@@ -56,7 +129,27 @@ export default function Projects() {
     setCurrentIndex(index);
   };
 
+  const goToPrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (currentIndex < projects.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
+
+  const canGoPrevious = currentIndex > 0;
+  const canGoNext = currentIndex < projects.length - 1;
+
   const currentProject = useMemo(() => projects[currentIndex], [currentIndex]);
+
+  const carouselCards = useMemo(() =>
+    carouselData.map((card, index) => (
+      <Card key={card.src} card={card} index={index} layout={true} />
+    )), []);
 
   // Simple scale calculation to fit container
   useEffect(() => {
@@ -227,35 +320,44 @@ export default function Projects() {
                       </motion.div>
                     </AnimatePresence>
 
-                    {/* Navigation Dots - Fixed (Static) */}
+                    {/* Navigation Arrows */}
                     <div className="flex justify-center lg:justify-start gap-2 mt-4 relative z-30 pointer-events-auto">
-                      {projects.map((project, index) => (
-                <button
-                          key={`nav-dot-${index}-${project.id}`}
-                          type="button"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            goToSlide(index);
-                          }}
-                          onMouseDown={(e) => {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            goToSlide(index);
-                          }}
-                          className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer relative z-30 pointer-events-auto ${
-                    index === currentIndex
-                      ? 'w-8 bg-slate-900'
-                      : 'w-1.5 bg-slate-300 hover:bg-slate-400'
-                  }`}
-                          aria-label={`Go to project ${index + 1}: ${project.title}`}
-                />
-              ))}
-            </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          goToPrevious();
+                        }}
+                        disabled={!canGoPrevious}
+                        className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200 transition-colors"
+                        aria-label="Previous project"
+                      >
+                        <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          goToNext();
+                        }}
+                        disabled={!canGoNext}
+                        className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200 transition-colors"
+                        aria-label="Next project"
+                      >
+                        <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             )}
+          </div>
+
+          {/* Apple Cards Carousel */}
+          <div className="w-full h-full py-20">
+            <Carousel items={carouselCards} />
           </div>
         </motion.div>
       </div>
