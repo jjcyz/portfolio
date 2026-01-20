@@ -29,7 +29,7 @@ export default function ExpandableModule({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ delay, duration: 0.8 }}
-      className={`group/module bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl border-2 border-purple-400/30 shadow-2xl shadow-purple-500/20 rounded-3xl overflow-hidden relative p-3 sm:p-4 ${
+      className={`group/module bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl shadow-2xl shadow-purple-500/20 rounded-3xl overflow-hidden relative p-3 sm:p-4 ${
         isMobile ? 'cursor-pointer' : 'cursor-default'
       } ${className}`}
       onClick={() => {

@@ -62,7 +62,7 @@ export default function Header() {
           animate={{ y: 0 }}
           transition={{ duration: 0.5 }}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="p-2 rounded-lg bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:border-white/25 hover:shadow-2xl hover:shadow-black/20 transition-all duration-200 focus:outline-none"
+          className="p-2 rounded-lg bg-white/10 backdrop-blur-lg shadow-lg shadow-black/10 hover:bg-white/15 hover:backdrop-blur-xl hover:shadow-2xl hover:shadow-black/20 transition-all duration-200 focus:outline-none"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMenuOpen}
         >
@@ -99,7 +99,7 @@ export default function Header() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 mt-2 w-48 bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-xl overflow-hidden"
+              className="absolute top-full left-0 mt-2 w-48 bg-white/25 backdrop-blur-2xl shadow-2xl shadow-black/25 rounded-xl overflow-hidden"
             >
               {/* Gradient Background Effects */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 animate-pulse" />
@@ -136,7 +136,7 @@ export default function Header() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="hidden md:block bg-white/25 backdrop-blur-2xl border border-white/35 shadow-2xl shadow-black/25 rounded-2xl relative overflow-hidden"
+        className="hidden md:block bg-white/25 backdrop-blur-2xl shadow-2xl shadow-black/25 rounded-2xl relative overflow-hidden"
       >
         {/* Slider Background */}
         <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-purple-500/10 animate-pulse" />

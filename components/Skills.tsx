@@ -34,7 +34,7 @@ export default function Skills() {
   const skillCategories = useMemo(() => getSkillCategories(), []);
 
   return (
-    <section id="skills" className="py-20 sm:py-24 lg:py-32">
+    <section id="skills" className="py-12 sm:py-16 lg:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

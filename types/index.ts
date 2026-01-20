@@ -2,15 +2,14 @@ export interface Project {
   id: string;
   title: string;
   description: string;
-  longDescription?: string;
   image: string;
   technologies: string[];
+  websiteUrl?: string;
   githubUrl?: string;
-  liveUrl?: string;
+  devpostUrl?: string;
   paperUrl?: string;
   featured: boolean;
   category: 'ai' | 'web' | 'research' | 'systems';
-  iframeUrl?: string;
 }
 
 export interface Experience {

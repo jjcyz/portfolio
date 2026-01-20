@@ -35,7 +35,7 @@ const ModuleContainer = ({ children, className = "", ...props }: ModuleContainer
 
 const PinkGradientContainer = ({ children, className = "", ...props }: ModuleContainerProps) => (
   <motion.div
-    className={`bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl border-2 border-purple-400/30 shadow-2xl shadow-purple-500/20 rounded-3xl overflow-hidden relative ${className}`}
+    className={`bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl shadow-2xl shadow-purple-500/20 rounded-3xl overflow-hidden relative ${className}`}
     {...props}
   >
     <CircuitBoardPattern />
@@ -44,7 +44,7 @@ const PinkGradientContainer = ({ children, className = "", ...props }: ModuleCon
 );
 
 // Apple-style carousel component
-const TAGS = ['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Cafe Hopping ☕', 'Glassmorphism ✨', 'Hojicha Oat Lattes 🍵', 'Simplicity ', 'Minimalism 📱', 'User-Centered Designs'];
+const TAGS = ['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Orange Americanos 🍊☕', 'Glassmorphism ✨', 'Hojicha Oat Lattes 🍵', 'Simplicity ', 'Minimalism', 'User-Centered Designs'];
 
 const CarouselTags = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -85,7 +85,7 @@ export default function About() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   return (
-    <section id="about" className="py-20 sm:py-24 lg:py-32">
+    <section id="about" className="py-12 sm:py-16 lg:py-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}

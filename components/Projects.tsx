@@ -4,58 +4,10 @@ import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useRef, useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ExternalLink, Github, FileText } from 'lucide-react';
+import { ExternalLink, Github, FileText, Trophy } from 'lucide-react';
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react';
 import { projects } from '@/lib/data';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { Carousel, Card } from '@/components/ui/apple-cards-carousel';
-
-const ImageContent = ({ src, alt }: { src: string; alt: string }) => {
-  return (
-    <div className="w-full h-full flex items-center justify-center">
-      <Image
-        src={src}
-        alt={alt}
-        width={1920}
-        height={1080}
-        className="w-full h-auto object-contain"
-      />
-    </div>
-  );
-};
-
-const carouselData = [
-  {
-    category: "Artificial Intelligence",
-    title: "Login to the membership portal",
-    src: "/images/membership-portal.png",
-    content: <ImageContent src="/images/membership-portal.png" alt="Login to the membership portal" />,
-  },
-  {
-    category: "Productivity",
-    title: "Manage user information",
-    src: "/images/user-management.png",
-    content: <ImageContent src="/images/user-management.png" alt="Manage user information" />,
-  },
-  {
-    category: "Product",
-    title: "Manage upcoming events",
-    src: "/images/registration.png",
-    content: <ImageContent src="/images/registration.png" alt="Manage upcoming events" />,
-  },
-  {
-    category: "Product",
-    title: "Broadcast announcements",
-    src: "/images/announcements.png",
-    content: <ImageContent src="/images/announcements.png" alt="Broadcast announcements" />,
-  },
-  {
-    category: "iOS",
-    title: "View the statistics dashboard",
-    src: "/images/statistics.png",
-    content: <ImageContent src="/images/statistics.png" alt="View the statistics dashboard" />,
-  },
-];
 
 // Lazy loading iframe component
 const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key: string]: any }) => {
@@ -101,10 +53,6 @@ export default function Projects() {
   const PREVIEW_WIDTH = 1920;
   const PREVIEW_HEIGHT = 1300;
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
   const goToPrevious = () => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
@@ -121,11 +69,6 @@ export default function Projects() {
   const canGoNext = currentIndex < projects.length - 1;
 
   const currentProject = useMemo(() => projects[currentIndex], [currentIndex]);
-
-  const carouselCards = useMemo(() =>
-    carouselData.map((card, index) => (
-      <Card key={card.src} card={card} index={index} layout={true} />
-    )), []);
 
   // Simple scale calculation to fit container
   useEffect(() => {
@@ -152,7 +95,7 @@ export default function Projects() {
   }, [currentProject]);
 
   return (
-    <section id="projects" className="py-20 sm:py-24 lg:py-32">
+    <section id="projects" className="py-12 sm:py-16 lg:py-20">
       <div className="max-w-7xl mx-auto px-0">
         <motion.div
           ref={ref}
@@ -189,7 +132,7 @@ export default function Projects() {
                           }}
                         >
                           <div ref={previewRef} className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center">
-                            {currentProject.iframeUrl ? (
+                            {currentProject.websiteUrl ? (
                               <div
                                 style={{
                                   width: `${PREVIEW_WIDTH}px`,
@@ -199,7 +142,7 @@ export default function Projects() {
                                 }}
                               >
                                 <LazyIframe
-                                  src={currentProject.iframeUrl}
+                                  src={currentProject.websiteUrl}
                                   title={`${currentProject.title} live demo`}
                                   width={PREVIEW_WIDTH}
                                   height={PREVIEW_HEIGHT}
@@ -267,19 +210,55 @@ export default function Projects() {
                           <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight">
                             {currentProject.title}
                           </h3>
-                          {(currentProject.liveUrl || currentProject.iframeUrl) && (
+                          {currentProject.websiteUrl && (
                             <Link
-                              href={currentProject.liveUrl || currentProject.iframeUrl || '#'}
+                              href={currentProject.websiteUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-slate-600 hover:text-slate-900 transition-colors duration-200"
-                              aria-label={`View ${currentProject.title} live demo`}
+                              aria-label={`View ${currentProject.title} website`}
                               onClick={(e) => e.stopPropagation()}
                             >
                               <ExternalLink size={18} />
                             </Link>
                           )}
-              </div>
+                          {currentProject.githubUrl && (
+                            <Link
+                              href={currentProject.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                              aria-label={`View ${currentProject.title} on GitHub`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Github size={18} />
+                            </Link>
+                          )}
+                          {currentProject.devpostUrl && (
+                            <Link
+                              href={currentProject.devpostUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                              aria-label={`View ${currentProject.title} on Devpost`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <Trophy size={18} />
+                            </Link>
+                          )}
+                          {currentProject.paperUrl && (
+                            <Link
+                              href={currentProject.paperUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                              aria-label={`View ${currentProject.title} paper`}
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <FileText size={18} />
+                            </Link>
+                          )}
+                        </div>
                         <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
                           {currentProject.description}
                         </p>
@@ -329,11 +308,6 @@ export default function Projects() {
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Apple Cards Carousel */}
-          <div className="w-full h-full py-20">
-            <Carousel items={carouselCards} />
           </div>
         </motion.div>
       </div>

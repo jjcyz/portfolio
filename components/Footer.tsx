@@ -49,10 +49,6 @@ export default function Footer() {
             viewport={{ once: true }}
             className="text-center md:text-left"
           >
-            <h3 className="text-2xl font-bold gradient-text mb-2">Jessica Zhou</h3>
-            <p className="text-slate-700 text-sm">
-              Full-Stack Software Engineer
-            </p>
           </motion.div>
 
           {/* Social Links */}
@@ -85,36 +81,24 @@ export default function Footer() {
             })}
           </motion.div>
 
-          {/* Copyright */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="text-center md:text-right"
-          >
-            <p className="text-slate-600 text-sm flex items-center justify-center md:justify-end gap-1">
-              Made with <Heart size={16} className="text-red-500" /> by Jessica Zhou
-            </p>
-            <p className="text-slate-500 text-xs mt-1">
-              © {currentYear} All rights reserved.
-            </p>
-          </motion.div>
+          {/* Empty column for layout balance */}
+          <div></div>
         </div>
 
-        {/* Bottom Border */}
+        {/* Copyright - Centered */}
         <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-8 pt-8 border-t border-white/30"
+          className="text-center mt-8"
         >
-          <div className="text-center">
-            <p className="text-slate-700 text-xs">
-              Built with Next.js, TypeScript, Tailwind CSS, and Framer Motion
-            </p>
-          </div>
+          <p className="text-slate-600 text-sm flex items-center justify-center gap-1">
+            Made with <Heart size={16} className="text-red-500" /> by Jessica Zhou
+          </p>
+          <p className="text-slate-500 text-xs mt-1">
+            © {currentYear} All rights reserved.
+          </p>
         </motion.div>
       </div>
     </footer>

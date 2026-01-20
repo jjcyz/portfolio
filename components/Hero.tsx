@@ -1,9 +1,20 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import { useState, useEffect } from 'react';
+
+const TITLES = ['Software Engineer', 'Full-Stack', 'Product Engineer', 'UBC Student', 'Traveller'];
 
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % TITLES.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -40,15 +51,25 @@ export default function Hero() {
           <span className="gradient-text">Jessica</span>
         </motion.h1>
 
-        {/* Title */}
-        <motion.h2
+        {/* Title Carousel */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light"
+          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light h-8 overflow-hidden"
         >
-          Full-stack developer
-        </motion.h2>
+          <AnimatePresence mode="wait">
+            <motion.h2
+              key={currentIndex}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            >
+              {TITLES[currentIndex]}
+            </motion.h2>
+          </AnimatePresence>
+        </motion.div>
 
         {/* Description */}
         <motion.p
