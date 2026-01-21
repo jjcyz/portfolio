@@ -56,7 +56,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light h-8 overflow-hidden"
+          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-8 font-light min-h-[2rem] flex items-center justify-center"
         >
           <AnimatePresence mode="wait">
             <motion.h2
@@ -65,6 +65,7 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="text-center"
             >
               {TITLES[currentIndex]}
             </motion.h2>

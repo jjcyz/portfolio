@@ -165,15 +165,15 @@ export default function Projects() {
                                   transform: `scale(${scale})`,
                                   transformOrigin: 'center center',
                                 }}
-                                className="relative"
+                                className="relative overflow-hidden"
                               >
                                 <Image
                                   src={currentProject.image}
                                   alt={`${currentProject.title} project`}
-                                  width={PREVIEW_WIDTH}
-                                  height={PREVIEW_HEIGHT}
-                                  className="object-contain"
+                                  fill
+                                  className="object-cover"
                                   sizes={`${PREVIEW_WIDTH}px`}
+                                  priority={currentProject.paperUrl !== undefined}
                                 />
                               </div>
                             )}
@@ -285,7 +285,7 @@ export default function Projects() {
                           goToPrevious();
                         }}
                         disabled={!canGoPrevious}
-                        className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200 transition-colors"
+                        className="relative z-40 flex items-center justify-center disabled:opacity-50 transition-colors md:h-10 md:w-10 md:rounded-full md:bg-gray-100 md:hover:bg-gray-200"
                         aria-label="Previous project"
                       >
                         <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
@@ -298,7 +298,7 @@ export default function Projects() {
                           goToNext();
                         }}
                         disabled={!canGoNext}
-                        className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50 hover:bg-gray-200 transition-colors"
+                        className="relative z-40 flex items-center justify-center disabled:opacity-50 transition-colors md:h-10 md:w-10 md:rounded-full md:bg-gray-100 md:hover:bg-gray-200"
                         aria-label="Next project"
                       >
                         <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />

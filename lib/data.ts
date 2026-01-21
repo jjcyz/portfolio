@@ -68,15 +68,17 @@ export const projects: Project[] = [
     image: '/images/placeholder.svg',
     technologies: ['JavaScript', 'React', 'Vite', 'Node.js', 'Groq'],
     websiteUrl: 'https://arcsphere.vercel.app/',
+    githubUrl: 'https://github.com/jjcyz/arcsphere',
     featured: true,
     category: 'ai',
   },
   {
     id: 'chatroom',
     title: 'Client-Server Chatroom',
-    description: 'A multi-threaded chat server in C++ using socket programming, supporting concurrent user connections with real-time message broadcasting.',
+    description: 'A multi-threaded chat server in C++ using websockets, supporting concurrent user connections with real-time message broadcasting.',
     image: '/images/placeholder.svg',
-    technologies: ['C++', 'Socket Programming', 'Multi-threading'],
+    technologies: ['C++', 'CMake', 'OpenSSL', 'React', 'Typescript', 'Node.js'],
+    websiteUrl: 'https://client-server-chat.vercel.app/',
     githubUrl: 'https://github.com/jjcyz/client-server-chat',
     featured: true,
     category: 'systems',
@@ -131,7 +133,7 @@ export const experiences: Experience[] = [
       'Manage technical infrastructure and ensure smooth operation of club events and competitions',
       'Mentor junior members in data analytics and technical project development',
     ],
-    technologies: ['Data Analytics', 'Python', 'Leadership', 'JavaScript', 'React', 'Atlassian Suite'],
+    technologies: ['Data Analytics', 'Python', 'Leadership', 'JavaScript', 'React', 'Jira', 'Confluence'],
   },
   {
     id: 'software-developer-ux-hub',
@@ -170,7 +172,11 @@ export const experiences: Experience[] = [
     startDate: '2025-05',
     endDate: '2025-09',
     description: [
-      'Early startup work in AR and AI - coming soon ',
+      'Early startup in VR/AR. Worked on a developing a product called ProductShot',
+      'Web Development',
+      'Fixed Bugs',
+      'Shipped fast',
+      'Wore many hats',
     ],
     technologies: ['JavaScript', 'React', 'Google Cloud Platform', 'Firebase'],
   },
@@ -229,13 +235,8 @@ export const skills: Skill[] = [
   { name: 'C/C++', category: 'backend', description: 'Systems programming and performance-critical apps.' },
 
   // Tools & DevOps
-  { name: 'Git & GitHub', category: 'tools', description: 'Version control and collaboration.' },
+  { name: 'Git & GitHub', category: 'tools', description: 'Version control and CI/CD with GitHub Actions.' },
   { name: 'Docker', category: 'tools', description: 'Containers for isolated environments.' },
   { name: 'AWS', category: 'tools', description: 'Cloud infrastructure and services.' },
   { name: 'GCP', category: 'tools', description: 'Google Cloud Platform for scalable apps.' },
-  { name: 'Jira', category: 'tools', description: 'Project management and issue tracking.' },
-  { name: 'Confluence', category: 'tools', description: 'Team collaboration and documentation.' },
-
-  // Design & Workflow
-  { name: 'Github Actions', category: 'design', description: 'CI/CD automation and workflow orchestration.' },
 ];

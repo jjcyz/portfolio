@@ -178,7 +178,7 @@ export default function Experience() {
                     </div>
 
                     {/* Experience Cards for this Year */}
-                    <div className="pt-0 md:pt-6 space-y-3 md:space-y-4">
+                    <div className="pt-0 md:pt-6 space-y-6 md:space-y-8">
                       {experiencesByYear[year].map((experience, expIndex) => {
                         const isLeft = (globalExpIndex + expIndex) % 2 === 0;
 
