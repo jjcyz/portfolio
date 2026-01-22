@@ -83,7 +83,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-8"
+          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6"
         >
           <span className="gradient-text">Jessica</span>
         </motion.h1>
@@ -93,7 +93,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.4 }}
-          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-6 sm:mb-8 font-light h-[2.5rem] sm:h-[2.75rem] lg:h-[3rem] flex items-center justify-center relative overflow-hidden"
+          className="text-lg sm:text-xl lg:text-2xl text-slate-700 mb-4 sm:mb-6 font-light h-[2.5rem] sm:h-[2.75rem] lg:h-[3rem] flex items-center justify-center relative overflow-hidden"
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.h2

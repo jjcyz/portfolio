@@ -259,7 +259,7 @@ export default function Projects() {
                             </Link>
                           )}
                         </div>
-                        <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
+                        <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed mt-3 sm:mt-4">
                           {currentProject.description}
                         </p>
                         <div className="flex flex-wrap gap-1.5 mb-4">
