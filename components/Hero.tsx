@@ -6,13 +6,40 @@ import { useState, useEffect } from 'react';
 
 const TITLES = ['Software Engineer', 'Full-Stack', 'Product Engineer', 'UBC Student', 'Traveller'];
 
+const getTimeBasedGreeting = (): string => {
+  const hour = new Date().getHours();
+
+  if (hour >= 5 && hour < 12) {
+    return "Good morning, I'm";
+  } else if (hour >= 12 && hour < 17) {
+    return "Good afternoon, I'm";
+  } else if (hour >= 17 && hour < 21) {
+    return "Good evening, I'm";
+  } else {
+    return "Hey there, I'm";
+  }
+};
+
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [greeting, setGreeting] = useState(getTimeBasedGreeting());
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % TITLES.length);
     }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Update greeting on mount and check periodically (every hour)
+    const updateGreeting = () => {
+      setGreeting(getTimeBasedGreeting());
+    };
+
+    updateGreeting();
+    const interval = setInterval(updateGreeting, 3600000); // Check every hour
+
     return () => clearInterval(interval);
   }, []);
 
@@ -29,7 +56,7 @@ export default function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20"
+        className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-12 sm:pt-20"
       >
         {/* Greeting */}
         <motion.p
@@ -38,7 +65,17 @@ export default function Hero() {
           transition={{ delay: 0.1, duration: 0.4 }}
           className="text-purple-700 text-lg sm:text-xl mb-6 font-medium"
         >
-          Hello, I&apos;m
+          <AnimatePresence mode="wait">
+            <motion.span
+              key={greeting}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+            >
+              {greeting}
+            </motion.span>
+          </AnimatePresence>
         </motion.p>
 
         {/* Name */}
@@ -79,7 +116,7 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.4 }}
           className="text-lg sm:text-xl text-slate-700 mb-12 max-w-2xl mx-auto leading-relaxed"
         >
-          <span className="text-purple-700">Based in Vancouver, BC, Canada.</span>
+          <span className="text-purple-700">Based in Vancouver, Canada.</span>
         </motion.p>
 
         {/* Scroll Indicator */}

@@ -11,14 +11,13 @@ export const projects: Project[] = [
   {
     id: 'rehabify',
     title: 'Rehabify',
-    description: '🏆 nwHacks 2026 Hackathon 1st/631 also fix the winner. An AI-powered physical therapy coaching app that uses computer vision and voice AI to monitor exercise form and deliver real-time corrections.',
+    description: '🏆 nwHacks 2026 Hackathon 1st/631. An AI-powered physical therapy coaching app that uses computer vision and voice AI to monitor exercise form and deliver real-time corrections.',
     image: '/images/placeholder.svg',
     technologies: ['Next.js', 'React', 'MediaPipe', 'Neon PostgreSQL', 'Vapi', 'Deepgram STT', 'Gemini', 'ElevenLabs TTS'],
     websiteUrl: 'https://rehabify.tech',
     githubUrl: 'https://github.com/obro79/Rehabify',
     devpostUrl: 'https://devpost.com/software/rehabify-y2f5mu',
     featured: true,
-    category: 'ai',
   },
   {
     id: 'real-time-fraud-detection',
@@ -29,7 +28,6 @@ export const projects: Project[] = [
     websiteUrl: 'https://real-time-security.vercel.app/',
     githubUrl: 'https://github.com/jjcyz/real-time-security',
     featured: true,
-    category: 'ai',
   },
   {
     id: 'destination-ai',
@@ -38,8 +36,8 @@ export const projects: Project[] = [
     image: '/images/placeholder.svg',
     technologies: ['JavaScript', 'React', 'Next.js', 'Google Maps API', 'TransLink API', 'OpenWeatherMap API'],
     websiteUrl: 'https://destination-ai.vercel.app/',
+    githubUrl: 'https://github.com/jjcyz/destination.ai',
     featured: true,
-    category: 'ai',
   },
   {
     id: 'ubc-bolt-website',
@@ -49,7 +47,6 @@ export const projects: Project[] = [
     technologies: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS', 'Supabase', 'Google API'],
     websiteUrl: 'https://boltubc.com/',
     featured: true,
-    category: 'web',
   },
   {
     id: 'ubc-ux-hub-website',
@@ -59,7 +56,6 @@ export const projects: Project[] = [
     technologies: ['JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
     websiteUrl: 'https://www.ubcuxhub.ca/',
     featured: true,
-    category: 'web',
   },
   {
     id: 'arcsphere',
@@ -70,7 +66,6 @@ export const projects: Project[] = [
     websiteUrl: 'https://arcsphere.vercel.app/',
     githubUrl: 'https://github.com/jjcyz/arcsphere',
     featured: true,
-    category: 'ai',
   },
   {
     id: 'chatroom',
@@ -81,7 +76,6 @@ export const projects: Project[] = [
     websiteUrl: 'https://client-server-chat.vercel.app/',
     githubUrl: 'https://github.com/jjcyz/client-server-chat',
     featured: true,
-    category: 'systems',
   },
   {
     id: 'blood-vessel-segmentation',
@@ -89,9 +83,9 @@ export const projects: Project[] = [
     description: 'A 3D U-Net architecture for precise pixel-wise classification of vasculature structures, automating kidney segmentation and reducing manual processing time by 85%.',
     image: '/images/ml_paper_pipeline.PNG',
     technologies: ['Python', 'TensorFlow', 'PyTorch', 'Machine Learning'],
+    websiteUrl: 'https://openreview.net/forum?id=kl3kxvM4Nn#discussion',
     paperUrl: 'https://openreview.net/forum?id=kl3kxvM4Nn#discussion',
     featured: true,
-    category: 'research',
   },
   {
     id: 'vae-comparison',
@@ -101,7 +95,6 @@ export const projects: Project[] = [
     technologies: ['Python', 'PyTorch', 'Data Visualization'],
     githubUrl: 'https://github.com/jjcyz/bernoulli_gaussian_vae',
     featured: true,
-    category: 'research',
   },
 ];
 

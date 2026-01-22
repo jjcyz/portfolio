@@ -9,7 +9,6 @@ export interface Project {
   devpostUrl?: string;
   paperUrl?: string;
   featured: boolean;
-  category: 'ai' | 'web' | 'research' | 'systems';
 }
 
 export interface Experience {

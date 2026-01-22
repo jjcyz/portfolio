@@ -96,21 +96,21 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-12 sm:py-16 lg:py-20">
-      <div className="max-w-7xl mx-auto px-0">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <SectionHeader title="Featured Projects" />
+          <SectionHeader title="Featured Projects" className="mb-2 sm:mb-4 lg:mb-6" />
 
           {/* Projects Container */}
           <div className="relative overflow-visible">
             {currentProject && (
-              <div className="relative group w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Layout: MacBook on left, text on right */}
-                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12">
+              <div className="relative group w-full max-w-7xl mx-auto">
+                {/* Layout: MacBook Preview on left, text information on right */}
+                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-6 lg:gap-12">
                   {/* MacBook Frame Container - Left Side (Static) */}
                   <div className="relative w-full lg:w-2/3 flex-shrink-0 overflow-visible">
                     <div className="relative w-full aspect-[16/11] min-h-[80vh] sm:min-h-[90vh] lg:min-h-[100vh] scale-110 lg:scale-125">

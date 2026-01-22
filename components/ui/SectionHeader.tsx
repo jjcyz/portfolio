@@ -18,7 +18,7 @@ export default function SectionHeader({
   className = ''
 }: SectionHeaderProps) {
   return (
-    <div className={`text-center mb-16 ${className}`}>
+    <div className={`text-center mb-4 sm:mb-6 lg:mb-8 ${className}`}>
       <motion.h2
         variants={fadeInDown}
         initial="hidden"
