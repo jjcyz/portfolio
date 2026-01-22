@@ -19,8 +19,7 @@ export default function SkillIcon({ skillName, size = 56 }: SkillIconProps) {
   if (imageError) {
     return (
       <div
-        className="bg-purple-500 rounded-lg flex items-center justify-center text-white font-bold text-sm"
-        style={{ width: size, height: size }}
+        className="bg-slate-200 rounded-lg flex items-center justify-center text-slate-700 font-bold text-xs md:text-sm w-full h-full"
       >
         {skillName.charAt(0).toUpperCase()}
       </div>
@@ -33,8 +32,8 @@ export default function SkillIcon({ skillName, size = 56 }: SkillIconProps) {
       alt={skillName}
       width={size}
       height={size}
-      className="rounded-lg object-cover"
-      style={{ width: size, height: size }}
+      className="rounded-lg object-contain w-full h-full"
+      style={{ filter: 'none' }}
       unoptimized
       onError={() => setImageError(true)}
     />

@@ -45,7 +45,9 @@ export default function SkillCategory({
             transition={{ delay: delay + 0.1 + index * 0.05, duration: 0.4 }}
             className="flex items-start gap-5 group"
           >
-            <SkillIcon skillName={skill.name} />
+            <div className="w-10 h-10 md:w-14 md:h-14 flex-shrink-0">
+              <SkillIcon skillName={skill.name} />
+            </div>
             <div className="flex-1 min-w-0 pt-1">
               <h4 className="font-semibold text-slate-800 mb-1.5">{skill.name}</h4>
               {skill.description && (

@@ -110,10 +110,10 @@ export default function Projects() {
             {currentProject && (
               <div className="relative group w-full max-w-7xl mx-auto">
                 {/* Layout: MacBook Preview on left, text information on right */}
-                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-6 lg:gap-12">
+                <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-4 lg:gap-12">
                   {/* MacBook Frame Container - Left Side (Static) */}
                   <div className="relative w-full lg:w-2/3 flex-shrink-0 overflow-visible">
-                    <div className="relative w-full aspect-[16/11] min-h-[80vh] sm:min-h-[90vh] lg:min-h-[100vh] scale-110 lg:scale-125">
+                    <div className="relative w-full aspect-[16/11] min-h-[50vh] sm:min-h-[60vh] lg:min-h-[100vh] scale-100 sm:scale-105 lg:scale-125">
                       {/* Screen Content Area - Behind the frame (Animated) */}
                       <AnimatePresence mode="wait">
                         <motion.div
@@ -276,7 +276,7 @@ export default function Projects() {
                     </AnimatePresence>
 
                     {/* Navigation Arrows */}
-                    <div className="flex justify-center lg:justify-start gap-2 mt-4 relative z-30 pointer-events-auto">
+                    <div className="flex justify-center lg:justify-start gap-3 mt-4 relative z-30 pointer-events-auto">
                       <button
                         type="button"
                         onClick={(e) => {
@@ -285,10 +285,10 @@ export default function Projects() {
                           goToPrevious();
                         }}
                         disabled={!canGoPrevious}
-                        className="relative z-40 flex items-center justify-center disabled:opacity-50 transition-colors md:h-10 md:w-10 md:rounded-full md:bg-gray-100 md:hover:bg-gray-200"
+                        className="relative z-40 flex items-center justify-center h-12 w-12 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 transition-colors md:h-10 md:w-10"
                         aria-label="Previous project"
                       >
-                        <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
+                        <IconArrowNarrowLeft className="h-7 w-7 text-gray-500 md:h-6 md:w-6" />
                       </button>
                       <button
                         type="button"
@@ -298,10 +298,10 @@ export default function Projects() {
                           goToNext();
                         }}
                         disabled={!canGoNext}
-                        className="relative z-40 flex items-center justify-center disabled:opacity-50 transition-colors md:h-10 md:w-10 md:rounded-full md:bg-gray-100 md:hover:bg-gray-200"
+                        className="relative z-40 flex items-center justify-center h-12 w-12 rounded-full bg-gray-100 hover:bg-gray-200 disabled:opacity-50 transition-colors md:h-10 md:w-10"
                         aria-label="Next project"
                       >
-                        <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
+                        <IconArrowNarrowRight className="h-7 w-7 text-gray-500 md:h-6 md:w-6" />
                       </button>
                     </div>
                   </div>

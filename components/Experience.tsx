@@ -19,7 +19,8 @@ function ExperienceCard({ experience, isLeft }: { experience: ExperienceType; is
   const cardRef = useRef(null);
   // once: false means it will toggle based on scroll position
   // margin creates a smaller "active zone" in the center of the viewport
-  const isExpanded = useInView(cardRef, { once: false, margin: '-35% 0px -35% 0px' });
+  // Larger margin on mobile to reduce glitchy behavior (-20% vs -35%)
+  const isExpanded = useInView(cardRef, { once: false, margin: '-20% 0px -20% 0px' });
   const isVisible = useInView(cardRef, { once: true, margin: '-50px' });
 
   return (
@@ -37,7 +38,7 @@ function ExperienceCard({ experience, isLeft }: { experience: ExperienceType; is
           scale: isExpanded ? 1 : 0.98,
           backgroundColor: isExpanded ? 'rgba(255, 255, 255, 0.25)' : 'rgba(255, 255, 255, 0.15)',
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
         className="backdrop-blur-2xl shadow-xl rounded-xl p-4 w-full max-w-full md:max-w-[45%] text-left"
       >
         {/* Header - Always visible */}
@@ -67,7 +68,7 @@ function ExperienceCard({ experience, isLeft }: { experience: ExperienceType; is
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
               <div className="pt-3">
@@ -178,7 +179,7 @@ export default function Experience() {
                     </div>
 
                     {/* Experience Cards for this Year */}
-                    <div className="pt-0 md:pt-6 space-y-6 md:space-y-8">
+                    <div className="pt-0 md:pt-6 space-y-8 md:space-y-10">
                       {experiencesByYear[year].map((experience, expIndex) => {
                         const isLeft = (globalExpIndex + expIndex) % 2 === 0;
 

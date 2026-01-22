@@ -3,7 +3,7 @@
 export const skillIconMap: Record<string, string> = {
   // Programming Languages
   'Python': 'python',
-  'Java': 'java',
+  'Java': 'spring', // "java" returns 404, using Spring as Java framework icon
   'C/C++': 'cplusplus',
   'JavaScript': 'javascript',
   'TypeScript': 'typescript',
@@ -43,8 +43,8 @@ export const skillIconMap: Record<string, string> = {
 };
 
 // Get icon URL for a skill
-export const getSkillIconUrl = (skillName: string, color: string = '9333EA'): string => {
+export const getSkillIconUrl = (skillName: string): string => {
   const iconSlug = skillIconMap[skillName] || 'code';
-  return `https://cdn.simpleicons.org/${iconSlug}/${color}`;
+  return `https://cdn.simpleicons.org/${iconSlug}`;
 };
 

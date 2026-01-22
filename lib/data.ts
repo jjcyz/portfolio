@@ -230,6 +230,5 @@ export const skills: Skill[] = [
   // Tools & DevOps
   { name: 'Git & GitHub', category: 'tools', description: 'Version control and CI/CD with GitHub Actions.' },
   { name: 'Docker', category: 'tools', description: 'Containers for isolated environments.' },
-  { name: 'AWS', category: 'tools', description: 'Cloud infrastructure and services.' },
   { name: 'GCP', category: 'tools', description: 'Google Cloud Platform for scalable apps.' },
 ];
