@@ -25,27 +25,26 @@ export default function LazyIframe({ src, title, width, height, className, style
     setHasError(false);
   }, [src]);
 
-  useEffect(() => {
-    if (isInView && !isLoaded && !hasError) {
-      setIsLoaded(true);
-    }
-  }, [isInView, isLoaded, hasError]);
-
   const handleLoad = () => {
     setIsLoaded(true);
     setHasError(false);
   };
 
+  const handleError = () => {
+    setHasError(true);
+    setIsLoaded(false);
+  };
+
   return (
     <div className="relative w-full h-full overflow-hidden rounded-[20px]" style={{ width: '100%', height: '100%' }}>
       {(!isLoaded || hasError) && (
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 backdrop-blur-sm flex items-center justify-center z-10">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl shadow-2xl shadow-purple-500/20 flex items-center justify-center z-10 rounded-[20px]">
           <div className="text-center">
             {hasError ? (
               <>
-                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
                   <svg
-                    className="w-8 h-8 text-red-500"
+                    className="w-12 h-12 text-red-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -58,13 +57,13 @@ export default function LazyIframe({ src, title, width, height, className, style
                     />
                   </svg>
                 </div>
-                <p className="text-sm text-red-600 font-medium">Failed to load preview</p>
-                <p className="text-xs text-red-500 mt-1">The website may be unavailable</p>
+                <p className="text-base text-red-600 font-semibold">Failed to load preview</p>
+                <p className="text-sm text-red-500 mt-2">The website may be unavailable</p>
               </>
             ) : (
               <>
-                <div className="w-12 h-12 border-2 border-purple-200 border-t-purple-500 rounded-full animate-spin mx-auto mb-3"></div>
-                <p className="text-sm text-purple-600 font-medium">Loading preview...</p>
+                <div className="w-20 h-20 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin mx-auto mb-4"></div>
+                <p className="text-base text-purple-600 font-semibold">Loading preview...</p>
               </>
             )}
           </div>
@@ -73,13 +72,14 @@ export default function LazyIframe({ src, title, width, height, className, style
       <iframe
         key={src}
         ref={iframeRef}
-        src={isLoaded && !hasError ? src : ''}
+        src={isInView ? src : ''}
         title={title}
-        className={`border-0 rounded-[20px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
+        className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
         width={width}
         height={height}
         style={style}
         onLoad={handleLoad}
+        onError={handleError}
         {...props}
       />
     </div>
