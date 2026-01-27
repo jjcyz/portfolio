@@ -22,7 +22,7 @@ const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key
   }, [isInView, isLoaded]);
 
   return (
-    <div className="relative w-full h-full" style={{ width: '100%', height: '100%' }}>
+    <div className="relative w-full h-full overflow-hidden rounded-[20px]" style={{ width: '100%', height: '100%' }}>
       {!isLoaded && (
         <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 backdrop-blur-sm flex items-center justify-center z-10">
           <div className="text-center">
@@ -35,7 +35,7 @@ const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key
         ref={iframeRef}
         src={isLoaded ? src : ''}
         title={title}
-        className={`border-0 ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
+        className={`border-0 rounded-[20px] ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300`}
         {...props}
       />
     </div>
@@ -45,13 +45,16 @@ const LazyIframe = ({ src, title, ...props }: { src: string; title: string; [key
 export default function Projects() {
   const ref = useRef(null);
   const previewRef = useRef<HTMLDivElement>(null);
+  const mobilePreviewRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentIndex, setCurrentIndex] = useState(0);
   const [scale, setScale] = useState(1);
-
+  const [mobileScale, setMobileScale] = useState(1);
 
   const PREVIEW_WIDTH = 1920;
   const PREVIEW_HEIGHT = 1300;
+  const MOBILE_PREVIEW_WIDTH = 390;
+  const MOBILE_PREVIEW_HEIGHT = 844;
 
   const goToPrevious = () => {
     if (currentIndex > 0) {
@@ -91,6 +94,30 @@ export default function Projects() {
     return () => {
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateScale);
+    };
+  }, [currentProject]);
+
+  // Mobile preview scale calculation
+  useEffect(() => {
+    const updateMobileScale = () => {
+      if (mobilePreviewRef.current) {
+        const container = mobilePreviewRef.current;
+        const scaleX = container.offsetWidth / MOBILE_PREVIEW_WIDTH;
+        const scaleY = container.offsetHeight / MOBILE_PREVIEW_HEIGHT;
+        setMobileScale(Math.min(scaleX, scaleY));
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(updateMobileScale);
+    if (mobilePreviewRef.current) {
+      resizeObserver.observe(mobilePreviewRef.current);
+      updateMobileScale();
+    }
+
+    window.addEventListener('resize', updateMobileScale);
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', updateMobileScale);
     };
   }, [currentProject]);
 
@@ -194,7 +221,7 @@ export default function Projects() {
                       </div>
 
                     </div>
-              </div>
+                  </div>
 
                   {/* Project Info - Right Side (Animated) */}
                   <div className="w-full lg:w-1/3 flex flex-col justify-center lg:pl-8 lg:self-center">
@@ -271,7 +298,7 @@ export default function Projects() {
                               {tech}
                             </span>
                           ))}
-            </div>
+                        </div>
                       </motion.div>
                     </AnimatePresence>
 
@@ -303,6 +330,115 @@ export default function Projects() {
                       >
                         <IconArrowNarrowRight className="h-7 w-7 text-gray-500 md:h-6 md:w-6" />
                       </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Preview Section - Below MacBook */}
+                <div className="mt-8 sm:mt-12 lg:mt-16 w-full">
+                  {/* Use max-w-5xl to match Experience section width for alignment */}
+                  <div className="max-w-5xl ml-auto mr-0 lg:mr-auto">
+                    <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 sm:gap-8 lg:gap-12 lg:justify-start">
+                      {/* Mobile Preview Text - Left Side (aligned with Experience cards) */}
+                      <div className="w-full lg:w-2/5 flex flex-col justify-center lg:pl-12 lg:pr-4">
+                        <motion.div
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                          transition={{ duration: 0.5, delay: 0.2 }}
+                          className="text-center lg:text-left"
+                        >
+                          <h3 className="text-xl sm:text-2xl font-semibold text-slate-900 tracking-tight mb-3">
+                            Check the project out on mobile devices
+                          </h3>
+                          <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
+                            I find having a mobile view is important because it&apos;s more accessible.
+                          </p>
+                        </motion.div>
+                      </div>
+
+                      {/* iPhone Frame Container - Right Side (smaller, more centered) */}
+                      <div className="relative w-full lg:w-3/5 flex-shrink-0 overflow-visible flex justify-center lg:justify-end lg:pr-8">
+                        <div className="relative w-full max-w-[280px] sm:max-w-[300px] lg:max-w-[340px] aspect-[9/19.5]">
+                          {/* Screen Content Area - Behind the frame (Animated) */}
+                          <AnimatePresence mode="wait">
+                            <motion.div
+                              key={currentProject.id}
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="absolute"
+                              style={{
+                                top: '5%',
+                                left: '4%',
+                                right: '4%',
+                                bottom: '5%',
+                                zIndex: 1,
+                              }}
+                            >
+                              <div ref={mobilePreviewRef} className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center rounded-[20px]">
+                                {currentProject.websiteUrl ? (
+                                  <div
+                                    style={{
+                                      width: `${MOBILE_PREVIEW_WIDTH}px`,
+                                      height: `${MOBILE_PREVIEW_HEIGHT}px`,
+                                      transform: `scale(${mobileScale})`,
+                                      transformOrigin: 'center center',
+                                    }}
+                                  >
+                                    <LazyIframe
+                                      src={currentProject.websiteUrl}
+                                      title={`${currentProject.title} mobile demo`}
+                                      width={MOBILE_PREVIEW_WIDTH}
+                                      height={MOBILE_PREVIEW_HEIGHT}
+                                      className="border-0"
+                                      style={{
+                                        display: 'block',
+                                        border: 'none',
+                                        width: `${MOBILE_PREVIEW_WIDTH}px`,
+                                        height: `${MOBILE_PREVIEW_HEIGHT}px`,
+                                      }}
+                                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                      allowFullScreen
+                                    />
+                                  </div>
+                                ) : (
+                                  <div
+                                    style={{
+                                      width: `${MOBILE_PREVIEW_WIDTH}px`,
+                                      height: `${MOBILE_PREVIEW_HEIGHT}px`,
+                                      transform: `scale(${mobileScale})`,
+                                      transformOrigin: 'center center',
+                                    }}
+                                    className="relative overflow-hidden"
+                                  >
+                                    <Image
+                                      src={currentProject.image}
+                                      alt={`${currentProject.title} project mobile`}
+                                      fill
+                                      className="object-cover"
+                                      sizes="(max-width: 640px) 280px, (max-width: 1024px) 300px, 340px"
+                                      priority={currentProject.paperUrl !== undefined}
+                                    />
+                                  </div>
+                                )}
+                              </div>
+                            </motion.div>
+                          </AnimatePresence>
+
+                          {/* iPhone 17 Pro Max Image Background - Overlay on top (Static) */}
+                          <div className="absolute inset-0 z-10 pointer-events-none">
+                            <Image
+                              src="/images/iPhone 17 Pro Max - Silver.png"
+                              alt="iPhone 17 Pro Max Frame"
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 640px) 240px, (max-width: 1024px) 260px, 300px"
+                              priority
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
