@@ -16,32 +16,70 @@ interface LazyIframeProps {
 export default function LazyIframe({ src, title, width, height, className, style, ...props }: LazyIframeProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
   const isInView = useInView(iframeRef, { once: true, margin: '50px' });
 
+  // Reset loading state when src changes
   useEffect(() => {
-    if (isInView && !isLoaded) {
+    setIsLoaded(false);
+    setHasError(false);
+  }, [src]);
+
+  useEffect(() => {
+    if (isInView && !isLoaded && !hasError) {
       setIsLoaded(true);
     }
-  }, [isInView, isLoaded]);
+  }, [isInView, isLoaded, hasError]);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+    setHasError(false);
+  };
 
   return (
     <div className="relative w-full h-full overflow-hidden rounded-[20px]" style={{ width: '100%', height: '100%' }}>
-      {!isLoaded && (
+      {(!isLoaded || hasError) && (
         <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50 backdrop-blur-sm flex items-center justify-center z-10">
           <div className="text-center">
-            <div className="w-12 h-12 border-2 border-purple-200 border-t-purple-500 rounded-full animate-spin mx-auto mb-3"></div>
-            <p className="text-sm text-purple-600 font-medium">Loading preview...</p>
+            {hasError ? (
+              <>
+                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+                  <svg
+                    className="w-8 h-8 text-red-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-sm text-red-600 font-medium">Failed to load preview</p>
+                <p className="text-xs text-red-500 mt-1">The website may be unavailable</p>
+              </>
+            ) : (
+              <>
+                <div className="w-12 h-12 border-2 border-purple-200 border-t-purple-500 rounded-full animate-spin mx-auto mb-3"></div>
+                <p className="text-sm text-purple-600 font-medium">Loading preview...</p>
+              </>
+            )}
           </div>
         </div>
       )}
       <iframe
+        key={src}
         ref={iframeRef}
-        src={isLoaded ? src : ''}
+        src={isLoaded && !hasError ? src : ''}
         title={title}
-        className={`border-0 rounded-[20px] ${!isLoaded ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
+        className={`border-0 rounded-[20px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
         width={width}
         height={height}
         style={style}
+        onLoad={handleLoad}
         {...props}
       />
     </div>
