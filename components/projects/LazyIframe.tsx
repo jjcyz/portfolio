@@ -62,10 +62,12 @@ export default function LazyIframe({ src, title, width, height, className, style
     }
   }, [isInView, src, shouldLoad, cleanupIframe]);
 
-  // Set iframe src when it should be loaded
+  // Set iframe src when it should be loaded - only set once to prevent reload loops
   useEffect(() => {
     if (shouldLoad && iframeRef.current && isInView) {
-      if (iframeRef.current.src === 'about:blank' || !iframeRef.current.src) {
+      // Only set src if it hasn't been set yet or is blank - prevents reload loops
+      const currentSrc = iframeRef.current.src;
+      if (currentSrc === 'about:blank' || !currentSrc || currentSrc === window.location.href) {
         iframeRef.current.src = src;
       }
     }
@@ -129,7 +131,7 @@ export default function LazyIframe({ src, title, width, height, className, style
         <iframe
           key={src}
           ref={iframeRef}
-          src={isInView ? src : 'about:blank'}
+          src={src}
           title={title}
           className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
           width={width}

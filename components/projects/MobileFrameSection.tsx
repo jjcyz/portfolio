@@ -68,18 +68,34 @@ export default function MobileFrameSection({
                 I find having a mobile view is important because it&apos;s more accessible.
               </p>
               
-              {/* Navigation Arrows */}
-              <ProjectNavigation
-                canGoPrevious={canGoPrevious}
-                canGoNext={canGoNext}
-                onPrevious={onPrevious}
-                onNext={onNext}
-              />
+              {/* Navigation Arrows - Desktop Only */}
+              <div className="hidden lg:block">
+                <ProjectNavigation
+                  canGoPrevious={canGoPrevious}
+                  canGoNext={canGoNext}
+                  onPrevious={onPrevious}
+                  onNext={onNext}
+                />
+              </div>
             </motion.div>
           </div>
 
           {/* iPhone Frame Container - Right Side */}
-          {shouldLoadMobileFrame && <MobileFrame key={project.id} project={project} />}
+          <div className="w-full lg:w-3/5 flex flex-col items-center">
+            {shouldLoadMobileFrame && <MobileFrame key={project.id} project={project} />}
+            
+            {/* Navigation Arrows - Mobile Only (after iPhone frame) */}
+            {shouldLoadMobileFrame && (
+              <div className="lg:hidden mt-6">
+                <ProjectNavigation
+                  canGoPrevious={canGoPrevious}
+                  canGoNext={canGoNext}
+                  onPrevious={onPrevious}
+                  onNext={onNext}
+                />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

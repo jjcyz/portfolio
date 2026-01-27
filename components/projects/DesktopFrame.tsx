@@ -18,6 +18,9 @@ export default function DesktopFrame({ project }: DesktopFrameProps) {
   const [scale, setScale] = useState(1);
 
   useEffect(() => {
+    let rafId: number | null = null;
+    let timeoutId: NodeJS.Timeout | null = null;
+
     const updateScale = () => {
       if (frameRef.current) {
         const container = frameRef.current;
@@ -27,16 +30,34 @@ export default function DesktopFrame({ project }: DesktopFrameProps) {
       }
     };
 
-    const resizeObserver = new ResizeObserver(updateScale);
+    // Throttle updates using requestAnimationFrame
+    const throttledUpdateScale = () => {
+      if (rafId === null) {
+        rafId = requestAnimationFrame(() => {
+          updateScale();
+          rafId = null;
+        });
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(throttledUpdateScale);
     if (frameRef.current) {
       resizeObserver.observe(frameRef.current);
       updateScale();
     }
 
-    window.addEventListener('resize', updateScale);
+    // Debounce window resize events
+    const handleResize = () => {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(throttledUpdateScale, 150);
+    };
+
+    window.addEventListener('resize', handleResize);
     return () => {
       resizeObserver.disconnect();
-      window.removeEventListener('resize', updateScale);
+      window.removeEventListener('resize', handleResize);
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      if (timeoutId) clearTimeout(timeoutId);
     };
   }, []);
 
