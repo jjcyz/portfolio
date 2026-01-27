@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { ExternalLink, Github, FileText, Trophy } from 'lucide-react';
@@ -9,7 +10,7 @@ interface ProjectInfoProps {
   project: Project;
 }
 
-export default function ProjectInfo({ project }: ProjectInfoProps) {
+function ProjectInfo({ project }: ProjectInfoProps) {
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -89,3 +90,5 @@ export default function ProjectInfo({ project }: ProjectInfoProps) {
     </AnimatePresence>
   );
 }
+
+export default memo(ProjectInfo);

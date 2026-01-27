@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState, useMemo } from 'react';
+import { useRef, useState, useMemo, useCallback } from 'react';
 import { projects } from '@/lib/data';
 import SectionHeader from '@/components/ui/SectionHeader';
 import DesktopFrame from './projects/DesktopFrame';
@@ -14,17 +14,13 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: '-100px' });
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToPrevious = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
+  const goToPrevious = useCallback(() => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  }, []);
 
-  const goToNext = () => {
-    if (currentIndex < projects.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
+  const goToNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev < projects.length - 1 ? prev + 1 : prev));
+  }, []);
 
   const canGoPrevious = currentIndex > 0;
   const canGoNext = currentIndex < projects.length - 1;
@@ -66,7 +62,14 @@ export default function Projects() {
                 </div>
 
                 {/* Mobile Frame Section - Below Desktop Frame */}
-                <MobileFrameSection project={currentProject} isInView={isInView} />
+                <MobileFrameSection 
+                  project={currentProject} 
+                  isInView={isInView}
+                  canGoPrevious={canGoPrevious}
+                  canGoNext={canGoNext}
+                  onPrevious={goToPrevious}
+                  onNext={goToNext}
+                />
               </div>
             )}
           </div>

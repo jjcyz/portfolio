@@ -4,14 +4,26 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Project } from '@/types';
 import MobileFrame from './MobileFrame';
+import ProjectNavigation from './ProjectNavigation';
 import { useMobile } from '@/hooks/useMobile';
 
 interface MobileFrameSectionProps {
   project: Project;
   isInView: boolean;
+  canGoPrevious: boolean;
+  canGoNext: boolean;
+  onPrevious: () => void;
+  onNext: () => void;
 }
 
-export default function MobileFrameSection({ project, isInView }: MobileFrameSectionProps) {
+export default function MobileFrameSection({ 
+  project, 
+  isInView, 
+  canGoPrevious, 
+  canGoNext, 
+  onPrevious, 
+  onNext 
+}: MobileFrameSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isSectionInView = useInView(sectionRef, { once: false, margin: '100px' });
   const isMobileDevice = useMobile(1024);
@@ -55,6 +67,14 @@ export default function MobileFrameSection({ project, isInView }: MobileFrameSec
               <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
                 I find having a mobile view is important because it&apos;s more accessible.
               </p>
+              
+              {/* Navigation Arrows */}
+              <ProjectNavigation
+                canGoPrevious={canGoPrevious}
+                canGoNext={canGoNext}
+                onPrevious={onPrevious}
+                onNext={onNext}
+              />
             </motion.div>
           </div>
 

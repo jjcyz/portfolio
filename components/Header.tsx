@@ -18,6 +18,7 @@ export default function Header() {
 
   useEffect(() => {
     let ticking = false;
+    let timeoutId: NodeJS.Timeout | null = null;
 
     const handleScroll = () => {
       if (!ticking) {
@@ -41,8 +42,23 @@ export default function Header() {
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Throttle scroll events for better performance
+    const throttledHandleScroll = () => {
+      if (timeoutId === null) {
+        timeoutId = setTimeout(() => {
+          handleScroll();
+          timeoutId = null;
+        }, 100);
+      }
+    };
+
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', throttledHandleScroll);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
   }, []);
 
   const handleNavClick = useCallback((href: string) => {

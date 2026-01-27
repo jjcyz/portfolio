@@ -8,25 +8,18 @@ export function useMobile(breakpoint: number = 767): boolean {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`);
+    
     const checkIsMobile = () => {
-      setIsMobile(window.matchMedia(`(max-width: ${breakpoint}px)`).matches);
+      setIsMobile(mediaQuery.matches);
     };
 
     // Check on mount
     checkIsMobile();
 
     // Listen for resize events
-    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint}px)`);
-
-    // Modern browsers support addEventListener
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', checkIsMobile);
-      return () => mediaQuery.removeEventListener('change', checkIsMobile);
-    } else {
-      // Fallback for older browsers
-      mediaQuery.addListener(checkIsMobile);
-      return () => mediaQuery.removeListener(checkIsMobile);
-    }
+    mediaQuery.addEventListener('change', checkIsMobile);
+    return () => mediaQuery.removeEventListener('change', checkIsMobile);
   }, [breakpoint]);
 
   return isMobile;

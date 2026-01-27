@@ -38,7 +38,7 @@ export default function MobileFrame({ project }: MobileFrameProps) {
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateScale);
     };
-  }, [project]);
+  }, []);
 
   return (
     <div className="relative w-full lg:w-3/5 flex-shrink-0 overflow-visible flex justify-center lg:justify-end lg:pr-8">
