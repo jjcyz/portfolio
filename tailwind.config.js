@@ -45,6 +45,7 @@ module.exports = {
         'scale-in': 'scaleIn 0.3s ease-out',
         'bounce-subtle': 'bounceSubtle 2s infinite',
         'slide': 'slide 3s ease-in-out infinite',
+        'spin': 'spin 1s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -75,6 +76,10 @@ module.exports = {
           '0%': { transform: 'translateX(-100%)' },
           '50%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(-100%)' },
+        },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
         },
       },
       spacing: {
