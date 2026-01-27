@@ -1,8 +1,10 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { Project } from '@/types';
 import MobileFrame from './MobileFrame';
+import { useMobile } from '@/hooks/useMobile';
 
 interface MobileFrameSectionProps {
   project: Project;
@@ -10,8 +12,33 @@ interface MobileFrameSectionProps {
 }
 
 export default function MobileFrameSection({ project, isInView }: MobileFrameSectionProps) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isSectionInView = useInView(sectionRef, { once: false, margin: '100px' });
+  const isMobileDevice = useMobile(1024);
+  const [shouldLoadMobileFrame, setShouldLoadMobileFrame] = useState(false);
+
+  // On mobile devices, delay loading mobile frame to prevent simultaneous loading
+  // On desktop, load when scrolled into view
+  useEffect(() => {
+    if (isMobileDevice) {
+      // On mobile: wait for section to be in view, then add additional delay
+      // to ensure desktop frame has started loading first
+      if (isSectionInView) {
+        const timer = setTimeout(() => {
+          setShouldLoadMobileFrame(true);
+        }, 1500); // Delay to let desktop frame load first
+        return () => clearTimeout(timer);
+      } else {
+        setShouldLoadMobileFrame(false);
+      }
+    } else {
+      // On desktop: load when scrolled into view
+      setShouldLoadMobileFrame(isSectionInView);
+    }
+  }, [isMobileDevice, isSectionInView]);
+
   return (
-    <div className="mt-8 sm:mt-12 lg:mt-16 w-full">
+    <div ref={sectionRef} className="mt-8 sm:mt-12 lg:mt-16 w-full">
       <div className="max-w-5xl ml-auto mr-0 lg:mr-auto">
         <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 sm:gap-8 lg:gap-12 lg:justify-start">
           {/* Mobile Frame Text - Left Side */}
@@ -32,7 +59,7 @@ export default function MobileFrameSection({ project, isInView }: MobileFrameSec
           </div>
 
           {/* iPhone Frame Container - Right Side */}
-          <MobileFrame project={project} />
+          {shouldLoadMobileFrame && <MobileFrame project={project} />}
         </div>
       </div>
     </div>
