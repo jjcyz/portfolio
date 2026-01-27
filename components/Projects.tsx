@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useMemo, useCallback } from 'react';
+import Image from 'next/image';
 import { projects } from '@/lib/data';
 import SectionHeader from '@/components/ui/SectionHeader';
 import DesktopFrame from './projects/DesktopFrame';
@@ -50,18 +51,44 @@ export default function Projects() {
                   {!isMobileDevice ? (
                     <DesktopFrame key={currentProject.id} project={currentProject} />
                   ) : (
-                    /* Mobile message - Desktop preview available on desktop */
-                    <div className="w-full lg:w-2/3 flex items-center justify-center py-8 lg:hidden">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-center px-4"
-                      >
-                        <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                          View the desktop browser version on a desktop or tablet device for the full experience.
-                        </p>
-                      </motion.div>
+                    /* Mobile: MacBook frame with message inside screen */
+                    <div className="relative w-full lg:w-2/3 shrink-0 overflow-visible lg:hidden">
+                      <div className="relative w-full aspect-[16/11] min-h-[50vh] sm:min-h-[60vh] scale-100 sm:scale-105">
+                        {/* Screen Content Area - Message inside screen */}
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                          transition={{ duration: 0.5, delay: 0.2 }}
+                          className="absolute"
+                          style={{
+                            top: '15%',
+                            left: '11.5%',
+                            right: '11.5%',
+                            bottom: '14%',
+                            zIndex: 1,
+                          }}
+                        >
+                          <div className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center bg-black rounded-[20px]">
+                            <div className="text-center px-6 sm:px-8">
+                              <p className="text-sm sm:text-base text-white leading-relaxed">
+                                View the desktop browser version on a desktop or tablet device for the full experience.
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+
+                        {/* MacBook Pro Image Background - Overlay on top (Static) */}
+                        <div className="absolute inset-0 z-10 pointer-events-none">
+                          <Image
+                            src="/images/MacBook Pro M4 14-inch Silver.png"
+                            alt="MacBook Pro Frame"
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 1024px) 100vw, 100vw"
+                            priority
+                          />
+                        </div>
+                      </div>
                     </div>
                   )}
 

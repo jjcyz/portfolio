@@ -117,9 +117,8 @@ export const experiences: Experience[] = [
     startDate: '2025-09',
     endDate: 'present',
     description: [
-      'Represent Perplexity AI on campus and promote AI-powered search technology to students',
+      'Represent Perplexity AI to build relationships with academic departments and student organizations to increase AI adoption',
       'Organize and host workshops and events to demonstrate Perplexity\'s capabilities in research and academic work',
-      'Build relationships with academic departments and student organizations to increase AI adoption',
     ],
     technologies: ['AI', 'Community Building', 'Event Management'],
   },
@@ -131,10 +130,8 @@ export const experiences: Experience[] = [
     startDate: '2025-09',
     endDate: 'present',
     description: [
-      'Lead the technical direction and strategy for UBC\'s premier data analytics student organization',
-      'Oversee development of data science projects and technical workshops for 200+ members',
-      'Manage technical infrastructure and ensure smooth operation of club events and competitions',
-      'Mentor junior members in data analytics and technical project development',
+      'Lead the technical direction and strategy for UBC\'s data analytics student organization',
+      'Manage technical infrastructure and ensure software projects meet the operations for events and competitions',
     ],
     technologies: ['Data Analytics', 'Python', 'Leadership', 'JavaScript', 'React', 'Jira', 'Confluence'],
   },
@@ -148,7 +145,6 @@ export const experiences: Experience[] = [
     description: [
       'Develop user-centered web applications and digital tools for the UBC UX Hub community',
       'Collaborate with UX designers to implement responsive and accessible user interfaces',
-      'Build and maintain the organization\'s website and internal tools using modern web technologies',
     ],
     technologies: ['JavaScript', 'React', 'Node.js', 'UX/UI Design', 'Web Development'],
   },
@@ -161,9 +157,7 @@ export const experiences: Experience[] = [
     endDate: 'present',
     description: [
       'Plan and coordinate technical workshops, hackathons, and developer events for 300+ student members',
-      'Manage event logistics including venue booking, speaker coordination, and resource allocation',
       'Collaborate with Google and industry partners to bring technology workshops to campus',
-      'Lead a team of volunteers to ensure smooth execution of developer events and competitions',
     ],
     technologies: ['Leadership', 'Community Building', 'Event Management', 'Project Management'],
   },
@@ -176,10 +170,7 @@ export const experiences: Experience[] = [
     endDate: '2025-09',
     description: [
       'Early startup in VR/AR. Worked on a developing a product called ProductShot',
-      'Web Development',
-      'Fixed Bugs',
-      'Shipped fast',
-      'Wore many hats',
+      'Worked on the Web Development for the product, fixing code, and shipping features fast.',
     ],
     technologies: ['JavaScript', 'React', 'Google Cloud Platform', 'Firebase'],
   },
@@ -193,7 +184,6 @@ export const experiences: Experience[] = [
     description: [
       'Developed a 3D U-Net architecture for precise pixel-wise classification of vasculature structures',
       'Implemented an innovative two-step training pipeline with supervised pretraining and denoising techniques',
-      'Built an end-to-end pipeline processing TIFF scans and generating 3D segmentation masks',
     ],
     technologies: ['Python', 'Tensorflow', 'PyTorch', 'Machine Learning'],
   },
