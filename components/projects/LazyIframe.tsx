@@ -15,7 +15,6 @@ interface LazyIframeProps {
 
 export default function LazyIframe({ src, title, width, height, className, style, ...props }: LazyIframeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
@@ -122,29 +121,9 @@ export default function LazyIframe({ src, title, width, height, className, style
               <p className={`${width < 500 ? 'text-sm sm:text-base' : 'text-2xl sm:text-3xl'} text-black font-semibold`}>
                 Loading interactive preview ...
               </p>
-              <p className={`${width < 500 ? 'text-sm sm:text-base' : 'text-2xl sm:text-3xl'} text-black font-semibold`}>
-                Loading interactive preview ...
-              </p>
             )}
           </div>
         </div>
-      )}
-      {shouldLoad && (
-        <iframe
-          key={src}
-          ref={iframeRef}
-          src={isInView ? src : 'about:blank'}
-          title={title}
-          className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
-          width={width}
-          height={height}
-          style={style}
-          onLoad={handleLoad}
-          onError={handleError}
-          loading="lazy"
-          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-          {...props}
-        />
       )}
       {shouldLoad && (
         <iframe
