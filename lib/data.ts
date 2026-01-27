@@ -40,6 +40,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'aerohub',
+    title: 'AeroHub',
+    description: 'An aviation management dashboard for airport operations, featuring flight search, booking management, fleet tracking, and passenger administration. This project started when I was in my 2nd year of university, but has continued to develop from time to time.',
+    image: '/images/placeholder.svg',
+    technologies: ['Java', 'JavaScript', 'React', 'Next.js', 'Tailwind CSS'],
+    websiteUrl: 'https://airport-management-system-alpha.vercel.app/',
+    githubUrl: 'https://github.com/jjcyz/airport-management-system',
+    featured: true,
+  },
+  {
     id: 'ubc-bolt-website',
     title: 'UBC BOLT Website',
     description: 'Official website for UBC Data Analytics (BOLT) student organization, featuring modern design, event management, and member resources for 200+ data science enthusiasts.',
