@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { useInView } from 'framer-motion';
 
 interface LazyIframeProps {
@@ -15,48 +15,53 @@ interface LazyIframeProps {
 
 export default function LazyIframe({ src, title, width, height, className, style, ...props }: LazyIframeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
-  const isInView = useInView(containerRef, { once: false, margin: '50px' });
+  const isInView = useInView(containerRef, { once: false, margin: '100px' });
 
-  // Reset all states when src changes and clean up iframe
-  useEffect(() => {
-    setIsLoaded(false);
-    setHasError(false);
-    setShouldLoad(false);
-
-    // Properly clean up the iframe
+  // Cleanup function to properly destroy iframe
+  const cleanupIframe = useCallback(() => {
     if (iframeRef.current) {
-      // Remove src to stop loading and free resources
-      iframeRef.current.src = 'about:blank';
-      // Remove contentDocument if accessible
       try {
+        // Remove src to stop loading and free resources
+        iframeRef.current.src = 'about:blank';
+        // Clear contentDocument if accessible
         if (iframeRef.current.contentDocument) {
           iframeRef.current.contentDocument.open();
           iframeRef.current.contentDocument.close();
         }
       } catch (e) {
-        // Cross-origin iframe, can't access contentDocument
+        // Cross-origin iframe, can't access contentDocument - that's okay
       }
     }
-  }, [src]);
+  }, []);
 
-  // Handle loading and unloading based on viewport visibility
+  // Reset all states and cleanup when src changes
+  useEffect(() => {
+    setIsLoaded(false);
+    setHasError(false);
+    setShouldLoad(false);
+    cleanupIframe();
+  }, [src, cleanupIframe]);
+
+  // Handle loading/unloading based on viewport visibility
   useEffect(() => {
     if (isInView && src && !shouldLoad) {
-      // Minimal delay to ensure previous iframe is cleaned up before loading new one
+      // Small delay to ensure previous iframe is cleaned up
       const timeoutId = setTimeout(() => {
         setShouldLoad(true);
-      }, 50);
+      }, 100);
       return () => clearTimeout(timeoutId);
-    } else if (!isInView && iframeRef.current && shouldLoad) {
-      // Unload iframe when scrolled out of view to save resources
-      iframeRef.current.src = 'about:blank';
+    } else if (!isInView && shouldLoad) {
+      // Unload iframe when scrolled out of view to save memory
+      cleanupIframe();
       setIsLoaded(false);
+      setShouldLoad(false);
     }
-  }, [isInView, src, shouldLoad]);
+  }, [isInView, src, shouldLoad, cleanupIframe]);
 
   // Set iframe src when it should be loaded
   useEffect(() => {
@@ -67,15 +72,22 @@ export default function LazyIframe({ src, title, width, height, className, style
     }
   }, [shouldLoad, isInView, src]);
 
-  const handleLoad = () => {
+  const handleLoad = useCallback(() => {
     setIsLoaded(true);
     setHasError(false);
-  };
+  }, []);
 
-  const handleError = () => {
+  const handleError = useCallback(() => {
     setHasError(true);
     setIsLoaded(false);
-  };
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      cleanupIframe();
+    };
+  }, [cleanupIframe]);
 
   return (
     <div
@@ -83,7 +95,7 @@ export default function LazyIframe({ src, title, width, height, className, style
       className="relative w-full h-full overflow-hidden rounded-[20px]"
       style={{ width: '100%', height: '100%' }}
     >
-      {(!isLoaded || hasError) && (
+      {(!isLoaded || hasError) && shouldLoad && (
         <div className="absolute inset-0 bg-white flex items-center justify-center z-10 rounded-[20px]">
           <div className="text-center">
             {hasError ? (
@@ -110,9 +122,29 @@ export default function LazyIframe({ src, title, width, height, className, style
               <p className={`${width < 500 ? 'text-sm sm:text-base' : 'text-2xl sm:text-3xl'} text-black font-semibold`}>
                 Loading interactive preview ...
               </p>
+              <p className={`${width < 500 ? 'text-sm sm:text-base' : 'text-2xl sm:text-3xl'} text-black font-semibold`}>
+                Loading interactive preview ...
+              </p>
             )}
           </div>
         </div>
+      )}
+      {shouldLoad && (
+        <iframe
+          key={src}
+          ref={iframeRef}
+          src={isInView ? src : 'about:blank'}
+          title={title}
+          className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
+          width={width}
+          height={height}
+          style={style}
+          onLoad={handleLoad}
+          onError={handleError}
+          loading="lazy"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+          {...props}
+        />
       )}
       {shouldLoad && (
         <iframe

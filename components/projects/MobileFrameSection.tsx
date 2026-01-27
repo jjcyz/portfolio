@@ -4,7 +4,10 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Project } from '@/types';
 import MobileFrame from './MobileFrame';
+<<<<<<< HEAD
 import ProjectNavigation from './ProjectNavigation';
+=======
+>>>>>>> e4a77bf (Removed simultaneous iframe loading)
 import { useMobile } from '@/hooks/useMobile';
 
 interface MobileFrameSectionProps {
@@ -16,6 +19,7 @@ interface MobileFrameSectionProps {
   onNext: () => void;
 }
 
+<<<<<<< HEAD
 export default function MobileFrameSection({ 
   project, 
   isInView, 
@@ -24,6 +28,9 @@ export default function MobileFrameSection({
   onPrevious, 
   onNext 
 }: MobileFrameSectionProps) {
+=======
+export default function MobileFrameSection({ project, isInView }: MobileFrameSectionProps) {
+>>>>>>> e4a77bf (Removed simultaneous iframe loading)
   const sectionRef = useRef<HTMLDivElement>(null);
   const isSectionInView = useInView(sectionRef, { once: false, margin: '100px' });
   const isMobileDevice = useMobile(1024);
@@ -38,7 +45,11 @@ export default function MobileFrameSection({
       if (isSectionInView) {
         const timer = setTimeout(() => {
           setShouldLoadMobileFrame(true);
+<<<<<<< HEAD
         }, 1500); // Delay to let desktop frame load first
+=======
+        }, 2000); // Increased delay to let desktop frame load first
+>>>>>>> e4a77bf (Removed simultaneous iframe loading)
         return () => clearTimeout(timer);
       } else {
         setShouldLoadMobileFrame(false);
@@ -79,7 +90,11 @@ export default function MobileFrameSection({
           </div>
 
           {/* iPhone Frame Container - Right Side */}
+<<<<<<< HEAD
           {shouldLoadMobileFrame && <MobileFrame project={project} />}
+=======
+          {shouldLoadMobileFrame && <MobileFrame key={project.id} project={project} />}
+>>>>>>> e4a77bf (Removed simultaneous iframe loading)
         </div>
       </div>
     </div>

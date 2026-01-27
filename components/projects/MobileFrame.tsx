@@ -50,7 +50,7 @@ export default function MobileFrame({ project }: MobileFrameProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
             className="absolute"
             style={{
               top: '5%',
@@ -71,6 +71,7 @@ export default function MobileFrame({ project }: MobileFrameProps) {
                   }}
                 >
                   <LazyIframe
+                    key={`mobile-${project.id}`}
                     src={project.websiteUrl}
                     title={`${project.title} mobile demo`}
                     width={MOBILE_FRAME_WIDTH}

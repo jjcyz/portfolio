@@ -45,7 +45,7 @@ export default function Projects() {
                 {/* Layout: Desktop Frame on left, text information on right */}
                 <div className="flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-4 lg:gap-12">
                   {/* Desktop Frame Container - Left Side */}
-                  <DesktopFrame project={currentProject} />
+                  <DesktopFrame key={currentProject.id} project={currentProject} />
 
                   {/* Project Info - Right Side */}
                   <div className="w-full lg:w-1/3 flex flex-col justify-center lg:pl-8 lg:self-center">
