@@ -16,13 +16,13 @@ interface MobileFrameSectionProps {
   onNext: () => void;
 }
 
-export default function MobileFrameSection({ 
-  project, 
-  isInView, 
-  canGoPrevious, 
-  canGoNext, 
-  onPrevious, 
-  onNext 
+export default function MobileFrameSection({
+  project,
+  isInView,
+  canGoPrevious,
+  canGoNext,
+  onPrevious,
+  onNext
 }: MobileFrameSectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const isSectionInView = useInView(sectionRef, { once: false, margin: '100px' });
@@ -67,7 +67,7 @@ export default function MobileFrameSection({
               <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
                 I find having a mobile view is important because it&apos;s more accessible.
               </p>
-              
+
               {/* Navigation Arrows - Desktop Only */}
               <div className="hidden lg:block">
                 <ProjectNavigation
@@ -83,10 +83,10 @@ export default function MobileFrameSection({
           {/* iPhone Frame Container - Right Side */}
           <div className="w-full lg:w-3/5 flex flex-col items-center">
             {shouldLoadMobileFrame && <MobileFrame key={project.id} project={project} />}
-            
-            {/* Navigation Arrows - Mobile Only (after iPhone frame) */}
+
+            {/* Navigation Arrows - Mobile Only (positioned below iPhone frame) */}
             {shouldLoadMobileFrame && (
-              <div className="lg:hidden mt-6">
+              <div className="lg:hidden -mt-1 sm:mt-0">
                 <ProjectNavigation
                   canGoPrevious={canGoPrevious}
                   canGoNext={canGoNext}

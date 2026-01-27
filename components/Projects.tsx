@@ -52,26 +52,27 @@ export default function Projects() {
                     <DesktopFrame key={currentProject.id} project={currentProject} />
                   ) : (
                     /* Mobile: MacBook frame with message inside screen */
-                    <div className="relative w-full lg:w-2/3 shrink-0 overflow-visible lg:hidden">
+                    <div className="relative w-full lg:w-2/3 shrink-0 overflow-hidden lg:hidden">
                       <div className="relative w-full aspect-[16/11] min-h-[50vh] sm:min-h-[60vh] scale-100 sm:scale-105">
-                        {/* Screen Content Area - Message inside screen */}
+                        {/* Screen Content Area - Message inside screen - Adjusted for mobile */}
                         <motion.div
                           initial={{ opacity: 0 }}
                           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                           transition={{ duration: 0.5, delay: 0.2 }}
                           className="absolute"
                           style={{
-                            top: '15%',
-                            left: '11.5%',
-                            right: '11.5%',
-                            bottom: '14%',
+                            top: '18%',
+                            left: '13%',
+                            right: '13%',
+                            bottom: '17%',
                             zIndex: 1,
                           }}
                         >
-                          <div className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center bg-black rounded-[20px]">
-                            <div className="text-center px-6 sm:px-8">
-                              <p className="text-sm sm:text-base text-white leading-relaxed">
+                          <div className="absolute inset-0 w-full h-full overflow-hidden flex items-center justify-center bg-white rounded-[12px] sm:rounded-[16px]">
+                            <div className="text-center px-4 sm:px-6">
+                              <p className="text-xs sm:text-sm text-black leading-relaxed">
                                 View the desktop browser version on a desktop or tablet device for the full experience.
+                                If viewing on browser, ensure screen size is in full screen.
                               </p>
                             </div>
                           </div>
@@ -80,12 +81,13 @@ export default function Projects() {
                         {/* MacBook Pro Image Background - Overlay on top (Static) */}
                         <div className="absolute inset-0 z-10 pointer-events-none">
                           <Image
-                            src="/images/MacBook Pro M4 14-inch Silver.png"
+                            src="/images/MacBook%20Pro%20M4%2014-inch%20Silver.png"
                             alt="MacBook Pro Frame"
                             fill
                             className="object-contain"
                             sizes="(max-width: 1024px) 100vw, 100vw"
                             priority
+                            unoptimized
                           />
                         </div>
                       </div>
@@ -107,8 +109,8 @@ export default function Projects() {
                 </div>
 
                 {/* Mobile Frame Section - Below Desktop Frame */}
-                <MobileFrameSection 
-                  project={currentProject} 
+                <MobileFrameSection
+                  project={currentProject}
                   isInView={isInView}
                   canGoPrevious={canGoPrevious}
                   canGoNext={canGoNext}

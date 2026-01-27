@@ -135,12 +135,13 @@ export default function DesktopFrame({ project }: DesktopFrameProps) {
         {/* MacBook Pro Image Background - Overlay on top (Static) */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           <Image
-            src="/images/MacBook Pro M4 14-inch Silver.png"
+            src="/images/MacBook%20Pro%20M4%2014-inch%20Silver.png"
             alt="MacBook Pro Frame"
             fill
             className="object-contain"
             sizes="(max-width: 1024px) 100vw, 100vw"
             priority
+            unoptimized
           />
         </div>
       </div>
