@@ -14,16 +14,35 @@ interface LazyIframeProps {
 }
 
 export default function LazyIframe({ src, title, width, height, className, style, ...props }: LazyIframeProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const isInView = useInView(iframeRef, { once: true, margin: '50px' });
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const isInView = useInView(containerRef, { once: false, margin: '50px' });
 
-  // Reset loading state when src changes
+  // Reset all states when src changes
   useEffect(() => {
     setIsLoaded(false);
     setHasError(false);
+    setShouldLoad(false);
+    
+    // Clear the iframe src to force a complete reload
+    if (iframeRef.current) {
+      iframeRef.current.src = '';
+    }
   }, [src]);
+
+  // Load iframe when in view and src is available
+  useEffect(() => {
+    if (isInView && src && !shouldLoad) {
+      // Small delay to ensure previous iframe is cleaned up before loading new one
+      const timeoutId = setTimeout(() => {
+        setShouldLoad(true);
+      }, 150);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [isInView, src, shouldLoad]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -36,7 +55,11 @@ export default function LazyIframe({ src, title, width, height, className, style
   };
 
   return (
-    <div className="relative w-full h-full overflow-hidden rounded-[20px]" style={{ width: '100%', height: '100%' }}>
+    <div 
+      ref={containerRef}
+      className="relative w-full h-full overflow-hidden rounded-[20px]" 
+      style={{ width: '100%', height: '100%' }}
+    >
       {(!isLoaded || hasError) && (
         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-purple-500/10 backdrop-blur-2xl shadow-2xl shadow-purple-500/20 flex items-center justify-center z-10 rounded-[20px]">
           <div className="text-center">
@@ -69,19 +92,22 @@ export default function LazyIframe({ src, title, width, height, className, style
           </div>
         </div>
       )}
-      <iframe
-        key={src}
-        ref={iframeRef}
-        src={isInView ? src : ''}
-        title={title}
-        className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
-        width={width}
-        height={height}
-        style={style}
-        onLoad={handleLoad}
-        onError={handleError}
-        {...props}
-      />
+      {shouldLoad && (
+        <iframe
+          key={src}
+          ref={iframeRef}
+          src={src}
+          title={title}
+          className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
+          width={width}
+          height={height}
+          style={style}
+          onLoad={handleLoad}
+          onError={handleError}
+          loading="lazy"
+          {...props}
+        />
+      )}
     </div>
   );
 }
