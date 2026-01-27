@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import { IconArrowNarrowLeft, IconArrowNarrowRight } from '@tabler/icons-react';
 
 interface ProjectNavigationProps {
@@ -9,7 +10,7 @@ interface ProjectNavigationProps {
   onNext: () => void;
 }
 
-export default function ProjectNavigation({
+function ProjectNavigation({
   canGoPrevious,
   canGoNext,
   onPrevious,
@@ -46,3 +47,5 @@ export default function ProjectNavigation({
     </div>
   );
 }
+
+export default memo(ProjectNavigation);

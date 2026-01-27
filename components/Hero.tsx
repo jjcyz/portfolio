@@ -32,15 +32,9 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    // Update greeting on mount and check periodically (every hour)
-    const updateGreeting = () => {
-      setGreeting(getTimeBasedGreeting());
-    };
-
-    updateGreeting();
-    const interval = setInterval(updateGreeting, 3600000); // Check every hour
-
-    return () => clearInterval(interval);
+    // Update greeting on mount only
+    // No need to check periodically as it's unlikely users will stay on page for hours
+    setGreeting(getTimeBasedGreeting());
   }, []);
 
   return (

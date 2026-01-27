@@ -19,10 +19,9 @@ export default function LazyIframe({ src, title, width, height, className, style
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [shouldLoad, setShouldLoad] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const isInView = useInView(containerRef, { once: false, margin: '50px' });
 
-  // Reset all states when src changes
+  // Reset all states when src changes and clean up iframe
   useEffect(() => {
     setIsLoaded(false);
     setHasError(false);
@@ -44,36 +43,29 @@ export default function LazyIframe({ src, title, width, height, className, style
     }
   }, [src]);
 
-  // Unload iframe when not in view to save resources
+  // Handle loading and unloading based on viewport visibility
   useEffect(() => {
-    setIsVisible(isInView);
-    
-    if (!isInView && iframeRef.current && shouldLoad) {
-      // Unload iframe when scrolled out of view
+    if (isInView && src && !shouldLoad) {
+      // Minimal delay to ensure previous iframe is cleaned up before loading new one
+      const timeoutId = setTimeout(() => {
+        setShouldLoad(true);
+      }, 50);
+      return () => clearTimeout(timeoutId);
+    } else if (!isInView && iframeRef.current && shouldLoad) {
+      // Unload iframe when scrolled out of view to save resources
       iframeRef.current.src = 'about:blank';
       setIsLoaded(false);
     }
-  }, [isInView, shouldLoad]);
+  }, [isInView, src, shouldLoad]);
 
-  // Load iframe when in view and src is available
+  // Set iframe src when it should be loaded
   useEffect(() => {
-    if (isInView && src && !shouldLoad && isVisible) {
-      // Delay to ensure previous iframe is cleaned up before loading new one
-      const timeoutId = setTimeout(() => {
-        setShouldLoad(true);
-      }, 200);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [isInView, src, shouldLoad, isVisible]);
-
-  // Reload iframe when it becomes visible again
-  useEffect(() => {
-    if (isVisible && shouldLoad && iframeRef.current && !isLoaded) {
+    if (shouldLoad && iframeRef.current && isInView) {
       if (iframeRef.current.src === 'about:blank' || !iframeRef.current.src) {
         iframeRef.current.src = src;
       }
     }
-  }, [isVisible, shouldLoad, src, isLoaded]);
+  }, [shouldLoad, isInView, src]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -115,7 +107,9 @@ export default function LazyIframe({ src, title, width, height, className, style
                 <p className="text-sm text-red-500 mt-2">The website may be unavailable</p>
               </>
             ) : (
-              <p className="text-2xl sm:text-3xl text-purple-600 font-semibold">Loading interactive preview ...</p>
+              <p className={`${width < 500 ? 'text-sm sm:text-base' : 'text-2xl sm:text-3xl'} text-black font-semibold`}>
+                Loading interactive preview ...
+              </p>
             )}
           </div>
         </div>
@@ -124,7 +118,7 @@ export default function LazyIframe({ src, title, width, height, className, style
         <iframe
           key={src}
           ref={iframeRef}
-          src={isVisible ? src : 'about:blank'}
+          src={isInView ? src : 'about:blank'}
           title={title}
           className={`border-0 rounded-[32px] ${!isLoaded || hasError ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300 ${className || ''}`}
           width={width}

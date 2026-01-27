@@ -38,7 +38,7 @@ export default function DesktopFrame({ project }: DesktopFrameProps) {
       resizeObserver.disconnect();
       window.removeEventListener('resize', updateScale);
     };
-  }, [project]);
+  }, []);
 
   return (
     <div className="relative w-full lg:w-2/3 flex-shrink-0 overflow-visible">

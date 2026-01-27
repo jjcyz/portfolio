@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useRef, useState, useEffect, useMemo } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { education } from '@/lib/data';
 import SectionHeader from '@/components/ui/SectionHeader';

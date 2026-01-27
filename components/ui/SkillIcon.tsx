@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import Image from 'next/image';
 import { getSkillIconUrl } from '@/lib/skillIcons';
 
@@ -12,7 +12,7 @@ interface SkillIconProps {
 /**
  * Skill icon component with error handling and fallback
  */
-export default function SkillIcon({ skillName, size = 56 }: SkillIconProps) {
+function SkillIcon({ skillName, size = 56 }: SkillIconProps) {
   const [imageError, setImageError] = useState(false);
   const iconUrl = getSkillIconUrl(skillName);
 
@@ -39,4 +39,6 @@ export default function SkillIcon({ skillName, size = 56 }: SkillIconProps) {
     />
   );
 }
+
+export default memo(SkillIcon);
 
