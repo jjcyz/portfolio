@@ -6,6 +6,14 @@ import Image from 'next/image';
 import { Project } from '@/types';
 import LazyIframe from './LazyIframe';
 
+function getYouTubeEmbedUrl(url: string): string | null {
+  const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+  if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+  const longMatch = url.match(/youtube\.com\/watch\?v=([^?&]+)/);
+  if (longMatch) return `https://www.youtube.com/embed/${longMatch[1]}`;
+  return null;
+}
+
 interface MobileFrameProps {
   project: Project;
 }
@@ -105,6 +113,32 @@ export default function MobileFrame({ project }: MobileFrameProps) {
                       height: `${MOBILE_FRAME_HEIGHT}px`,
                     }}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+              ) : project.videoUrl && getYouTubeEmbedUrl(project.videoUrl) ? (
+                <div
+                  style={{
+                    width: `${MOBILE_FRAME_WIDTH}px`,
+                    height: `${MOBILE_FRAME_HEIGHT}px`,
+                    transform: `scale(${scale})`,
+                    transformOrigin: 'center center',
+                  }}
+                  className="bg-black flex items-center justify-center"
+                >
+                  <iframe
+                    src={getYouTubeEmbedUrl(project.videoUrl)!}
+                    title={`${project.title} video`}
+                    width={MOBILE_FRAME_WIDTH}
+                    height={MOBILE_FRAME_HEIGHT}
+                    className="border-0"
+                    style={{
+                      display: 'block',
+                      border: 'none',
+                      width: `${MOBILE_FRAME_WIDTH}px`,
+                      height: `${MOBILE_FRAME_HEIGHT}px`,
+                    }}
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </div>

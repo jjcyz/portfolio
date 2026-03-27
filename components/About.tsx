@@ -44,7 +44,7 @@ const PinkGradientContainer = ({ children, className = "", ...props }: ModuleCon
 );
 
 // Apple-style carousel component
-const TAGS = ['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Orange Americanos 🍊☕', 'Glassmorphism ✨', 'Hojicha Oat Lattes 🍵', 'Minimalistic Designs', 'User-Centered Designs'];
+const TAGS = ['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Orange Americanos 🍊☕', 'Glassmorphism ✨', 'Hojicha Oat Lattes 🍵', 'User-Centered Designs'];
 
 const CarouselTags = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

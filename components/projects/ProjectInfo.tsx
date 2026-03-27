@@ -3,7 +3,7 @@
 import { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { ExternalLink, Github, FileText, Trophy } from 'lucide-react';
+import { ExternalLink, Github, FileText, Trophy, Youtube } from 'lucide-react';
 import { Project } from '@/types';
 
 interface ProjectInfoProps {
@@ -70,6 +70,18 @@ function ProjectInfo({ project }: ProjectInfoProps) {
               onClick={(e) => e.stopPropagation()}
             >
               <FileText size={18} />
+            </Link>
+          )}
+          {project.videoUrl && (
+            <Link
+              href={project.videoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-600 hover:text-slate-900 transition-colors duration-200"
+              aria-label={`Watch ${project.title} video`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Youtube size={18} />
             </Link>
           )}
         </div>

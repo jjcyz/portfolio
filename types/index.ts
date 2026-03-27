@@ -8,6 +8,7 @@ export interface Project {
   githubUrl?: string;
   devpostUrl?: string;
   paperUrl?: string;
+  videoUrl?: string;
   featured: boolean;
 }
 
