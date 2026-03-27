@@ -4,7 +4,6 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useMemo, useCallback } from 'react';
 import Image from 'next/image';
 import { projects } from '@/lib/data';
-import SectionHeader from '@/components/ui/SectionHeader';
 import DesktopFrame from './projects/DesktopFrame';
 import ProjectInfo from './projects/ProjectInfo';
 import ProjectNavigation from './projects/ProjectNavigation';
@@ -39,7 +38,23 @@ export default function Projects() {
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <SectionHeader title="Featured Projects" className="mb-2 sm:mb-4 lg:mb-6" />
+          <div className="text-center mb-4 sm:mb-6 lg:mb-8 relative z-20">
+            <motion.h2
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.4, delay: 0.2 }}
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 inline-flex items-baseline gap-2 sm:gap-3"
+            >
+              <span className="gradient-text">Featured Projects</span>
+              <a
+                href="/projects"
+                className="gradient-text text-xs sm:text-sm font-medium hover:opacity-70 transition-opacity duration-200"
+              >
+                View All
+              </a>
+            </motion.h2>
+          </div>
 
           {/* Projects Container */}
           <div className="relative overflow-visible">
