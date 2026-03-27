@@ -34,15 +34,6 @@ export default function ProjectsPage() {
           <span className="text-sm">Back</span>
         </Link>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-16 sm:mb-20 lg:mb-24 text-center"
-        >
-          <span className="gradient-text">All Projects</span>
-        </motion.h1>
-
         <div className="space-y-20 sm:space-y-28 lg:space-y-32">
           {projects.map((project, index) => {
             const isEven = index % 2 === 0;
