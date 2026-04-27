@@ -40,6 +40,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'city-wallet',
+    title: 'City Wallet',
+    description: 'A privacy-forward local offers wallet that uses weather, proximity, movement, and demand signals to surface personalized nearby deals while keeping preference matching on-device.',
+    image: '/images/placeholder.svg',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'OpenWeatherMap API', 'Google Places API', 'Eventbrite API'],
+    websiteUrl: 'https://city-wallet-alpha.vercel.app/',
+    githubUrl: 'https://github.com/jjcyz/city-wallet',
+    featured: true,
+  },
+  {
     id: 'real-time-fraud-detection',
     title: 'Real-Time Fraud Detection System',
     description: 'Full-stack fraud detection system with Java Spring Boot backend and React frontend for real-time transaction monitoring and multi-layered fraud detection.',
