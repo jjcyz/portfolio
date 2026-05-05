@@ -43,6 +43,7 @@ const nextConfig = {
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: blob: https:",
       "connect-src 'self'",
+      "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com",
     ].join('; ');
     return [
       {

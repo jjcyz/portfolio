@@ -40,6 +40,14 @@ function dotsForProjectIndex(i: number) {
   return DOT_COLORS[i % DOT_COLORS.length];
 }
 
+function getYouTubeThumbnail(url: string): string | null {
+  const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+  if (shortMatch) return `https://img.youtube.com/vi/${shortMatch[1]}/hqdefault.jpg`;
+  const longMatch = url.match(/youtube\.com\/watch\?v=([^?&]+)/);
+  if (longMatch) return `https://img.youtube.com/vi/${longMatch[1]}/hqdefault.jpg`;
+  return null;
+}
+
 function matchesFilter(project: Project, filter: FilterId): boolean {
   if (filter === 'all') return project.featured;
   if (filter === 'product') return project.category === 'product' || project.category === 'community';
@@ -113,8 +121,9 @@ export default function Projects() {
 }
 
 function ProjectCard({ project, dotClass }: { project: Project; dotClass: string }) {
-  const href = project.websiteUrl ?? project.githubUrl ?? project.devpostUrl ?? '/projects';
-  const external = Boolean(project.websiteUrl ?? project.githubUrl ?? project.devpostUrl);
+  const href = project.websiteUrl ?? project.videoUrl ?? project.githubUrl ?? project.devpostUrl ?? '/projects';
+  const external = Boolean(project.websiteUrl ?? project.videoUrl ?? project.githubUrl ?? project.devpostUrl);
+  const youtubeThumb = project.videoUrl ? getYouTubeThumbnail(project.videoUrl) : null;
   const summary = stripEmoji(project.description);
   const short =
     summary.length > 140 ? `${summary.slice(0, 137)}…` : summary;
@@ -125,7 +134,21 @@ function ProjectCard({ project, dotClass }: { project: Project; dotClass: string
       <div
         className="relative aspect-5/3 bg-neutral-100 border border-neutral-200/80 overflow-hidden"
       >
-        {project.websiteUrl ? (
+        {youtubeThumb ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={youtubeThumb}
+              alt={`${project.title} video preview`}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02] saturate-[0.9] contrast-[0.96]"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/20 to-black/10" />
+            <span className="absolute inset-0 flex items-center justify-center font-display text-[clamp(1.8rem,4.5vw,2.4rem)] uppercase tracking-widest text-white/85 select-none pointer-events-none text-center px-4">
+              {project.title}
+            </span>
+          </>
+        ) : project.websiteUrl ? (
           <>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
