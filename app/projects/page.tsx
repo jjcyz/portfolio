@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowLeft, ExternalLink, Github, FileText, Trophy, Youtube } from 'lucide-react';
 import { projects } from '@/lib/data';
+import { getWebsitePreviewImage } from '@/lib/preview';
 
 function getYouTubeEmbedUrl(url: string): string | null {
   const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
@@ -11,6 +12,21 @@ function getYouTubeEmbedUrl(url: string): string | null {
   const longMatch = url.match(/youtube\.com\/watch\?v=([^?&]+)/);
   if (longMatch) return `https://www.youtube.com/embed/${longMatch[1]}`;
   return null;
+}
+
+function WebsitePreview({ url, title }: { url: string; title: string }) {
+  return (
+    <div className="relative w-full aspect-video overflow-hidden bg-white">
+      {/* Browsers can block cross-origin iframes, so we use a screenshot preview instead. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={getWebsitePreviewImage(url)}
+        alt={`${title} preview`}
+        loading="lazy"
+        className="h-full w-full object-cover"
+      />
+    </div>
+  );
 }
 
 export default function ProjectsPage() {
@@ -27,9 +43,6 @@ export default function ProjectsPage() {
 
         <header className="mb-14 sm:mb-20">
           <h1 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] text-neutral-950 tracking-tight">All projects</h1>
-          <p className="mt-3 text-sm text-neutral-600 max-w-2xl">
-            {projects.length} builds — previews, links, and notes. The home page shows a shorter grid of nine highlights.
-          </p>
         </header>
 
         <div className="space-y-20 sm:space-y-24 lg:space-y-28">
@@ -56,25 +69,7 @@ export default function ProjectsPage() {
                         />
                       </div>
                     ) : project.websiteUrl ? (
-                      <div className="relative w-full aspect-video overflow-hidden bg-white">
-                        <div
-                          className="absolute top-0 left-0 pointer-events-none"
-                          style={{
-                            width: '200%',
-                            height: '200%',
-                            transform: 'scale(0.5)',
-                            transformOrigin: 'top left',
-                          }}
-                        >
-                          <iframe
-                            src={project.websiteUrl}
-                            title={`${project.title} preview`}
-                            loading="lazy"
-                            className="w-full h-full border-0"
-                            tabIndex={-1}
-                          />
-                        </div>
-                      </div>
+                      <WebsitePreview url={project.websiteUrl} title={project.title} />
                     ) : (
                       <div className="relative w-full aspect-video">
                         <Image

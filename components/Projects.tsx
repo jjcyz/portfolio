@@ -3,6 +3,7 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { projects, PROJECT_FILTER_LABELS } from '@/lib/data';
+import { getWebsitePreviewImage } from '@/lib/preview';
 import type { Project, ProjectCategory } from '@/types';
 
 type FilterId = 'all' | 'hackathon' | 'research' | 'product';
@@ -123,15 +124,31 @@ function ProjectCard({ project, dotClass }: { project: Project; dotClass: string
     <>
       <div
         className="relative aspect-5/3 bg-neutral-100 border border-neutral-200/80 overflow-hidden"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,.04) 10px, rgba(0,0,0,.04) 11px)',
-        }}
       >
+        {project.websiteUrl ? (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={getWebsitePreviewImage(project.websiteUrl)}
+              alt={`${project.title} preview`}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02] saturate-[0.9] contrast-[0.96]"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-black/45 via-black/20 to-black/10" />
+            <span className="absolute inset-0 flex items-center justify-center font-display text-[clamp(1.8rem,4.5vw,2.4rem)] uppercase tracking-widest text-white/85 select-none pointer-events-none text-center px-4">
+              {project.title}
+            </span>
+          </>
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,.04) 10px, rgba(0,0,0,.04) 11px)',
+            }}
+          />
+        )}
         <span className={`absolute left-3 top-3 h-2 w-2 rounded-full ${dotClass}`} aria-hidden />
-        <span className="absolute inset-0 flex items-center justify-center font-display text-[clamp(2rem,5vw,2.75rem)] uppercase tracking-widest text-neutral-300/90 select-none pointer-events-none text-center px-4">
-          {project.title}
-        </span>
       </div>
       <div className="pt-4 space-y-2">
         <p className="inline-block rounded-full border border-neutral-200 bg-white px-2.5 py-0.5 text-[10px] tracking-[0.12em] uppercase text-neutral-500">

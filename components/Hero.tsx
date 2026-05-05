@@ -15,8 +15,8 @@ const BLURB_PARAGRAPHS = [
     Senior student at <span className="font-medium text-neutral-900">The University of British Columbia</span> graduating
     April 2026. I studied abroad for one year at{' '}
     <span className="font-medium text-neutral-900">Tsinghua University</span>, where I took computer science courses in{' '}
-    <span className="font-medium text-neutral-900">AI</span>, <span className="font-medium text-neutral-900">ML</span>,
-    and other interesting areas. An opportunity that gave me a unique global perspective of technology.
+    <span className="font-medium text-neutral-900">AI</span>, <span className="font-medium text-neutral-900">ML</span>. An 
+    opportunity that gave me a unique global perspective of technology.
   </>,
   <>
     I&apos;m quite involved in my community as a lead in the{' '}
@@ -26,7 +26,7 @@ const BLURB_PARAGRAPHS = [
   </>,
 ];
 
-const TAGS = ['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Orange Americanos 🍊☕', 'Hackathons ⚡️', 'Hojicha oat lattes 🍵', 'Human-centered layouts'];
+const TAGS = ['Skiing ⛷️', 'Snowboarding 🏂', 'Hiking 🥾', 'Orange Americanos 🍊☕', 'Hackathons ⚡️', 'Hojicha oat lattes 🍵', 'User-centric designs'];
 
 function LikeCarousel() {
   const [i, setI] = useState(0);
