@@ -44,6 +44,18 @@ export const projects: Project[] = [
     yearLabel: '2026',
   },
   {
+    id: 'maintaineros',
+    title: 'MaintainerOS',
+    description: '🏆 Cursor Hackathon 2nd place. An open-source maintainer control plane that imports GitHub issues, classifies backlog risk, builds context bundles, and routes work into AI, maintainer, bounty, or clarification queues.',
+    image: '/images/placeholder.svg',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'GitHub API', 'Neon PostgreSQL', 'Greptile'],
+    websiteUrl: 'https://maintaineross.vercel.app',
+    githubUrl: 'https://github.com/obro79/maintainerOS',
+    featured: true,
+    category: 'hackathon',
+    yearLabel: '2026',
+  },
+  {
     id: 'transit-brain',
     title: 'TransitBrain',
     description: 'Real-time operations dashboard for TransLink\'s bus fleet, built to support the transition to battery-electric buses. Ingests live GTFS Realtime feeds, tracks every active bus on a full-screen map, and layers electric bus energy telemetry on top of operational data.',
